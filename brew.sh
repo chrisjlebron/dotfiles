@@ -43,7 +43,20 @@ brew install homebrew/dupes/screen
 brew install entr
 
 # github util. imho better than hub
-brew install gh
+# brew install gh
+
+# gh was merged with hub...
+brew install hub
+
+# personal
+brew install ctags
+# brew install gdbm
+# brew install openssl
+# brew install pkg-config
+brew install python
+# brew install readline
+brew install redis
+# brew install sqlite
 
 
 # mtr - ping & traceroute. best.
