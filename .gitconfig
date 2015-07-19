@@ -1,80 +1,135 @@
-[alias]
-	c = commit -am
-	up = pull
-	p = push
-	s = status -s
-	df = diff --color --color-words --abbrev
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	co = checkout
-
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-	# Merge GitHub pull request on top of the `master` branch
-	mpr = "!f() { \
-		if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-			git fetch origin refs/pull/$1/head:pr/$1 && \
-			git rebase master pr/$1 && \
-			git checkout master && \
-			git merge pr/$1 && \
-			git branch -D pr/$1 && \
-			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-		fi \
-	}; f"
-
-
-
-[color]
-	ui = always
-
+[include]
+  # For username / github token / etc
+  path = ~/.gitconfig.local
 [core]
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+  autocrlf = input
+  safecrlf = warn
+  excludesfile = ~/.gitignore_global
+	editor = /usr/bin/vim
+[alias]
+  hist = "log --pretty=format:\"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]\" --graph --date=short"
+  hs = log --oneline --decorate --graph --relative-date
+  lg = log --pretty=oneline --abbrev-commit --graph --decorate --date=relative
+  find = "!git log --oneline | grep"
+  search = "!git log --oneline | grep"
+  lookup = "!git log --oneline | grep"
+  type = cat-file -t
+  dump = cat-file -p
+  rd = rm $(git ls-files --deleted)
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+[color]
+  ui = always
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+	whitespace = red reverse
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = green
+  changed = red
+  untracked = yellow reverse
+[diff]
+	tool = p4merge
+[difftool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 [merge]
-    tool = opendiff
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$LOCAL $PWD/$REMOTE $PWD/$MERGED
+  trustExitCode = false
+[mergetool]
+	keepBackup = false
+[credential]
+  helper = osxkeychain
+[push]
+	default = simple
+[rerere]
+	enabled = true
+
+# [alias]
+# 	c = commit -am
+# 	up = pull
+# 	p = push
+# 	s = status -s
+# 	df = diff --color --color-words --abbrev
+# 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+# 	co = checkout
+#
+# 	# Show the diff between the latest commit and the current state
+# 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+#
+# 	# Merge GitHub pull request on top of the `master` branch
+# 	mpr = "!f() { \
+# 		if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+# 			git fetch origin refs/pull/$1/head:pr/$1 && \
+# 			git rebase master pr/$1 && \
+# 			git checkout master && \
+# 			git merge pr/$1 && \
+# 			git branch -D pr/$1 && \
+# 			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+# 		fi \
+# 	}; f"
+
+
+
+# [color]
+# 	ui = always
+
+# [core]
+# 	excludesfile = ~/.gitignore
+# 	attributesfile = ~/.gitattributes
+# [color "branch"]
+# 	current = yellow reverse
+# 	local = yellow
+# 	remote = green
+# [color "diff"]
+# 	meta = yellow bold
+# 	frag = magenta bold
+# 	old = red bold
+# 	new = green bold
+# [color "status"]
+# 	added = yellow
+# 	changed = green
+# 	untracked = cyan
+# [merge]
+#     tool = opendiff
 
 
 # rewrites
-[url "git@github.com:"]
-	insteadOf = "gh:"
-	insteadOf = "git://github.com"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-    pushInsteadOf = "https://github.com/"
-[url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-	pushInsteadOf = "https://gist.github.com/"
+# [url "git@github.com:"]
+# 	insteadOf = "gh:"
+# 	insteadOf = "git://github.com"
+# 	pushInsteadOf = "github:"
+# 	pushInsteadOf = "git://github.com/"
+#     pushInsteadOf = "https://github.com/"
+# [url "git@gist.github.com:"]
+# 	insteadOf = "gst:"
+# 	pushInsteadOf = "gist:"
+# 	pushInsteadOf = "git://gist.github.com/"
+# 	pushInsteadOf = "https://gist.github.com/"
 
 
 # Any GitHub repo with my username should be checked out r/w by default
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 
-[url "git@github.com:paulirish/"]
-  insteadOf = "git://github.com/paulirish/"
+# [url "git@github.com:paulirish/"]
+#   insteadOf = "git://github.com/paulirish/"
 [help]
 	autocorrect = 1
 
 # push easily. http://stackoverflow.com/a/23918418/89484
-[push]
-	default = current
+# [push]
+# 	default = current
 
 
 
-[include]
-  # For username / github token / etc
-  path = ~/.gitconfig.local
+# [include]
+#   # For username / github token / etc
+#   path = ~/.gitconfig.local
