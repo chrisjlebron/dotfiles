@@ -30,7 +30,7 @@ brew cask install imageoptim
 brew cask install p4merge
 brew cask install rowanj-gitx
 brew cask install vagrant
-brew cask install virtual
+brew cask install virtualbox
 
 # fun
 # brew cask install limechat
