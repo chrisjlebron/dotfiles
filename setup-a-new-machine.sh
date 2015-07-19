@@ -14,6 +14,7 @@ cd ~/migration
 brew leaves      		> brew-list.txt    # all top-level brew installs
 brew cask list 			> cask-list.txt
 npm list -g --depth=0 	> npm-g-list.txt
+gem list > gem-list.txt
 
 
 # then compare brew-list to what's in `brew.sh`
@@ -29,20 +30,24 @@ cp -R ~/.gnupg ~/migration/home
 
 cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration  # wifi
 
-cp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration
+# cp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration
 
-cp -R ~/Library/Services ~/migration # automator stuff
+# cp -R ~/Library/Services ~/migration # automator stuff
 
-cp -R ~/Documents ~/migration
+# cp -R ~/Documents ~/migration
 
 cp ~/.bash_history ~/migration # back it up for fun?
+cp ~/.zsh_history ~/migration # back it up for fun?
 
 cp ~/.gitconfig.local ~/migration
 
 cp ~/.z ~/migration # z history file.
 
 # sublime text settings
-cp "~/Library/Application Support/Sublime Text 3/Packages" ~/migration
+# cp "~/Library/Application Support/Sublime Text 3/Packages" ~/migration
+
+# Atom Packages
+apm list --installed --bare > ~/migration/atom-packages.txt
 
 
 # iTerm settings.
@@ -92,9 +97,12 @@ fi
 ##############################################################################################################
 ### homebrew!
 
-# (if your maching has /usr/local locked down (like google's), you can do this to place everything in ~/.homebrew
-mkdir $HOME/.homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
-export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
+# (if your machine has /usr/local locked down (like google's), you can do this to place everything in ~/.homebrew
+# mkdir $HOME/.homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
+# export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
+
+# Else, do it the normal way
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install all the things
 ./brew.sh
@@ -112,7 +120,7 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 
 # github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
-bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
+# bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
 
 
 # Type `git open` to open the GitHub page or website for a repository.
@@ -156,7 +164,7 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 
 # setting up the sublime symlink
-ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+# ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 
 ###
@@ -196,6 +204,3 @@ sh .osx
 
 ###
 ##############################################################################################################
-
-
-
