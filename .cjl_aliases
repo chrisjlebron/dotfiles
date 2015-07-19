@@ -1,0 +1,93 @@
+# My aliases
+
+# Alias for "clear"
+alias cl='clear'
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# necessary to make rake work inside of zsh
+alias rake="noglob rake"
+
+# Copy current working directory path to clipboard
+alias cppwd="pwd | tr -d '\n\' | pbcopy"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Enable/disable text selection in Quick Look
+alias yayquicklook="defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder"
+alias booquicklook="defaults write com.apple.finder QLEnableTextSelection -bool false && killall Finder"
+
+# fix weird AppleTV audio bug
+alias fuckapple="sudo pkill coreaudiod"
+
+# fix broken camera (web cam)
+alias fixcamera="sudo killall VDCAssistant"
+
+# Kill and restart Finder
+alias killfinder="killall Finder"
+
+# Kill and restart Dock
+alias killdock="killall Dock"
+
+# Kill and restart menubar
+alias killmenu="killall SystemUIServer"
+
+# Disable the all too sensitive backswipe
+alias killbackswipe="defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false"
+alias livebackswipe="defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool true"
+
+# Add a spacer to the dock
+alias addspacer="defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' && killall Dock"
+
+# Alias to open iOS Simulator (requires Xcode, or at least install of simulator)
+# Xcode <=5
+# alias ios='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+
+# Xcode 6
+alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app'
+
+# Alias to open Android debugger for Chrome
+alias android_debug='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+# alias android_restart='adb kill-server'
+
+# Alias to begin web server from any directory
+# Navigate to localhost:8000 to view directory as server
+alias serve='python -m SimpleHTTPServer 8000'
+
+# Navigate to Chrome dev tools CSS
+alias chromecss='cd ~/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets'
+
+# Navigate to oh my zsh directory
+alias ohmyzsh='cd ~/.oh-my-zsh'
+
+# Use Homebrew's ctags vs the OSX version
+alias ctags="`brew --prefix`/bin/ctags"
+
+#
+# Git aliases
+#
+alias gti="git" # Stupidity check...
+alias gcop='git commit -p'
+alias gap='git add -p'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gmff='git merge --ff-only'
+alias gmno='git merge --no-ff'
+alias greh='git reset --hard'
+alias grbo='git rebase --onto'
+alias gdt='git difftool'
+alias grp='git remote prune'
+alias ghist='git log --pretty=format:"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]" --graph --date=short'
+
+# Clean out .pyc files from a directory
+alias clean_pyc="find . -name '*.pyc' -print0 | xargs -0 rm -f"
