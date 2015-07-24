@@ -40,17 +40,17 @@ $b brew-cask
 # Tracks your most used directories, based on 'frecency'.
 $b robbyrussell/oh-my-zsh plugins/z
 
-# suggestion as you type
-$b tarruda/zsh-autosuggestions
-
-# nicoulaj's moar completion files for zsh
-# $b zsh-users/zsh-completions src
-
 # Syntax highlighting on the readline
 $b zsh-users/zsh-syntax-highlighting
 
 # colors for all files!
 $b trapd00r/zsh-syntax-highlighting-filetypes
+
+# suggestion as you type
+$b tarruda/zsh-autosuggestions
+
+# nicoulaj's moar completion files for zsh
+# $b zsh-users/zsh-completions src
 
 # dont set a theme, because pure does it all
 $b mafredri/zsh-async
