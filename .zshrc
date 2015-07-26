@@ -40,6 +40,9 @@ $b brew-cask
 # Tracks your most used directories, based on 'frecency'.
 $b robbyrussell/oh-my-zsh plugins/z
 
+# oh-my-zsh's git plugin, for all them good aliases
+$b robbyrussell/oh-my-zsh plugins/git
+
 # Syntax highlighting on the readline
 $b zsh-users/zsh-syntax-highlighting
 
