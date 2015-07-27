@@ -146,6 +146,10 @@ print_success() {
 declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
 # FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim bin" # add in vim and the binaries
 
+declare ATOM_FILES_DIR="$HOME/Dropbox/Dev/OSX_Settings/dotfiles/atom-files"
+
+# declare -a ATOM_FILES_TO_SYMLINK=$(find $ATOM_FILES_DIR \( -name "*.cson" -o -name "*.coffee" -o -name "*.less" \) | sed -e 's|.*/||')
+declare -a ATOM_FILES_TO_SYMLINK=$(find $ATOM_FILES_DIR \( -name "*.cson" -o -name "*.coffee" -o -name "*.less" \))
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -182,4 +186,38 @@ main() {
 
 }
 
+atom() {
+
+    local i=""
+    local sourceFile=""
+    local targetFile=""
+
+    for i in ${ATOM_FILES_TO_SYMLINK[@]}; do
+
+        sourceFile="$i"
+        targetFile="$HOME/.atom/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+
+        if [ -e "$targetFile" ]; then
+            if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
+
+                ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+                if answer_is_yes; then
+                    rm -rf "$targetFile"
+                    execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+                else
+                    print_error "$targetFile → $sourceFile"
+                fi
+
+            else
+                print_success "$targetFile → $sourceFile"
+            fi
+        else
+            execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+        fi
+
+    done
+
+}
+
 main
+atom
