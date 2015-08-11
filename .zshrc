@@ -2,6 +2,7 @@
 # zmodload zsh/zprof
 
 # history
+HISTFILE=~/.zsh_history
 SAVEHIST=100000
 
 # vim bindings
@@ -30,8 +31,8 @@ $b command-not-found
 # Helper for extracting different types of archives.
 $b extract
 
-# atom editor
-$b atom
+# atom editor (uncomment for shortcuts...)
+# $b atom
 
 # homebrew  - autocomplete on `brew install`
 $b brew
@@ -60,7 +61,7 @@ $b mafredri/zsh-async
 $b sindresorhus/pure
 
 # history search
-$b zsh-users/zsh-history-substring-search
+$b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # Tell antigen that you're done.
 antigen apply
@@ -68,6 +69,12 @@ antigen apply
 ###
 #################################################################################################
 
+
+# Enable autosuggestions automatically.
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
 
 
 # bind UP and DOWN arrow keys for history search
@@ -89,6 +96,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # http://www.refining-linux.org/archives/49/ZSH-Gem-15-Shared-history/
 setopt inc_append_history
 setopt share_history
+setopt HIST_IGNORE_ALL_DUPS
 
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -101,4 +109,3 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 # Load default dotfiles
 source ~/.bash_profile
-
