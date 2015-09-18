@@ -56,6 +56,9 @@ alias addspacer="defaults write com.apple.dock persistent-apps -array-add '{"til
 # Xcode 6
 alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app'
 
+# Xcode 7
+alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
+
 # Alias to open Android debugger for Chrome
 alias android_debug='adb forward tcp:9222 localabstract:chrome_devtools_remote'
 # alias android_restart='adb kill-server'
