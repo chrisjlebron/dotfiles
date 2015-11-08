@@ -100,7 +100,7 @@ setopt inc_append_history
 setopt share_history
 setopt HIST_IGNORE_ALL_DUPS
 
-
+zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 
