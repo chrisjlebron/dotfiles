@@ -5,8 +5,8 @@
 HISTFILE=~/.zsh_history
 SAVEHIST=100000
 
-# vim bindings
-bindkey -v
+# vim bindings (comment out for usage of option+arrows)
+# bindkey -v
 
 
 fpath=( "$HOME/.zfunctions" $fpath )
@@ -81,6 +81,8 @@ antigen apply
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "$terminfo[cuu1]" history-substring-search-up
+bindkey "$terminfo[cud1]" history-substring-search-down
 
 export PURE_GIT_UNTRACKED_DIRTY=0
 
