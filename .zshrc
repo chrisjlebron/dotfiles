@@ -38,6 +38,9 @@ $b extract
 $b brew
 $b brew-cask
 
+# add npm completion
+$b npm
+
 # Tracks your most used directories, based on 'frecency'.
 $b robbyrussell/oh-my-zsh plugins/z
 
