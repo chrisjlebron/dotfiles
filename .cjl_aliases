@@ -74,7 +74,7 @@ alias chromecss='cd ~/Library/Application\ Support/Google/Chrome/Default/User\ S
 alias ohmyzsh='cd ~/.oh-my-zsh'
 
 # Use Homebrew's ctags vs the OSX version
-alias ctags="`brew --prefix`/bin/ctags"
+alias ctags="$(brew --prefix)/bin/ctags"
 
 #
 # Git aliases

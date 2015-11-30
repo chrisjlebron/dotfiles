@@ -110,7 +110,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # uncomment to finish profiling
 # zprof
 
-
+echo "PATH after zshrc: \n${PATH}"
 
 # Load default dotfiles
 source ~/.bash_profile

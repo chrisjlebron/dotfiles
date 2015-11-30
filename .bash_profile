@@ -1,3 +1,5 @@
+# NOTE: PATH settings in .extra
+
 
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
@@ -8,9 +10,9 @@ done
 unset file
 
 # to help sublimelinter etc with finding my PATHS
-case $- in
-   *i*) source ~/.extra
-esac
+# case $- in
+#    *i*) source ~/.extra
+# esac
 
 
 # generic colouriser
@@ -63,6 +65,7 @@ source ~/code/z/z.sh
 ##
 
 if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
+    echo "PATH after bash_profile (in zsh): \n${PATH}"
     return 1 2> /dev/null || exit 1;
 fi;
 
@@ -100,3 +103,5 @@ shopt -s nocaseglob;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
+echo "PATH after bash_profile (in bash): \n${PATH}"
