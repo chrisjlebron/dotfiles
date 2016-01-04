@@ -35,7 +35,7 @@
       "avoid-escape"
     ],
     "no-undef": 2,
-    "no-unused-vars": 2,
+    "no-unused-vars": 1,
     "strict": 0,
     "max-params": 0,
     "max-depth": 0,
@@ -75,7 +75,7 @@
     "no-shadow-restricted-names": 1,
     "no-inner-declarations": 2,
     "no-redeclare": 1,
-    "dot-notation": 2,
+    "dot-notation": 1,
     "eol-last": 1,
     "no-new-func": 0,
     "no-new-wrappers": 0,
