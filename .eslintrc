@@ -1,10 +1,13 @@
 {
   "env": {
     "browser": true,
-    "jquery": true
+    "es6": true
   },
   "globals": {
     "Modernizr": true,
+  },
+  "ecmaFeatures": {
+    "modules": true
   },
   "rules": {
     "no-bitwise": 1,
@@ -62,7 +65,7 @@
     "no-alert": 2,
     "no-trailing-spaces": 2,
     "no-loop-func": 0,
-    "no-multi-space": 2,
+    "no-multi-spaces": 2,
     "no-multi-str": 0,
     "require-yield": 0,
     "valid-typeof": 0,
