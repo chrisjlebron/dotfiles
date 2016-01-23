@@ -87,7 +87,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "$terminfo[cuu1]" history-substring-search-up
 bindkey "$terminfo[cud1]" history-substring-search-down
 
-export PURE_GIT_UNTRACKED_DIRTY=0
+# export PURE_GIT_UNTRACKED_DIRTY=0
 
 # Automatically list directory contents on `cd`.
 auto-ls () {
