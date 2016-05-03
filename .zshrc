@@ -114,3 +114,6 @@ echo "PATH after zshrc: \n${PATH}"
 
 # Load default dotfiles
 source ~/.bash_profile
+
+export NVM_DIR="/Users/chrisjlebron/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
