@@ -15,11 +15,10 @@ brew cask install alfred
 brew cask install spectacle
 brew cask install dropbox
 # brew cask install gyazo
-# brew cask install onepassword
+# brew cask install 1password
 brew cask install rescuetime
 brew cask install flux
 brew cask install spotify
-brew cask install slack
 
 # dev
 brew cask install atom
@@ -43,6 +42,7 @@ brew cask install virtualbox
 brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install firefox
+# brew cask install firefoxnightly
 # brew cask install webkit-nightly
 # brew cask install chromium
 # brew cask install torbrowser
@@ -55,7 +55,7 @@ brew cask install evernote
 brew cask install recordit
 brew cask install skitch
 # brew cask install disk-inventory-x
-# brew cask install screenflow4 # 4 specifically not 5.
+# brew cask install screenflow
 brew cask install vlc
 # brew cask install gpgtools
 # brew cask install licecap
@@ -64,6 +64,5 @@ brew cask install vlc
 
 # Not on cask but I want regardless.
 
-# 3Hub   https://itunes.apple.com/us/app/3hub/id427515976?mt=12
 # File Multi Tool 5
 # Phosphor
