@@ -117,3 +117,18 @@ source ~/.bash_profile
 
 export NVM_DIR="/Users/chrisjlebron/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Use node version specified in .nvmrc (if one exists)
+# **MUST** be after nvm initialization
+# REF: https://github.com/creationix/nvm#zsh
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
