@@ -65,7 +65,8 @@ source ~/code/z/z.sh
 ##
 
 if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
-    echo "PATH after bash_profile (in zsh): \n${PATH}"
+    # For debugging PATH
+    # echo "PATH after bash_profile (in zsh): \n${PATH}"
     return 1 2> /dev/null || exit 1;
 fi;
 
@@ -104,4 +105,5 @@ shopt -s nocaseglob;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-echo "PATH after bash_profile (in bash): \n${PATH}"
+# For debugging PATH
+# echo "PATH after bash_profile (in bash): \n${PATH}"

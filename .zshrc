@@ -106,11 +106,8 @@ setopt HIST_IGNORE_ALL_DUPS
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-
 # uncomment to finish profiling
 # zprof
-
-echo "PATH after zshrc: \n${PATH}"
 
 # Load default dotfiles
 source ~/.bash_profile
@@ -132,3 +129,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# For debugging PATH
+# echo "PATH after zshrc: \n${PATH}"
