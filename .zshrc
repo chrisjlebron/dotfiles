@@ -112,9 +112,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # Load default dotfiles
 source ~/.bash_profile
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Use node version specified in .nvmrc (if one exists)
 # **MUST** be after nvm initialization
 # REF: https://github.com/creationix/nvm#zsh
