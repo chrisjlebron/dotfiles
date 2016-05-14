@@ -58,6 +58,7 @@ brew install python
 # brew install readline
 brew install redis
 # brew install sqlite
+brew install mongodb
 
 
 # mtr - ping & traceroute. best.

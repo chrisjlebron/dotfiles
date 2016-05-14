@@ -7,6 +7,7 @@
 ##############################################################################################################
 ###  backup old machine's key items
 
+# should probably put this in Dropbox or other shared dir...
 mkdir -p ~/migration/home
 cd ~/migration
 
@@ -165,8 +166,10 @@ npm install --global trash-cli
 
 # github.com/rupa/z   - oh how i love you
 git clone https://github.com/rupa/z.git ~/code/z
-# Necessary??? Try first without
-chmod +x ~/code/z/z.sh
+
+# I don't think this is necessary anymore:
+# chmod +x ~/code/z/z.sh
+
 # consider reusing your current .z file if possible. it's painful to rebuild :)
 # z is hooked up in .bash_profile
 
@@ -205,6 +208,21 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 # ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 
+# install most recent version of nvm.
+# @NOTE: check/change version number when setting up new machine
+# REF: https://github.com/creationix/nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+
+# @NOTE: might need to manually create .nvm folder in user root
+mkdir .nvm
+
+# ensure it was installed correctly (should respond with `nvm`):
+command -v nvm
+
+
+# Also, add fonts to Font Book from `Dropbox/Dev/fonts`
+
+
 ###
 ##############################################################################################################
 
@@ -218,6 +236,7 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # prezto and antigen communties also have great stuff
 #   github.com/sorin-ionescu/prezto/blob/master/modules/utility/init.zsh
+git clone https://github.com/zsh-users/antigen.git ~/code/antigen
 
 # set up osx defaults
 #   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
@@ -241,6 +260,19 @@ sh .osx
 ./symlink-setup.sh
 
 # add manual symlink for .ssh/config and probably .config/fish
+
+###
+##############################################################################################################
+
+
+
+
+##############################################################################################################
+### install atom packages from migration directory
+###
+
+# replace x.x with whatever migration version it is (or could just be `/migration/`)
+apm install --packages-file ~/Dropbox/Dev/OSX_Settings/dotfiles/migration-x.x/atom-packages.txt
 
 ###
 ##############################################################################################################
