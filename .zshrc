@@ -22,8 +22,9 @@ source ~/code/antigen/antigen.zsh
 local b="antigen-bundle"
 
 
-# Don't load the oh-my-zsh's library. Takes too long. No need.
-	# antigen use oh-my-zsh
+# oh-my-zsh's library is slow, but needed for spaceship theme.
+# Remove if you switch themes.
+antigen use oh-my-zsh
 
 # Guess what to install when running an unknown command.
 $b command-not-found
@@ -41,11 +42,17 @@ $b brew-cask
 # add npm completion
 $b npm
 
+# npm script completion
+# $b akoenig/npm-run.plugin.zsh
+
 # Tracks your most used directories, based on 'frecency'.
 $b robbyrussell/oh-my-zsh plugins/z
 
 # oh-my-zsh's git plugin, for all them good aliases
 $b robbyrussell/oh-my-zsh plugins/git
+
+# oh-my-zsh's git-flow plugin, for all them good aliases
+$b robbyrussell/oh-my-zsh plugins/git-flow
 
 # Syntax highlighting on the readline
 $b zsh-users/zsh-syntax-highlighting
@@ -59,18 +66,34 @@ $b tarruda/zsh-autosuggestions
 # nicoulaj's moar completion files for zsh
 # $b zsh-users/zsh-completions src
 
-# dont set a theme, because pure does it all
-$b mafredri/zsh-async
-$b sindresorhus/pure
+# dont set a theme, because Pure does it all
+# $b mafredri/zsh-async
+# $b sindresorhus/pure
 
 # history search
 $b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+
+# Theme: spaceship
+# REF: https://github.com/denysdovhan/spaceship-zsh-theme
+antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+
+# Not a bad theme, but i'm more into spaceship at the moment
+# antigen theme https://github.com/davydovanton/excess.zsh-theme excess
 
 # Tell antigen that you're done.
 antigen apply
 
 ###
-#################################################################################################
+################################################################################
+
+
+######################################################################
+### env vars for config for spaceship theme
+
+SPACESHIP_PROMPT_SYMBOL='✧'
+
+###
+################################################################################
 
 
 # Enable autosuggestions automatically.

@@ -76,6 +76,7 @@ brew install the_silver_searcher
 brew install fzf
 
 brew install git
+brew install git-flow
 brew install imagemagick --with-webp
 brew install node # This installs `npm` too using the recommended installation method
 brew install pv
@@ -90,6 +91,9 @@ brew install android-platform-tools
 brew install pidcat   # colored logcat guy
 
 brew install zsh
+
+# Better git diffs in cli (already referenecd in .gitconfig)
+brew install diff-so-fancy
 
 # Remove outdated versions from the cellar
 brew cleanup
