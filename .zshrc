@@ -88,9 +88,10 @@ antigen apply
 
 
 ######################################################################
-### env vars for config for spaceship theme
+### env vars for config (spaceship theme, autosuggest)
 
 SPACESHIP_PROMPT_SYMBOL='✧'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 
 ###
 ################################################################################
