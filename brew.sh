@@ -59,6 +59,8 @@ brew install python
 brew install redis
 # brew install sqlite
 brew install mongodb
+brew install hh # smart history search
+brew install htop # better top
 
 
 # mtr - ping & traceroute. best.
