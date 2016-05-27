@@ -12,6 +12,22 @@ SAVEHIST=100000
 fpath=( "$HOME/.zfunctions" $fpath )
 
 
+######################################################################
+### env vars for config (themes, autosuggest)
+# Defined at the top b/c Pure wasn't handling prompt symbol correctly
+
+# export SPACESHIP_PROMPT_SYMBOL='✧'
+export PURE_PROMPT_SYMBOL='✧'
+export PURE_NVM_SHOW=true
+
+# reduce visibility of autosuggestion
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
+
+###
+################################################################################
+
+
+
 # antigen time!
 source ~/code/antigen/antigen.zsh
 
@@ -24,7 +40,7 @@ local b="antigen-bundle"
 
 # oh-my-zsh's library is slow, but needed for spaceship theme.
 # Remove if you switch themes.
-antigen use oh-my-zsh
+# antigen use oh-my-zsh
 
 # Guess what to install when running an unknown command.
 $b command-not-found
@@ -67,15 +83,22 @@ $b tarruda/zsh-autosuggestions
 # $b zsh-users/zsh-completions src
 
 # dont set a theme, because Pure does it all
-# $b mafredri/zsh-async
+$b mafredri/zsh-async
 # $b sindresorhus/pure
+$b /Users/chrisjlebron/dev/zsh/pure pure.zsh --no-local-clone
 
 # history search
 $b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # Theme: spaceship
 # REF: https://github.com/denysdovhan/spaceship-zsh-theme
-antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+# Have to reference spaceship.zsh and bundle rather than call theme
+# cuz it was renamed from spaceship.zsh-theme
+# OLD:
+# antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+# NEW:
+# $b https://github.com/denysdovhan/spaceship-zsh-theme spaceship.zsh
+# $b /Users/chrisjlebron/dev/zsh/spaceship-zsh-theme spaceship.zsh --no-local-clone
 
 # Not a bad theme, but i'm more into spaceship at the moment
 # antigen theme https://github.com/davydovanton/excess.zsh-theme excess
@@ -87,14 +110,6 @@ antigen apply
 ################################################################################
 
 
-######################################################################
-### env vars for config (spaceship theme, autosuggest)
-
-SPACESHIP_PROMPT_SYMBOL='✧'
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
-
-###
-################################################################################
 
 
 # Enable autosuggestions automatically.

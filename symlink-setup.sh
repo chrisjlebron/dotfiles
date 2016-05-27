@@ -146,6 +146,7 @@ print_success() {
 declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
 # FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim bin .config/fish" # add in vim and the binaries
 FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim" # add in vim, if you're going to use the config as is...
+FILES_TO_SYMLINK="$FILES_TO_SYMLINK .zsh" # add in custom zsh scripts
 
 # @TODO: not yet ready: I want to grab files from the atom dir & symlink them to the user .atom dir
 declare -a ATOM_FILES_TO_SYMLINK=$(find . -name "*" -not -name ".*" -not -name "README.md" | sed -e 's|./||')

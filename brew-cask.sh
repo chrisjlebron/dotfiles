@@ -62,6 +62,10 @@ brew cask install vlc
 # brew cask install utorrent
 
 
+# Remove outdated versions from the cellar
+# @NOTE: comment out if you want to keep older versions
+brew cask cleanup
+
 # Not on cask but I want regardless.
 
 # File Multi Tool 5
