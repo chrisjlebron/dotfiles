@@ -85,7 +85,7 @@ $b tarruda/zsh-autosuggestions
 # dont set a theme, because Pure does it all
 $b mafredri/zsh-async
 # $b sindresorhus/pure
-$b /Users/chrisjlebron/dev/zsh/pure pure.zsh --no-local-clone
+$b $HOME/dev/zsh/pure pure.zsh --no-local-clone
 
 # history search
 $b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
@@ -98,7 +98,7 @@ $b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 # antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 # NEW:
 # $b https://github.com/denysdovhan/spaceship-zsh-theme spaceship.zsh
-# $b /Users/chrisjlebron/dev/zsh/spaceship-zsh-theme spaceship.zsh --no-local-clone
+# $b $HOME/dev/zsh/spaceship-zsh-theme spaceship.zsh --no-local-clone
 
 # Not a bad theme, but i'm more into spaceship at the moment
 # antigen theme https://github.com/davydovanton/excess.zsh-theme excess
