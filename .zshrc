@@ -19,6 +19,7 @@ fpath=( "$HOME/.zfunctions" $fpath )
 # export SPACESHIP_PROMPT_SYMBOL='✧'
 export PURE_PROMPT_SYMBOL='✧'
 export PURE_NVM_SHOW=true
+export USE_PURE_GIT_PROMPT=true
 
 # reduce visibility of autosuggestion
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
@@ -85,6 +86,7 @@ $b tarruda/zsh-autosuggestions
 # dont set a theme, because Pure does it all
 $b mafredri/zsh-async
 # $b sindresorhus/pure
+$b $HOME/dev/zsh/pure git_prompt.zsh --no-local-clone
 $b $HOME/dev/zsh/pure pure.zsh --no-local-clone
 
 # history search
