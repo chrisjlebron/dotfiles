@@ -27,6 +27,7 @@ brew cask install iterm2
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install p4merge
+brew cask install postman
 brew cask install robomongo
 brew cask install rowanj-gitx
 brew cask install sequel-pro
