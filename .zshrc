@@ -24,6 +24,9 @@ export USE_PURE_GIT_PROMPT=true
 # reduce visibility of autosuggestion
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[command]='fg=226,bold'
+
 ###
 ################################################################################
 
