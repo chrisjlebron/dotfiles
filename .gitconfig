@@ -61,6 +61,7 @@
   helper = osxkeychain
 [push]
   default = simple
+  followTags = true
 [rerere]
   enabled = true
 
@@ -100,8 +101,8 @@
 # [push]
 # 	default = current
 
-[init]
-	templatedir = ~/.git_template
+# [init]
+# 	templatedir = ~/.git_template
 
 [filter "lfs"]
 	clean = git-lfs clean %f
