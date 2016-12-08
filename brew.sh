@@ -49,6 +49,9 @@ brew install entr
 # gh was merged with hub...
 brew install hub
 
+# for nice git commands, like standup summaries and smart code review handling
+brew install git-extras
+
 # personal
 brew install ctags
 # brew install gdbm
