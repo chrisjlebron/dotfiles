@@ -6,7 +6,7 @@
   safecrlf = warn
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/vim
 [alias]
   df = diff --color --color-words --abbrev
   hist = "log --pretty=format:\"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]\" --graph --date=short"
