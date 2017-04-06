@@ -99,7 +99,9 @@ brew install pidcat   # colored logcat guy
 brew install zsh
 
 # Better git diffs in cli (already referenecd in .gitconfig)
-#  brew install diff-so-fancy
+brew install diff-so-fancy
+
+# Alternative tool for file diff (not git specific)
 brew install icdiff
 
 # Remove outdated versions from the cellar
