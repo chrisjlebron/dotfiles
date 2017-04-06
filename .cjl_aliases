@@ -98,3 +98,7 @@ alias clean_pyc="find . -name '*.pyc' -print0 | xargs -0 rm -f"
 # Print all colors available in zsh
 # Should probably be in .functions...
 alias printcolors='for code in {000..255}; do print -P -- "$code: %F{$code}Test ( %%F{$code}Test%%f )%f"; done'
+
+# Use Nsolid as the current shell's node env
+alias nsolid-env="source /usr/local/nsolid/nsolid-env"
+# Can also monitor the nsolid consolve via the `nsolid-console` command
