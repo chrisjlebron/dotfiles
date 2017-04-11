@@ -18,6 +18,7 @@
   lookup = "!git log --oneline | grep"
   type = cat-file -t
   dump = cat-file -p
+  deleted = log -1 --stat --
   rd = rm $(git ls-files --deleted)
   assume = update-index --assume-unchanged
   unassume = update-index --no-assume-unchanged
