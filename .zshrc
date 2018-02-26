@@ -60,7 +60,7 @@ $b brew
 $b brew-cask
 
 # add npm completion
-$b npm
+$b lukechilds/zsh-better-npm-completion
 
 # npm script completion
 # $b akoenig/npm-run.plugin.zsh

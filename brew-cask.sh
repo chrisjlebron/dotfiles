@@ -15,15 +15,14 @@ brew cask install alfred
 brew cask install spectacle
 brew cask install dropbox
 # brew cask install gyazo
-# brew cask install 1password
+# brew cask install authy
 brew cask install rescuetime
 brew cask install flux
 brew cask install spotify
 
 # dev
-brew cask install atom
+# brew cask install atom
 brew cask install iterm2
-# brew cask install sublime-text
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install insomnia
@@ -33,8 +32,10 @@ brew cask install postman
 brew cask install robomongo
 brew cask install rowanj-gitx
 brew cask install sequel-pro
+# brew cask install sublime-text
 brew cask install vagrant
 brew cask install virtualbox
+brew cask install visual-studio-code
 
 # fun
 # brew cask install limechat
@@ -69,7 +70,3 @@ brew cask install vlc
 # @NOTE: comment out if you want to keep older versions
 brew cask cleanup
 
-# Not on cask but I want regardless.
-
-# File Multi Tool 5
-# Phosphor

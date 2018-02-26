@@ -43,10 +43,7 @@ brew install homebrew/dupes/screen
 # run this script when this file changes guy.
 brew install entr
 
-# github util. imho better than hub
-# brew install gh
-
-# gh was merged with hub...
+# github util. (gh was merged with hub...)
 brew install hub
 
 # for nice git commands, like standup summaries and smart code review handling
@@ -98,7 +95,7 @@ brew install pidcat   # colored logcat guy
 
 brew install zsh
 
-# Better git diffs in cli (already referenecd in .gitconfig)
+# Better git diffs in cli (already referenced in .gitconfig)
 brew install diff-so-fancy
 
 # Alternative tool for file diff (not git specific)
