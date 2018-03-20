@@ -71,14 +71,14 @@ if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
 fi;
 
 # bash completion.
-if  which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+if  command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
     source "$(brew --prefix)/share/bash-completion/bash_completion";
 elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion;
 fi;
 
 # homebrew completion
-if  which brew > /dev/null; then
+if  command -v brew >/dev/null 2>&1; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 fi;
 
