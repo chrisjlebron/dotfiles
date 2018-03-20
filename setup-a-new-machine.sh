@@ -188,6 +188,7 @@ git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-but
 
 
 # for the c alias (syntax highlighted cat)
+# @TODO: consider downloading with pip instead...
 sudo easy_install Pygments
 
 

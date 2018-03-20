@@ -55,6 +55,7 @@ brew install ctags
 # brew install openssl
 # brew install pkg-config
 brew install python
+brew install pyenv
 # brew install readline
 brew install redis
 # brew install sqlite
