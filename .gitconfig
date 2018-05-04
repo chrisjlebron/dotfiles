@@ -71,8 +71,10 @@
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
 
-[interactive]
-  diffFilter = "diff-so-fancy"
+# commenting out while bug is being addressed
+# https://github.com/so-fancy/diff-so-fancy/issues/35
+# [interactive]
+#   diffFilter = "diff-so-fancy"
 
 # rewrites
 # [url "git@github.com:"]
