@@ -27,6 +27,16 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[command]='fg=226,bold'
 
+
+################################################################################
+### zplug action
+
+# get this party started...
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+
+
 ###
 ################################################################################
 

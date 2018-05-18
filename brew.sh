@@ -94,7 +94,9 @@ brew install terminal-notifier
 brew install android-platform-tools
 brew install pidcat   # colored logcat guy
 
+# zsh / zshell
 brew install zsh
+brew install zplug
 
 # Better git diffs in cli (already referenced in .gitconfig)
 brew install diff-so-fancy
