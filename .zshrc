@@ -44,10 +44,10 @@ source ~/code/antigen/antigen.zsh
 # antigen use oh-my-zsh
 
 # Guess what to install when running an unknown command.
-antigen bundle command-not-found
+# antigen bundle command-not-found
 
 # Helper for extracting different types of archives.
-antigen bundle extract
+# antigen bundle extract
 
 # atom editor (uncomment for shortcuts...)
 # antigen bundle atom
@@ -80,10 +80,10 @@ antigen bundle tarruda/zsh-autosuggestions
 # antigen bundle zsh-users/zsh-completions src
 
 # dont set a theme, because Pure does it all
-antigen bundle mafredri/zsh-async
 # antigen bundle sindresorhus/pure
 
 # use mine, over sindresorhus...
+antigen bundle mafredri/zsh-async
 antigen bundle chrisjlebron/pure git_prompt.zsh
 antigen bundle chrisjlebron/pure pure.zsh
 
