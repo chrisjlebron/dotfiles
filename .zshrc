@@ -11,6 +11,11 @@ SAVEHIST=100000
 
 fpath=( "$HOME/.zfunctions" $fpath )
 
+# for zsh-completions...
+# fpath=(/usr/local/share/zsh-completions $fpath)
+# You may also need to force rebuild `zcompdump`:
+# rm -f ~/.zcompdump; compinit
+
 
 ######################################################################
 ### env vars for config (themes, autosuggest)
@@ -32,6 +37,13 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=226,bold'
 ### zplug action
 
 # get this party started...
+
+# check if zplug is installed
+# if [[ ! -d ~/.zplug ]]; then
+#   git clone https://github.com/zplug/zplug ~/.zplug
+#   source ~/.zplug/init.zsh && zplug update --self
+# fi
+
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
