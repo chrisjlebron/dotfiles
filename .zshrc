@@ -39,63 +39,56 @@ source ~/code/antigen/antigen.zsh
 ######################################################################
 ### install some antigen bundles
 
-local b="antigen-bundle"
-
-
 # oh-my-zsh's library is slow, but needed for spaceship theme.
 # Remove if you switch themes.
 # antigen use oh-my-zsh
 
 # Guess what to install when running an unknown command.
-$b command-not-found
+antigen bundle command-not-found
 
 # Helper for extracting different types of archives.
-$b extract
+antigen bundle extract
 
 # atom editor (uncomment for shortcuts...)
-# $b atom
-
-# homebrew  - autocomplete on `brew install`
-$b brew
-$b brew-cask
+# antigen bundle atom
 
 # add npm completion
-$b lukechilds/zsh-better-npm-completion
+antigen bundle lukechilds/zsh-better-npm-completion
 
 # npm script completion
-# $b akoenig/npm-run.plugin.zsh
+# antigen bundle akoenig/npm-run.plugin.zsh
 
 # Tracks your most used directories, based on 'frecency'.
-$b robbyrussell/oh-my-zsh plugins/z
+antigen bundle robbyrussell/oh-my-zsh plugins/z
 
 # oh-my-zsh's git plugin, for all them good aliases
-$b robbyrussell/oh-my-zsh plugins/git
+antigen bundle robbyrussell/oh-my-zsh plugins/git
 
 # oh-my-zsh's git-flow plugin, for all them good aliases
-$b robbyrussell/oh-my-zsh plugins/git-flow
+antigen bundle robbyrussell/oh-my-zsh plugins/git-flow
 
 # Syntax highlighting on the readline
-$b zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # colors for all files!
-$b trapd00r/zsh-syntax-highlighting-filetypes
+antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 
 # suggestion as you type
-$b tarruda/zsh-autosuggestions
+antigen bundle tarruda/zsh-autosuggestions
 
 # nicoulaj's moar completion files for zsh
-# $b zsh-users/zsh-completions src
+# antigen bundle zsh-users/zsh-completions src
 
 # dont set a theme, because Pure does it all
-$b mafredri/zsh-async
-# $b sindresorhus/pure
+antigen bundle mafredri/zsh-async
+# antigen bundle sindresorhus/pure
 
 # use mine, over sindresorhus...
-$b chrisjlebron/pure git_prompt.zsh
-$b chrisjlebron/pure pure.zsh
+antigen bundle chrisjlebron/pure git_prompt.zsh
+antigen bundle chrisjlebron/pure pure.zsh
 
 # history search
-$b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # Theme: spaceship
 # REF: https://github.com/denysdovhan/spaceship-zsh-theme
@@ -104,7 +97,7 @@ $b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 # OLD:
 # antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 # NEW:
-# $b https://github.com/denysdovhan/spaceship-zsh-theme spaceship.zsh
+# antigen bundle https://github.com/denysdovhan/spaceship-zsh-theme spaceship.zsh
 
 # Not a bad theme, but i'm more into spaceship at the moment
 # antigen theme https://github.com/davydovanton/excess.zsh-theme excess
