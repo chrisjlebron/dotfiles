@@ -81,8 +81,19 @@ zplug "chrisjlebron/pure", use:"{git_prompt.zsh,pure.zsh}"
 zplug "zsh-users/zsh-history-substring-search", defer:3
 # antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
+# Install plugins if there are plugins that have not been installed
+# Snippet from https://github.com/zplug/zplug README
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
 # lezzoo this!
-zplug load --verbose
+# use "verbose" (among other commands) to debug
+# zplug load --verbose
+zplug load
 
 ###
 ################################################################################
