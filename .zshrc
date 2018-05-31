@@ -63,10 +63,11 @@ zplug "plugins/git", from:oh-my-zsh
 # zplug "plugins/git-flow", from:oh-my-zsh
 
 # Syntax highlighting on the readline
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zdharma/fast-syntax-highlighting", defer:2
 
-# colors for all files!
-zplug "trapd00r/zsh-syntax-highlighting-filetypes", defer:3
+# Interactive fuzzy history search
+zplug "zdharma/history-search-multi-word"
+
 
 # suggestion as you type
 zplug "tarruda/zsh-autosuggestions"
