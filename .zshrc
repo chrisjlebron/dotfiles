@@ -38,14 +38,17 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=226,bold'
 
 # get this party started...
 
-# check if zplug is installed
-# if [[ ! -d ~/.zplug ]]; then
-#   git clone https://github.com/zplug/zplug ~/.zplug
-#   source ~/.zplug/init.zsh && zplug update --self
-# fi
-
 export ZPLUG_HOME=/usr/local/opt/zplug
+
+# check if zplug is installed; if not, install it
+if [[ ! -d $ZPLUG_HOME ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+fi
+
 source $ZPLUG_HOME/init.zsh
+
+# Use zplug to manage zplug (just run `zplug update` as with other packages)
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 # add npm completion
 zplug "lukechilds/zsh-better-npm-completion", defer:2
