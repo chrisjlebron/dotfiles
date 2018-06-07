@@ -68,10 +68,14 @@ antigen bundle robbyrussell/oh-my-zsh plugins/git
 antigen bundle robbyrussell/oh-my-zsh plugins/git-flow
 
 # Syntax highlighting on the readline
-antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zdharma/fast-syntax-highlighting
+
+# Interactive fuzzy history search
+antigen bundle zdharma/history-search-multi-word
 
 # colors for all files!
-antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
+# antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 
 # suggestion as you type
 antigen bundle tarruda/zsh-autosuggestions
