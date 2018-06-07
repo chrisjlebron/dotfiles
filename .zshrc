@@ -9,7 +9,7 @@ SAVEHIST=100000
 # bindkey -v
 
 
-fpath=( "$HOME/.zfunctions" $fpath )
+# fpath=( "$HOME/.zfunctions" $fpath )
 
 # for zsh-completions...
 # fpath=(/usr/local/share/zsh-completions $fpath)
