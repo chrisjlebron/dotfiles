@@ -19,6 +19,7 @@ brew cask install dropbox
 brew cask install rescuetime
 brew cask install flux
 brew cask install spotify
+brew cask install google-backup-and-sync
 
 # dev
 # brew cask install atom
