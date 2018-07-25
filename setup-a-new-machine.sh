@@ -161,8 +161,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # Type `git open` to open the GitHub page or website for a repository.
 npm install -g git-open
 # trash as the safe `rm` alternative
-npm install --global trash-cli
-
+npm install -g trash-cli
+# better Node debugging
+npm install -g ndb
 
 # github.com/rupa/z   - oh how i love you
 git clone https://github.com/rupa/z.git ~/code/z
