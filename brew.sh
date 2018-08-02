@@ -62,6 +62,7 @@ brew install redis
 brew install mongodb
 brew install hh # smart history search
 brew install htop # better top
+brew install thefuck # awesome typo / command correction
 
 
 # mtr - ping & traceroute. best.
