@@ -105,5 +105,17 @@ shopt -s nocaseglob;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
+
+##
+## Condé Nast env vars
+##
+for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "COPILOT_INSTALL_DIRECTORY"; do
+    if [[ ! -v $CNEV ]]; then
+        echo "$CNEV is unset. It should be set in local \"~/.extra\" file";
+    fi;
+done
+unset CNEV
+
+
 # For debugging PATH
 # echo "PATH after bash_profile (in bash): \n${PATH}"
