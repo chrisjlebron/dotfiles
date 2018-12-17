@@ -102,3 +102,6 @@ alias printcolors='for code in {000..255}; do print -P -- "$code: %F{$code}Test 
 # Use Nsolid as the current shell's node env
 alias nsolid-env="source /usr/local/nsolid/nsolid-env"
 # Can also monitor the nsolid consolve via the `nsolid-console` command
+
+# Brew / Pyenv compatibility
+alias brew='echo "Using aliased brew... See dotfiles." && env PATH=${PATH//$(pyenv root)\/shims:/} brew'
