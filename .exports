@@ -22,3 +22,4 @@ eval "$(pyenv init -)"
 
 # Awesome typo/command correction
 eval "$(thefuck --alias jk)"
+

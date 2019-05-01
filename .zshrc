@@ -238,3 +238,8 @@ load-nvmrc
 
 # For debugging PATH
 # echo "PATH after zshrc: \n${PATH}"
+
+autoload -U +X bashcompinit && bashcompinit
+
+# autocompletion for vault
+complete -o nospace -C /usr/local/bin/vault vault
