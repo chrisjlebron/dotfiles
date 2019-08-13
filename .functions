@@ -141,3 +141,11 @@ webmify(){
 shellswitch () {
 	chsh -s $(brew --prefix)/bin/$1
 }
+
+unalias gbda
+gbda () {
+	echo "pruning..."
+	git remote prune origin
+	echo "deleting orphaned local branches..."
+	git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+}
