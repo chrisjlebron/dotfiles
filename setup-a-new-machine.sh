@@ -121,7 +121,7 @@ fi
 # REF: http://blog.rongarret.info/2015/08/psa-beware-of-sudo-on-os-x.html?m=1
 
 # Add to /etc/sudoers (or run `sudo visudo` to open file)
-Defaults tty_tickets
+# Defaults tty_tickets
 
 ###
 ##############################################################################################################
@@ -155,15 +155,17 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
-# bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
-
+# curl -sS https://raw.githubusercontent.com/jamiew/git-friendly/master/install.sh | bash
 
 # Type `git open` to open the GitHub page or website for a repository.
 npm install -g git-open
 # trash as the safe `rm` alternative
 npm install -g trash-cli
 # better Node debugging
-npm install -g ndb
+# npm install -g ndb
+
+# for trying out npm modules locally in a REPL
+npm install -g trymodule
 
 # github.com/rupa/z   - oh how i love you
 git clone https://github.com/rupa/z.git ~/code/z
@@ -174,12 +176,6 @@ git clone https://github.com/rupa/z.git ~/code/z
 # consider reusing your current .z file if possible. it's painful to rebuild :)
 # z is hooked up in .bash_profile
 
-
-# github.com/thebitguru/play-button-itunes-patch
-# disable itunes opening on media keys
-git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-button-itunes-patch
-
-
 # my magic photobooth symlink -> dropbox. I love it.
 # 	 + first move Photo Booth folder out of Pictures
 # 	 + then start Photo Booth. It'll ask where to put the library.
@@ -189,13 +185,14 @@ git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-but
 
 
 # for the c alias (syntax highlighted cat)
-# @TODO: consider downloading with pip instead...
-sudo easy_install Pygments
+# @TODO: download with pip instead for each pyenv version you download
+# sudo easy_install Pygments
 
 
 # change to bash 4 (installed by homebrew)
 BASHPATH=$(brew --prefix)/bin/bash
 #sudo echo $BASHPATH >> /etc/shells
+# to add homebrew's bash to the accepted list
 sudo bash -c 'echo $(brew --prefix)/bin/bash >> /etc/shells'
 chsh -s $BASHPATH # will set for current user only.
 echo $BASH_VERSION # should be 4.x not the old 3.2.X
@@ -212,15 +209,19 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # install most recent version of nvm.
 # @NOTE: check/change version number when setting up new machine
-# REF: https://github.com/creationix/nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+# REF: https://github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
 
 # @NOTE: might need to manually create .nvm folder in user root
-mkdir .nvm
+# mkdir .nvm
 
 # ensure it was installed correctly (should respond with `nvm`):
 command -v nvm
 
+# set default to system node (should be done AFTER brew node has been installed, so it updates with brew)
+# this allows the auto-switcher script to switch back to most up to date version on cd
+nvm alias default system
 
 # Also, add fonts to Font Book from `Dropbox/Dev/fonts`
 
@@ -238,7 +239,7 @@ command -v nvm
 
 # prezto and antigen communties also have great stuff
 #   github.com/sorin-ionescu/prezto/blob/master/modules/utility/init.zsh
-git clone https://github.com/zsh-users/antigen.git ~/code/antigen
+# git clone https://github.com/zsh-users/antigen.git ~/code/antigen
 
 # set up osx defaults
 #   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
@@ -274,7 +275,7 @@ sh .osx
 ###
 
 # replace x.x with whatever migration version it is (or could just be `/migration/`)
-apm install --packages-file ~/Dropbox/Dev/OSX_Settings/dotfiles/migration-x.x/atom-packages.txt
+# apm install --packages-file ~/Dropbox/Dev/OSX_Settings/dotfiles/migration-x.x/atom-packages.txt
 
 ###
 ##############################################################################################################
