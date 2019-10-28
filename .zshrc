@@ -243,3 +243,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 # autocompletion for vault
 complete -o nospace -C /usr/local/bin/vault vault
+
+# autocompletion for aws
+complete -C "$HOME/.pyenv/shims/aws_completer" aws

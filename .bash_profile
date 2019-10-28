@@ -94,6 +94,8 @@ fi;
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
 
+# bash-only aws completion
+complete -C "$HOME/.pyenv/shims/aws_completer" aws
 
 ##
 ## better `cd`'ing
