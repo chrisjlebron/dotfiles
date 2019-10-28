@@ -76,6 +76,10 @@ alias trimcopy="tr -d '\n' | pbcopy"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
+# point to brew version of vim
+alias vi=/usr/local/bin/vim
+alias vim=/usr/local/bin/vim
+
 # Shortcuts
 alias g="git"
 alias v="vim"

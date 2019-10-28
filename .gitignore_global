@@ -44,6 +44,14 @@ Thumbs.db
 .vim/swaps/*
 .vim/undo
 
+# pyenv #
+#########
+.python-version
+
+# nvm #
+#######
+.nvmrc
+
 # git credential file #
 #######################
 .gitconfig.local
