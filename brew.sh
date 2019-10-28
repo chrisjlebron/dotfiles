@@ -16,28 +16,30 @@ brew install moreutils
 # GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew install findutils
 # GNU `sed`, overwriting the built-in `sed`
-brew install gnu-sed --default-names
+# brew install gnu-sed --default-names
 
 
 # Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
-brew tap homebrew/versions
-brew install bash-completion2
+# brew tap homebrew/versions
+# brew install bash-completion2
+brew install bash-completion
 
-brew install homebrew/completions/brew-cask-completion
+brew install brew-cask-completion
 
 # generic colouriser  http://kassiopeia.juls.savba.sk/~garabik/software/grc/
 brew install grc
 
 # Install wget with IRI support
-brew install wget --with-iri
+brew install wget
 
 # Install more recent versions of some OS X tools
-brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
+brew install vim
+brew install nano
+brew install grep
+brew install openssh
+brew install screen
 
 
 # run this script when this file changes guy.
@@ -47,15 +49,15 @@ brew install entr
 brew install hub
 
 # for nice git commands, like standup summaries and smart code review handling
-brew install git-extras
+# brew install git-extras
 
 # personal
-brew install ctags
+# brew install ctags
 # brew install gdbm
-# brew install openssl
+brew install openssl # may be necessary; see https://github.com/Blizzard/node-rdkafka/blob/f964298ea7b60ba28ff9212fb3788bb622f14432/README.md#mac-os-high-sierra--mojave
 # brew install pkg-config
-brew install python
-brew install pyenv
+# brew install python
+# brew install pyenv
 # brew install readline
 brew install redis
 # brew install sqlite
@@ -63,7 +65,8 @@ brew install mongodb
 brew install hh # smart history search
 brew install htop # better top
 brew install thefuck # awesome typo / command correction
-
+brew install exiftool
+brew install jq # Lightweight and flexible command-line JSON processor
 
 # mtr - ping & traceroute. best.
 brew install mtr
@@ -75,24 +78,23 @@ brew install mtr
 
 
 # Install other useful binaries
-brew install ack
+# brew install ack
 brew install the_silver_searcher
 brew install fzf
 
 brew install git
-brew install git-flow
-brew install imagemagick --with-webp
+# brew install git-flow
+brew install imagemagick
 brew install node # This installs `npm` too using the recommended installation method
-brew install pv
-brew install rename
+# brew install pv
+# brew install rename
 brew install tree
 brew install zopfli
-brew install ffmpeg --with-libvpx
+brew install ffmpeg
 brew install mitmproxy # alternative to Charles Proxy
 
 brew install terminal-notifier
 
-brew install android-platform-tools
 brew install pidcat   # colored logcat guy
 
 # zsh / zshell
@@ -104,6 +106,8 @@ brew install diff-so-fancy
 
 # Alternative tool for file diff (not git specific)
 brew install icdiff
+
+brew install ncdu # find where your diskspace went
 
 # Remove outdated versions from the cellar
 brew cleanup
