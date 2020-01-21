@@ -1,0 +1,3 @@
+" other defaults and plugins loaded automatically via ./plugin
+
+set number relativenumber
