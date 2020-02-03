@@ -268,6 +268,22 @@ sh .osx
 ##############################################################################################################
 
 
+##############################################################################################################
+### Base python packages
+###
+
+# Must be performed after symlinks and reloading shell window
+# (because .exports will install pyenv)
+
+# Should be installed for each version of python installed
+# e.g.
+pyenv shell 2.7.16; \
+pip install pipenv pylint ipython ipdb; \
+pyenv shell 3.7.2; \
+pip install pipenv pylint ipython ipdb
+
+###
+##############################################################################################################
 
 
 ##############################################################################################################
