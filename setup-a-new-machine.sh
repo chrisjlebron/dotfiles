@@ -287,6 +287,17 @@ pip install pipenv pylint ipython ipdb
 
 
 ##############################################################################################################
+### synced settings
+###
+
+Alfred and iTerm both have their settings/prefs linked in "Dropbox", specifically in
+~/Google\ Drive/Dropbox/Dev/OSX_Settings
+
+###
+##############################################################################################################
+
+
+##############################################################################################################
 ### install atom packages from migration directory
 ###
 
