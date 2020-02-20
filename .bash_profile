@@ -59,16 +59,30 @@ export NVM_DIR="$HOME/.nvm"
 source ~/code/z/z.sh
 
 
+##
+## Condé Nast env vars
+##
+# for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "COPILOT_INSTALL_DIRECTORY" "JAVA_HOME"; do
+for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "JAVA_HOME"; do
+    if [[ ! -v $CNEV ]]; then
+        echo "$CNEV is unset. It should be set in local \"~/.extra\" file";
+    fi;
+done
+unset CNEV
 
 ##
-## Completion…
+## Early exit for zsh
 ##
-
 if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
     # For debugging PATH
     # echo "PATH after bash_profile (in zsh): \n${PATH}"
     return 1 2> /dev/null || exit 1;
 fi;
+
+
+##
+## Completion…
+##
 
 # bash completion.
 if  command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
@@ -106,17 +120,6 @@ shopt -s nocaseglob;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
-
-##
-## Condé Nast env vars
-##
-for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "COPILOT_INSTALL_DIRECTORY"; do
-    if [[ ! -v $CNEV ]]; then
-        echo "$CNEV is unset. It should be set in local \"~/.extra\" file";
-    fi;
-done
-unset CNEV
 
 
 # For debugging PATH
