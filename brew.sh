@@ -61,7 +61,8 @@ brew install openssl # may be necessary; see https://github.com/Blizzard/node-rd
 # brew install readline
 brew install redis
 # brew install sqlite
-brew install mongodb
+brew tap mongodb/brew
+brew install mongodb-community
 brew install hh # smart history search
 brew install htop # better top
 brew install thefuck # awesome typo / command correction
