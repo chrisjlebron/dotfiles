@@ -68,6 +68,11 @@ brew install thefuck # awesome typo / command correction
 brew install exiftool
 brew install jq # Lightweight and flexible command-line JSON processor
 
+# Java environment management
+# This just manages env vars and version selection;
+# if you wish to run multiple Java versions, you can download via OpenJDK
+brew install jenv
+
 # mtr - ping & traceroute. best.
 brew install mtr
 

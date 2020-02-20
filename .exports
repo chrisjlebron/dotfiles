@@ -29,3 +29,15 @@ eval "$(pyenv init -)"
 # Awesome typo/command correction
 eval "$(thefuck --alias jk)"
 
+
+# JAVA_HOME set in ~/.extra
+#
+# Either via jenv:
+## export PATH="$HOME/.jenv/bin:$PATH"
+## eval "$(jenv init -)"
+#
+# OORRR...
+#
+# you can find your JAVA_HOME in the settings:
+# java -XshowSettings:properties -version
+# --> the path will be in java.home
