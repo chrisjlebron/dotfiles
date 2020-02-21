@@ -80,6 +80,8 @@ zplug "mafredri/zsh-async"
 
 # Pure theme; use mine, over sindresorhus...
 zplug "chrisjlebron/pure", use:"{git_prompt.zsh,pure.zsh}"
+# # for developing locally... (will need to `zplug update` after merging)
+# zplug "~/dev/pure", from:local, use:"{git_prompt.zsh,pure.zsh}"
 
 # # history search
 zplug "zsh-users/zsh-history-substring-search", defer:3
