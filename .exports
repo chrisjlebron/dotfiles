@@ -13,8 +13,8 @@ export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
 
 # for node-rdkafka (re-evaluate in the future...)
 # REF: https://github.com/Blizzard/node-rdkafka#mac-os-high-sierra--mojave
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-export LDFLAGS=-L/usr/local/opt/openssl/lib
+#export CPPFLAGS=-I/usr/local/opt/openssl/include
+#export LDFLAGS=-L/usr/local/opt/openssl/lib
 
 # here's LS_COLORS
 # github.com/trapd00r/LS_COLORS
