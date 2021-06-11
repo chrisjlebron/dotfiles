@@ -1,0 +1,11 @@
+check first whether these are available in cask
+
+1Password
+Amphetamine (app store)
+Authy
+Proxyman
+Pritunl???
+Snap Camera
+Steam
+Todoist
+Nosqlclient

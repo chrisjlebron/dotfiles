@@ -13,7 +13,7 @@ cd ~/migration
 
 # what is worth reinstalling?
 brew leaves      		> brew-list.txt    # all top-level brew installs
-brew cask list 			> cask-list.txt
+brew list --cask    > cask-list.txt
 npm list -g --depth=0 	> npm-g-list.txt
 gem list > gem-list.txt
 
@@ -162,7 +162,10 @@ npm install -g git-open
 # trash as the safe `rm` alternative
 npm install -g trash-cli
 # better Node debugging
-# npm install -g ndb
+npm install -g ndb
+# monorepo management
+npm install -g lerna
+
 
 # for trying out npm modules locally in a REPL
 npm install -g trymodule

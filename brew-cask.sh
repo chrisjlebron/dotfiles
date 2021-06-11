@@ -19,69 +19,72 @@ fi
 # brew tap caskroom/versions
 
 # daily
-# brew cask install alfred
-brew cask install spectacle
-# brew cask install dropbox
-brew cask install gyazo
-# brew cask install authy
-brew cask install rescuetime
-# brew cask install flux
-brew cask install spotify
-brew cask install google-backup-and-sync
-brew cask install google-drive-file-stream # for organizational drive syncing, i.e. Conde
+# brew install --cask alfred
+brew install --cask spectacle
+# brew install --cask dropbox
+brew install --cask gyazo
+# brew install --cask authy
+brew install --cask rescuetime
+# brew install --cask flux
+brew install --cask spotify
+brew install --cask google-backup-and-sync
+brew install --cask google-drive-file-stream # for organizational drive syncing, i.e. Conde
+# brew install --cask zoomus
+
 
 # dev
-# brew cask install atom
-brew cask install iterm2
-brew cask install imagealpha
-brew cask install imageoptim
-# brew cask install insomnia
-brew cask install ngrok
-brew cask install p4v
-brew cask install postman
-brew cask install nosqlclient
-brew cask install rowanj-gitx
-brew cask install sequel-pro
-# brew cask install sublime-text
-# brew cask install vagrant
-# brew cask install virtualbox
-brew cask install visual-studio-code
-brew cask install docker
+# brew install --cask atom
+brew install --cask iterm2
+brew install --cask imagealpha
+brew install --cask imageoptim
+# brew install --cask insomnia
+brew install --cask ngrok
+brew install --cask p4v
+brew install --cask postman
+brew install --cask nosqlclient
+brew install --cask rowanj-gitx
+brew install --cask sequel-pro
+# brew install --cask sublime-text
+# brew install --cask vagrant
+# brew install --cask virtualbox
+brew install --cask visual-studio-code
+brew install --cask docker
+brew install --cask pgadmin4
 
 # fun
-# brew cask install limechat
-# brew cask install miro-video-converter
-# brew cask install horndis               # usb tethering
+# brew install --cask limechat
+# brew install --cask miro-video-converter
+# brew install --cask horndis               # usb tethering
 
 # browsers
-# brew cask install google-chrome
-# brew cask install google-chrome-canary
-# brew cask install firefox
-# brew cask install firefoxnightly
-# brew cask install webkit-nightly
-# brew cask install chromium
-# brew cask install torbrowser
+# brew install --cask google-chrome
+# brew install --cask google-chrome-canary
+# brew install --cask firefox
+# brew install --cask firefoxnightly
+# brew install --cask webkit-nightly
+# brew install --cask chromium
+# brew install --cask torbrowser
 
 # less often
-# brew cask install android-file-transfer
-brew cask install appcleaner
-brew cask install beardedspice
-brew cask install evernote
-brew cask install recordit
-# brew cask install skitch
-# brew cask install disk-inventory-x
-# brew cask install screenflow
-brew cask install vlc
-# brew cask install gpgtools
-# brew cask install licecap
-# brew cask install utorrent
+# brew install --cask android-file-transfer
+brew install --cask appcleaner
+brew install --cask beardedspice
+brew install --cask evernote
+brew install --cask recordit
+# brew install --cask skitch
+# brew install --cask disk-inventory-x
+# brew install --cask screenflow
+brew install --cask vlc
+# brew install --cask gpgtools
+# brew install --cask licecap
+# brew install --cask utorrent
 
 # fonts!
 brew tap homebrew/cask-fonts
-brew cask install font-fira-code
-brew cask install font-ibm-plex
-brew cask install font-inconsolata
-brew cask install font-source-code-pro
+brew install --cask font-fira-code
+brew install --cask font-ibm-plex
+brew install --cask font-inconsolata
+brew install --cask font-source-code-pro
 
 # Remove outdated versions from the cellar
 # @NOTE: comment out if you want to keep older versions

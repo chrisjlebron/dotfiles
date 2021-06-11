@@ -41,3 +41,15 @@ eval "$(thefuck --alias jk)"
 # you can find your JAVA_HOME in the settings:
 # java -XshowSettings:properties -version
 # --> the path will be in java.home
+
+# from .extra... Necessary??
+# # Add /usr/local/sbin for certain homebrew formulae
+# PATH="/usr/local/sbin:$PATH"
+#
+# export PATH="/usr/local/bin:$PATH"
+#
+# # For haskell toolchain (where stack installs packages)
+# export PATH="$PATH:/Users/clebron/.local/bin"
+#
+# # For Go
+# export PATH="$PATH:/usr/local/go/bin"

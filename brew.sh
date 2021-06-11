@@ -45,8 +45,8 @@ brew install screen
 # run this script when this file changes guy.
 brew install entr
 
-# github util. (gh was merged with hub...)
-brew install hub
+# github util
+brew install gh
 
 # for nice git commands, like standup summaries and smart code review handling
 # brew install git-extras
