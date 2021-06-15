@@ -1,6 +1,5 @@
 # NOTE: PATH settings in .extra
 
-
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
@@ -60,15 +59,26 @@ source ~/code/z/z.sh
 
 
 ##
-## Condé Nast env vars
+## Env vars
 ##
-# for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "COPILOT_INSTALL_DIRECTORY" "JAVA_HOME"; do
-for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "JAVA_HOME"; do
-    if [[ ! -v $CNEV ]]; then
-        echo "$CNEV is unset. It should be set in local \"~/.extra\" file";
-    fi;
-done
-unset CNEV
+if [ $USER != "chrisjlebron" ]; then
+
+    #
+    # check Condé Nast env vars
+    #
+
+    # for CNEV in "JENKINS_USER" "JENKINS_TOKEN" "COPILOT_INSTALL_DIRECTORY"; do
+    for CNEV in "JENKINS_USER" "JENKINS_TOKEN"; do
+        if [[ ! -v $CNEV ]]; then
+            echo "$CNEV is unset. It should be set in local \"~/.extra\" file";
+        fi;
+    done
+    unset CNEV
+fi
+
+if [[ ! -v $JAVA_HOME ]]; then
+    echo "JAVA_HOME is unset. If developing in Java this should be set in local \"~/.extra\" file";
+fi
 
 ##
 ## Early exit for zsh

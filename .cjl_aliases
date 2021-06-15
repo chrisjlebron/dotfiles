@@ -104,4 +104,4 @@ alias nsolid-env="source /usr/local/nsolid/nsolid-env"
 # Can also monitor the nsolid consolve via the `nsolid-console` command
 
 # Brew / Pyenv compatibility
-alias brew='echo "Using aliased brew... See dotfiles." && env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+#alias brew='if command -v pyenv; then echo "Using aliased brew... See dotfiles." && env PATH=${PATH//$(pyenv root)\/shims:/} brew; else echo "pyenv not found. Using local brew... See dotfiles." && /usr/local/bin/brew; fi'
