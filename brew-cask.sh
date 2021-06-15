@@ -29,7 +29,7 @@ brew install --cask rescuetime
 brew install --cask spotify
 brew install --cask google-backup-and-sync
 brew install --cask google-drive-file-stream # for organizational drive syncing, i.e. Conde
-# brew install --cask zoomus
+brew install --cask zoom
 
 
 # dev
