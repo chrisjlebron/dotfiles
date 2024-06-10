@@ -1,0 +1,2 @@
+export PATH=$PATH:~/.local/bin
+alias cm=chezmoi
