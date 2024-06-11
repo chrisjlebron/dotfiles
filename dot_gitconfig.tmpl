@@ -1,0 +1,108 @@
+[user]
+  name = Christopher J. Lebron
+  email = chris.j.lebron@gmail.com
+  username = chrisjlebron
+  token = {{ .gh_token }}
+[core]
+  autocrlf = input
+  safecrlf = warn
+  excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
+  # editor = $(brew --prefix)/bin/vim
+[alias]
+  df = diff --color --color-words --abbrev
+  hist = "log --pretty=format:\"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]\" --graph --date=short"
+  hs = log --oneline --decorate --graph --relative-date
+  # lg = log --pretty=oneline --abbrev-commit --graph --decorate --date=relative
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  find = "!git log --oneline | grep"
+  search = "!git log --oneline | grep"
+  lookup = "!git log --oneline | grep"
+  type = cat-file -t
+  dump = cat-file -p
+  deleted = log -1 --stat --
+  rd = rm $(git ls-files --deleted)
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  undo-hard = reset --hard HEAD~1
+  undo-soft = reset --soft HEAD~1
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+[color "status"]
+  added = green
+  changed = red
+  untracked = yellow reverse
+[credential]
+  helper = osxkeychain
+[push]
+  autoSetupRemote = true
+  default = simple
+  followTags = true
+[rerere]
+  enabled = true
+
+######
+# delta config
+[core]
+  pager = delta
+[delta]
+  # see `delta help` for more options
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  line-numbers = true
+[interactive]
+  diffFilter = delta --color-only
+[diff]
+  colorMoved = default
+[merge]
+  conflictstyle = diff3
+# END delta config
+######
+
+
+# rewrites
+# [url "git@github.com:"]
+# 	insteadOf = "gh:"
+# 	insteadOf = "git://github.com"
+# 	pushInsteadOf = "github:"
+# 	pushInsteadOf = "git://github.com/"
+#     pushInsteadOf = "https://github.com/"
+# [url "git@gist.github.com:"]
+# 	insteadOf = "gst:"
+# 	pushInsteadOf = "gist:"
+# 	pushInsteadOf = "git://gist.github.com/"
+# 	pushInsteadOf = "https://gist.github.com/"
+
+# correct typos
+[help]
+  autocorrect = 1
+
+# push easily. http://stackoverflow.com/a/23918418/89484
+# [push]
+# 	default = current
+
+[init]
+  defaultBranch = main
+#  templatedir = ~/.git_template
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
