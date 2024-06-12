@@ -1,0 +1,221 @@
+###############################################################################
+### navigation
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+### end navigation
+###############################################################################
+
+
+###############################################################################
+### ls related
+
+# use coreutils `ls` if possible…
+hash gls >/dev/null 2>&1 || alias gls="ls"
+
+# Detect which `ls` flavor is in use
+if gls --color > /dev/null 2>&1; then # GNU `ls`
+  colorflag="--color"
+else # OS X `ls`
+  colorflag="-G"
+fi
+
+# use gnu ls config as system ls
+# ls options: F = put `/` after folders, h = byte unit suffixes, color! (even with piping to awk)
+alias sls='CLICOLOR_FORCE=1 gls -aFh ${colorflag} --group-directories-first'
+
+# alias ls to eza default
+alias ls='eza -aF --sort=type'
+alias la="eza -F -la --sort=type --time-style=long-iso --no-user --octal-permissions --git"
+
+# List only directories
+alias lsd='eza -lDa'
+
+### end ls related
+###############################################################################
+
+
+###############################################################################
+### git
+
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+
+# git root
+alias groot='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+# See oh-my-zsh git plugin for other aliases:
+# https://github.com/ohmyzsh/ohmyzsh/blob/9b91e8256011240cbf65ba65fbe55c5fd9dbae07/plugins/git/git.plugin.zsh#L56-L59
+alias gcop='git commit -p'
+alias gap='git add -p' # may conflict with omz: alias gap='git apply'
+alias gmff='git merge --ff-only'
+alias gmno='git merge --no-ff'
+alias greh='git reset --hard'
+alias gdt='git difftool' # may conflict with omz: alias gdt='git diff-tree --no-commit-id --name-only -r'
+alias grp='git remote prune'
+alias ghist='git log --pretty=format:"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]" --graph --date=short'
+alias gcpn='git cherry-pick -n' # cherry-pick without committing (no-commit)
+
+### end git
+###############################################################################
+
+
+###############################################################################
+### network
+
+# edit hostsfile
+alias hosts='sudo $EDITOR /etc/hosts'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+# All the dig info
+alias dig="dig +nocmd any +multiline +noall +answer"
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
+
+### end network
+###############################################################################
+
+
+###############################################################################
+### shortcuts
+
+alias g="git"
+# point to brew version of vim
+alias vi=$(brew --prefix)/bin/vim
+alias vim=$(brew --prefix)/bin/vim
+alias v="vim"
+alias cl='clear'
+# full-featured, colorized `cat`
+# https://github.com/sharkdp/bat
+alias c='bat'
+
+# Alias for "clear"
+alias cl='clear'
+alias rm="rm -i" # ask first (@TODO: switch to use trash-cli??)
+alias where=which
+
+# File size
+alias fs="stat -f \"%z bytes\""
+
+### end shortcuts
+###############################################################################
+
+
+###############################################################################
+### macOS
+
+# lock laptop
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Copy current working directory path to clipboard
+alias cppwd="pwd | tr -d '\n\' | pbcopy"
+
+# Trim new lines and copy to clipboard
+alias trimcopy="tr -d '\n' | pbcopy"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Empty the Trash on all mounted volumes and the main HDD
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Enable/disable text selection in Quick Look
+alias yayquicklook="defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder"
+alias booquicklook="defaults write com.apple.finder QLEnableTextSelection -bool false && killall Finder"
+
+# fix weird AppleTV audio bug
+alias fuckapple="sudo pkill coreaudiod"
+
+# fix broken camera (web cam)
+alias fixcamera="sudo killall VDCAssistant"
+
+# Kill and restart Finder
+alias killfinder="killall Finder"
+
+# Kill and restart Dock
+alias killdock="killall Dock"
+
+# Kill and restart menubar
+alias killmenu="killall SystemUIServer"
+
+# Disable the all too sensitive backswipe
+alias killbackswipe="defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false"
+alias revivebackswipe="defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool true"
+
+# Add a spacer to the dock
+alias addspacer="defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' && killall Dock"
+
+### end macOS
+###############################################################################
+
+
+###############################################################################
+### random (@TODO: reconsider)
+
+# Alias to begin web server from any directory
+# Navigate to localhost:8000 to view directory as server
+alias serve='python -m SimpleHTTPServer 8000'
+
+# Alias to open iOS Simulator (requires Xcode, or at least install of simulator)
+# Xcode 7
+alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
+
+# Alias to open Android debugger for Chrome
+alias android_debug='adb forward tcp:9222 localabstract:chrome_devtools_remote'
+# alias android_restart='adb kill-server'
+
+# Navigate to Chrome dev tools CSS
+alias chromecss='cd ~/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets'
+
+# Use Homebrew's ctags vs the OSX version
+alias ctags="$(brew --prefix)/bin/ctags"
+
+# Clean out .pyc files from a directory
+alias clean_pyc="find . -name '*.pyc' -print0 | xargs -0 rm -f"
+
+# Print all colors available in zsh
+# Should probably be in .functions...
+alias printcolors='for code in {000..255}; do print -P -- "$code: %F{$code}Test ( %%F{$code}Test%%f )%f"; done'
+
+### end random
+###############################################################################
+
+
+###############################################################################
+### CLI tools
+
+alias ztop='zenith'
+alias top='echo "Using aliased zenith for top..." && ztop'
+
+# colorful file preview for fzf
+alias fzfp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+
+## Brew / Pyenv compatibility
+# alias brew='if command -v pyenv; then echo "Using aliased brew... See dotfiles." && env PATH=${PATH//$(pyenv root)\/shims:/} brew; else echo "pyenv not found. Using local brew... See dotfiles." && $(brew --prefix)/bin/brew; fi'
+
+
+### end CLI tools
+###############################################################################
