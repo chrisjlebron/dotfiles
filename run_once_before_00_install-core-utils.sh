@@ -1,11 +1,22 @@
+#!/bin/bash
+
 ##############################################################################################################
-### homebrew, git, and this dotfiles repo
+### install macOS CLI tools
+
+# Pre-requisite for homebrew
+xcode-select --install
+
+### end of macOS CLI tools
+##############################################################################################################
+
+
+
+
+##############################################################################################################
+### install homebrew and homebrew packages
 
 # NOTE: always check https://brew.sh/ first for newer commands
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# install homebrew's git
-brew install git
 
 # Get env vars before install, specifically HOMEBREW_CASK_OPTS
 source ./.exports
@@ -13,10 +24,10 @@ source ./.exports
 source ./dot_exports
 
 # You may get the error that one of the fonts can't be installed
-# You must first install svn:
+# If yes, you must first install svn:
 # brew install svn
 
-# if using homebrew bundle with Brewfile:
+# Using homebrew bundle with Brewfile:
 # REF: https://docs.brew.sh/Manpage#bundle-subcommand
 brew bundle
 
@@ -31,11 +42,13 @@ brew bundle
 
 # change to bash 4 (installed by homebrew)
 BASHPATH=$(brew --prefix)/bin/bash
+
 # to add homebrew's bash to the accepted list
-sudo bash -c 'echo $(brew --prefix)/bin/bash >> /etc/shells'
+sudo bash -c 'echo $BASHPATH >> /etc/shells'
 
 ### end of bash
 ##############################################################################################################
+
 
 
 
@@ -76,20 +89,11 @@ mise use -g go@latest
 
 npm install -g
 
-# Type `git open` to open the GitHub page or website for a repository.
-#git-open
-
-# trash as the safe `rm` alternative
-#trash-cli
-
-# better Node debugging
-#ndb
-
-# simple man pages
-#tldr
-
-# for trying out npm modules locally in a REPL
-#trymodule
+# git-open: Type `git open` to open the GitHub page or website for a repository.
+# trash-cli: trash as the safe `rm` alternative
+# ndb: better Node debugging
+# tldr: simpler man pages
+# trymodule: for testing out npm modules locally in a REPL
 
 ### end of npm
 ##############################################################################################################
@@ -99,11 +103,9 @@ npm install -g
 
 ##############################################################################################################
 ### Base python packages
-###
 
 # mise will install common packages via pip after installing the latest python version
-# it does so via .default-python-packages
+# It does so via .default-python-packages
 
 ###
 ##############################################################################################################
-
