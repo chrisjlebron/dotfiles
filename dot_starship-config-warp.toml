@@ -1,0 +1,17 @@
+# this is all based on default of Nerd Fonts
+
+# global
+command_timeout = 1000
+right_format = "$time"
+
+# [line_break]
+# disabled = true
+
+[character]
+disabled = true
+
+[nodejs]
+symbol = "[⬢](bold green) "
+
+[time]
+disabled = false
