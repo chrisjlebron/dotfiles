@@ -1,0 +1,4 @@
+[".zsh/plugins/git/git.plugin.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh"
+    refreshPeriod = "168h"
