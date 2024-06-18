@@ -5,8 +5,8 @@
 
 # Pre-requisite for homebrew
 cat <<- EOF
-  ###############################################################################
-  ### install macOS CLI tools
+###############################################################################
+### install macOS CLI tools
 EOF
 
 xcode-select --install
@@ -21,8 +21,8 @@ xcode-select --install
 ### install homebrew
 
 cat <<- EOF
-  ###############################################################################
-  ### install homebrew
+###############################################################################
+### install homebrew
 EOF
 
 # NOTE: always check https://brew.sh/ first for newer commands
@@ -38,8 +38,8 @@ EOF
 ### mise
 
 cat <<- EOF
-  ###############################################################################
-  ### install mise & packages
+###############################################################################
+### install mise & packages
 EOF
 
 # Check if mise is already installed, install if not
@@ -83,8 +83,8 @@ fi
 ### install homebrew packages
 
 cat <<- EOF
-  ###############################################################################
-  ### install homebrew packages
+###############################################################################
+### install homebrew packages
 EOF
 
 # Get env vars before install, specifically HOMEBREW_CASK_OPTS
@@ -108,8 +108,8 @@ brew bundle
 ### npm
 
 cat <<- EOF
-  ###############################################################################
-  ### installing global npm packages
+###############################################################################
+### installing global npm packages
 EOF
 
 # NOTE:
@@ -134,8 +134,8 @@ npm install -g
 ### bash
 
 cat <<- EOF
-  ###############################################################################
-  ### setting bash to brew bash
+###############################################################################
+### setting bash to brew bash
 EOF
 
 # change to bash 4 (installed by homebrew)
