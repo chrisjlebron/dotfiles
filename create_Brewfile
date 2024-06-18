@@ -1,8 +1,6 @@
+tap "clintmod/formulas"
 tap "homebrew/bundle"
-# tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-# tap "homebrew/cask-versions" # don't know what this is...
-# tap "homebrew/core"
+tap "homebrew/cask"
 tap "homebrew/services"
 # brew "bash" # meh? might want to manage version in homebrew
 # brew "bash-completion@2", link: false # meh?
@@ -18,13 +16,6 @@ brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
 # brew "ffmpeg" # image processing
 # brew "findutils" # don't think so
 # brew "freetype" # don't know what this is...
-## FONTS
-brew "font-fira-code"
-brew "font-ibm-plex"
-brew "font-inconsolata"
-brew "font-source-code-pro"
-brew "font-symbols-only-nerd-font"
-## END FONTS
 brew "fzf" # fuzzy finder
 # brew "gdbm" # doubt it...
 brew "gh" # GitHub CLI
@@ -71,7 +62,7 @@ brew "watchman" # Watch files and take action when they change
 # brew "yarn"
 brew "zenith" # best `top`?
 brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdsouza/zoxide
-brew "zlib" # lossless data compression
+# brew "zlib" # lossless data compression (macOS already provides)
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
 cask "1password" #, args: { appdir: "/Applications" } # XXX: change appdir based on where Chrome is installed
@@ -81,6 +72,13 @@ cask "alfred" # my guy...
 # cask "authy" # MFA (REMOVED)
 # cask "docker" # does this still exist?
 cask "firefox"
+## FONTS
+cask "font-fira-code"
+cask "font-ibm-plex"
+cask "font-inconsolata"
+cask "font-source-code-pro"
+cask "font-symbols-only-nerd-font"
+## END FONTS
 cask "google-chrome"
 cask "google-drive" # local access & sync/backup
 # cask "gyazo" # record screen, make gifs
