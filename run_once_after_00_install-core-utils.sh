@@ -112,17 +112,16 @@ cat <<- EOF
 ### installing global npm packages
 EOF
 
-# NOTE:
-# The below is just a list of packages to consider installing globally via npm.
-# Install using the included `package.json` and `npm install -g`
-
-npm install -g
-
-# git-open: Type `git open` to open the GitHub page or website for a repository.
-# trash-cli: trash as the safe `rm` alternative
-# ndb: better Node debugging
-# tldr: simpler man pages
-# trymodule: for testing out npm modules locally in a REPL
+# Type `git open` to open the GitHub page or website for a repository.
+npm install -g git-open
+# Better Node debugging
+npm install -g ndb
+# Simpler man pages
+npm install -g tldr
+# `trash` as the safe `rm` alternative
+npm install -g trash-cli
+# For testing out npm modules locally in a REPL
+npm install -g trymodule
 
 ### end of npm
 ###############################################################################
