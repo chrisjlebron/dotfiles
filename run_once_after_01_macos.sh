@@ -25,8 +25,8 @@
 
 # Ask for the administrator password upfront
 cat <<- EOF
-  ###############################################################################
-  ### Configure macOS settings
+###############################################################################
+### Configure macOS settings
 EOF
 sudo -v
 
@@ -234,7 +234,7 @@ EOF
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Dock" "Finder" "Rectangle" "SystemUIServer" "Terminal"; do
-	killall "${app}" > /dev/null 2>&1
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+# for app in "Dock" "Finder" "Rectangle" "SystemUIServer" "Terminal"; do
+# 	killall "${app}" > /dev/null 2>&1
+# done
+echo "Done. Restart your laptop for all changes to take effect."
