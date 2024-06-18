@@ -1,0 +1,60 @@
+###################################
+# ¡¡NOTE!!
+# Should be sourced AFTER .exports (just do it last?)
+###################################
+
+###############################################################################
+### LS_COLORS
+
+# github.com/trapd00r/LS_COLORS
+# if this is not working, you need the `ls` from `brew install coreutils`
+command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
+eval "$(gdircolors -b ~/.dircolors)"
+
+
+### end LS_COLORS
+###############################################################################
+
+
+###############################################################################
+### mise
+
+eval "$(~/.local/bin/mise activate zsh)"
+
+### end mise
+###############################################################################
+
+
+###############################################################################
+### starship prompt
+
+eval "$(starship init zsh)"
+
+### end starship prompt
+###############################################################################
+
+
+###############################################################################
+### direnv
+
+eval "$(direnv hook zsh)"
+
+### end direnv
+###############################################################################
+
+
+###############################################################################
+### zoxide
+
+# NOTE: For completions to work, this must be added after compinit is called
+# You may have to rebuild your completions cache by running rm ~/.zcompdump*; compinit.
+
+# You may also want to ensure you have fzf installed, as it is used for interactive selection
+
+eval "$(zoxide init zsh)"
+
+### end zoxide
+###############################################################################
+
+# typo/command correction
+# eval "$(thefuck --alias jk)"

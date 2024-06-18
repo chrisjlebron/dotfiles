@@ -1,0 +1,122 @@
+[user]
+  name = Christopher J. Lebron
+  email = chris.j.lebron@gmail.com
+  username = chrisjlebron
+  token = {{ .gh_token }}
+
+[core]
+  autocrlf = input  # Converts CRLF to LF on input, preserving Unix-style line endings
+  safecrlf = warn  # Warns about CRLF conversion issues
+  excludesfile = ~/.gitignore_global  # Specifies a global gitignore file
+  attributesfile = ~/.gitattributes  # Specifies a global gitattributes file
+  editor = $(brew --prefix)/bin/vim  # Sets the default editor to Vim installed via Homebrew
+
+[alias]
+  df = diff --color --color-words --abbrev  # Creates an alias 'df' to show colored word diff
+  hist = "log --pretty=format:\"%C(yellow)%h%Creset  |  %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]\" --graph --date=short"  # Alias 'hist' for a detailed log format with graph
+  hs = log --oneline --decorate --graph --relative-date  # Alias 'hs' for a simple log with graph and relative dates
+  # lg = log --pretty=oneline --abbrev-commit --graph --decorate --date=relative
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --  # Alias 'lg' for a colorful and detailed log with graph
+  find = "!git log --oneline | grep"  # Alias 'find' to search commit messages
+  search = "!git log --oneline | grep"  # Alias 'search' to search commit messages
+  lookup = "!git log --oneline | grep"  # Alias 'lookup' to search commit messages
+  type = cat-file -t  # Alias 'type' to show the type of an object
+  dump = cat-file -p  # Alias 'dump' to pretty-print the contents of an object
+  deleted = log -1 --stat --  # Alias 'deleted' to show the last deleted file(s)
+  rd = rm $(git ls-files --deleted)  # Alias 'rd' to remove deleted files from the index
+  assume = update-index --assume-unchanged  # Alias 'assume' to assume a file is unchanged
+  unassume = update-index --no-assume-unchanged  # Alias 'unassume' to cancel assume unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"  # Alias 'assumed' to list assumed-unchanged files
+  undo-hard = reset --hard HEAD~1  # Alias 'undo-hard' to hard reset to the previous commit
+  undo-soft = reset --soft HEAD~1  # Alias 'undo-soft' to soft reset to the previous commit
+
+[color]
+  ui = auto  # Automatically enables colored output
+
+[color "branch"]
+  current = yellow reverse  # Highlights the current branch in yellow reverse
+  local = yellow  # Colors local branches in yellow
+  remote = green  # Colors remote branches in green
+
+[color "diff"]
+  meta = yellow bold  # Colors diff metadata in yellow bold
+  commit = green bold  # Colors commit hashes in green bold
+  frag = magenta bold  # Colors diff fragments in magenta bold
+  old = red bold  # Colors old lines in red bold
+  new = green bold  # Colors new lines in green bold
+  whitespace = red reverse  # Highlights whitespace errors in red reverse
+
+[color "diff-highlight"]
+  oldNormal = red bold  # Highlights old lines in red bold
+  oldHighlight = "red bold 52"  # Highlights old changes in red bold with specific background
+  newNormal = "green bold"  # Highlights new lines in green bold
+  newHighlight = "green bold 22"  # Highlights new changes in green bold with specific background
+
+[color "status"]
+  added = green  # Colors added files in green
+  changed = red  # Colors changed files in red
+  untracked = yellow reverse  # Highlights untracked files in yellow reverse
+
+[credential]
+  helper = osxkeychain  # Uses the OSX keychain for storing credentials
+
+[push]
+  autoSetupRemote = true  # Automatically sets up the remote tracking branch
+  default = simple  # Uses simple push mode (pushes current branch to corresponding upstream branch)
+  followTags = true  # Pushes annotated tags when pushing branches
+
+[rerere]
+  enabled = true  # Enables Reuse Recorded Resolution for conflict resolution
+
+######
+# delta config
+[core]
+  pager = delta  # Uses delta as the pager for viewing diffs
+
+[delta]
+  # see `delta help` for more options
+  navigate = true  # Enables navigation with n and N in delta pager
+  light = false  # Sets delta theme for dark background terminals
+  line-numbers = true  # Displays line numbers in diffs
+
+[interactive]
+  diffFilter = delta --color-only  # Uses delta to show color only in interactive diffs
+
+[diff]
+  colorMoved = default  # Uses default color scheme for moved lines in diffs
+
+[merge]
+  conflictstyle = diff3  # Uses diff3 style for merge conflicts
+# END delta config
+######
+
+# rewrites
+# [url "git@github.com:"]
+#   insteadOf = "gh:"  # Rewrites 'gh:' to 'git@github.com:'
+#   insteadOf = "git://github.com"  # Rewrites 'git://github.com' to 'git@github.com:'
+#   pushInsteadOf = "github:"  # Rewrites 'github:' to 'git@github.com:' for push
+#   pushInsteadOf = "git://github.com/"  # Rewrites 'git://github.com/' to 'git@github.com:' for push
+#   pushInsteadOf = "https://github.com/"  # Rewrites 'https://github.com/' to 'git@github.com:' for push
+# [url "git@gist.github.com:"]
+#   insteadOf = "gst:"  # Rewrites 'gst:' to 'git@gist.github.com:'
+#   pushInsteadOf = "gist:"  # Rewrites 'gist:' to 'git@gist.github.com:' for push
+#   pushInsteadOf = "git://gist.github.com/"  # Rewrites 'git://gist.github.com/' to 'git@gist.github.com:' for push
+#   pushInsteadOf = "https://gist.github.com/"  # Rewrites 'https://gist.github.com/' to 'git@gist.github.com:' for push
+
+# correct typos
+[help]
+  autocorrect = 1  # Automatically corrects typos with a delay of 1 decisecond
+
+# push easily. http://stackoverflow.com/a/23918418/89484
+# [push]
+#   default = current  # Pushes the current branch by default
+
+[init]
+  defaultBranch = main  # Sets 'main' as the default branch name for new repositories
+#   templatedir = ~/.git_template  # Uses a specific template directory for new repositories
+
+[filter "lfs"]
+  clean = git-lfs clean %f  # Cleans files with Git LFS
+  smudge = git-lfs smudge %f  # Smudges files with Git LFS
+  required = true  # Requires Git LFS for handling files
+

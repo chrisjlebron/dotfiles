@@ -19,12 +19,21 @@
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
+{{- /* Do the same for GitHub Personal Access Token */ -}}
+{{- $gh_token := "ghp_1234567890qwertyuiop" -}}
+{{- if hasKey . "gh_token" -}}
+{{-   $gh_token = .gh_token -}}
+{{- else if $interactive -}}
+{{-   $gh_token = promptString "GitHub Personal Access Token" $gh_token -}}
+{{- end -}}
+
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
-sourceDir: "{{ .chezmoi.sourceDir }}"
+sourceDir = "{{ .chezmoi.sourceDir }}"
 
-data:
-  name: "{{ $name }}"
-  email: "{{ $email }}"
+[data]
+name = "{{ $name }}"
+email = "{{ $email }}"
+gh_token = "{{ $gh_token }}"

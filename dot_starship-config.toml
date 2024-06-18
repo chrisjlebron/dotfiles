@@ -1,0 +1,13 @@
+# this is all based on default of Nerd Fonts
+
+command_timeout = 1000
+
+# [line_break]
+# disabled = true
+
+[character]
+success_symbol = "[❯](bold green) "
+error_symbol = "[✗](bold red) "
+
+[nodejs]
+symbol = "[⬢](bold green) "

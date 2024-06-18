@@ -1,0 +1,119 @@
+# uncomment to profile prompt startup with zprof
+# zmodload zsh/zprof
+
+
+###############################################################################
+### chezmoi
+
+# add chezmoi bin to the PATH
+export PATH=$PATH:~/.local/bin
+
+# alias for brevity
+alias cm=chezmoi
+
+### end chezmoi
+###############################################################################
+
+
+###############################################################################
+### zsh history
+
+HISTFILE=~/.zsh_history # zsh doesn't save history to a file automatically
+SAVEHIST=100000 # the number of commands to be stored in the zsh history file
+# HISTSIZE set in .shared - Refers to the number of commands loaded into memory from the history file
+
+# history mgmt
+# http://www.refining-linux.org/archives/49/ZSH-Gem-15-Shared-history/
+setopt inc_append_history
+setopt share_history
+setopt HIST_IGNORE_ALL_DUPS
+
+### end zsh history
+###############################################################################
+
+
+
+################################################################################
+### Load zsh package management
+
+##### Skip package manager for Warp
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  source ~/.zsh_package_management
+fi
+
+# TODO: revisit - testing out chezmoi externals, but maybe use zsh package manager
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  source ~/.zsh/plugins/git/git.plugin.zsh
+fi
+
+### end Load zsh package management
+################################################################################
+
+
+# Enable autosuggestions automatically.
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
+
+
+##### don't load features that come standard with Warp
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  # bind UP and DOWN arrow keys for history search
+  zmodload zsh/terminfo
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+  bindkey "$terminfo[cuu1]" history-substring-search-up
+  bindkey "$terminfo[cud1]" history-substring-search-down
+fi
+
+# Automatically list directory contents on `cd`.
+auto-ls () {
+  emulate -L zsh;
+  # explicit call to eza as aliases arent honored in here.
+  eza -aF --sort=type
+}
+chpwd_functions=( auto-ls $chpwd_functions )
+
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+################################################################################
+### Run zsh/bash shared setup
+
+source ~/.shared
+
+###
+################################################################################
+
+# For debugging PATH
+# echo "PATH after zshrc: \n${PATH}"
+
+# autoload -U +X bashcompinit && bashcompinit
+
+# link autocompletions for tools installed with brew
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+
+  # https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=4624611#gistcomment-4624611
+  if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
+    compinit
+  else
+    compinit -C
+  fi
+fi
+
+# autocompletion for vault
+# complete -o nospace -C $(brew --prefix)/bin/vault vault
+
+# autocompletion for aws
+# AWS_COMPLETER_DIR=$(which aws_completer)
+# complete -C "$AWS_COMPLETER_DIR" aws
+
+# Init rbenv
+# command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - zsh)"
+
+# # uncomment to finish profiling
+# zprof

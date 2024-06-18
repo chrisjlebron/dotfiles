@@ -1,0 +1,78 @@
+###############################################################################
+### language
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+### end language
+###############################################################################
+
+
+###############################################################################
+### vim
+
+# vim as default
+export EDITOR="vim"
+
+### end vim
+###############################################################################
+
+
+###############################################################################
+### less
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+### end less
+###############################################################################
+
+
+###############################################################################
+### homebrew
+
+# Where to put items installed via brew cask
+# You will likely want to set this before running install
+# NOTE: 1password Chrome extension needs to be co-located with Chrome itself,
+# so make sure those get installed side-by-side
+# NOTE: /Applications is the default applications directory
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
+
+### end homebrew
+###############################################################################
+
+
+###############################################################################
+### bat
+
+# Set theme for `bat`, the `cat` replacement; `bat --list-themes` for more...
+export BAT_THEME="Coldark-Dark"
+
+### end bat
+###############################################################################
+
+
+###############################################################################
+### starship prompt config
+
+# set up prompt with starship
+## Use different setup for Warp ##
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  export STARSHIP_CONFIG=~/.starship-config-warp.toml
+else
+  export STARSHIP_CONFIG=~/.starship-config.toml
+fi
+
+### end starship prompt config
+###############################################################################
+
+
+###############################################################################
+### 1password
+
+# 1password biometric toggle
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
+
+### end 1password
+###############################################################################
