@@ -19,9 +19,7 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Get env vars before install, specifically HOMEBREW_CASK_OPTS
-source ./.exports
-# since I don't know how this works yet...
-source ./dot_exports
+source ~/.exports
 
 # You may get the error that one of the fonts can't be installed
 # If yes, you must first install svn:

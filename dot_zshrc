@@ -38,12 +38,12 @@ setopt HIST_IGNORE_ALL_DUPS
 
 ##### Skip package manager for Warp
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  source ./.zsh_package_management
+  source ~/.zsh_package_management
 fi
 
 # TODO: revisit - testing out chezmoi externals, but maybe use zsh package manager
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
-  source ./.zsh/plugins/git/git.plugin.zsh
+  source ~/.zsh/plugins/git/git.plugin.zsh
 fi
 
 ### end Load zsh package management
@@ -81,7 +81,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 ################################################################################
 ### Run zsh/bash shared setup
 
-source ./.shared
+source ~/.shared
 
 ###
 ################################################################################
