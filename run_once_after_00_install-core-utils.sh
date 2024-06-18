@@ -42,16 +42,24 @@ cat <<- EOF
   ### install mise & packages
 EOF
 
-# install most recent version of mise.
-curl https://mise.run | sh
+# Check if mise is already installed, install if not
+if ! command -v ~/.local/bin/mise >/dev/null; then
+  # install most recent version of mise.
+  curl https://mise.run | sh
+
+  # Activate mise
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
 
 # ensure it was installed correctly
-echo "mise version:"
-~/.local/bin/mise --version
-# => xxxx.x.x macos-arm64 (abcdef1 2024-03-21)
+if ! version="$(mise --version)"; then
+  echo "mise not installed or activated correctly. exiting..."
+  exit 1
+fi
 
-# Activate mise
-eval "$(~/.local/bin/mise activate zsh)"
+echo "mise version:"
+echo "$version"
+# => xxxx.x.x macos-arm64 (abcdef1 2024-03-21)
 
 # set global defaults to latest
 mise use -g node@latest
