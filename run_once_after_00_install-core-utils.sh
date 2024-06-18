@@ -63,7 +63,7 @@ echo "mise version:"
 # => xxxx.x.x macos-arm64 (abcdef1 2024-03-21)
 
 # Activate mise
-eval "$(~/.local/bin/mise activate zsh)"
+# eval "$(~/.local/bin/mise activate zsh)"
 
 # set global defaults to latest
 # mise use -g node@latest
