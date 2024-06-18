@@ -23,6 +23,7 @@ brew "font-fira-code"
 brew "font-ibm-plex"
 brew "font-inconsolata"
 brew "font-source-code-pro"
+brew "font-symbols-only-nerd-font"
 ## END FONTS
 brew "fzf" # fuzzy finder
 # brew "gdbm" # doubt it...
