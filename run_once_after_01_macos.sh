@@ -24,6 +24,10 @@
 ###############################################################################
 
 # Ask for the administrator password upfront
+cat <<- EOF
+  ###############################################################################
+  ### Configure macOS settings
+EOF
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
@@ -193,6 +197,11 @@ cp ./RectangleConfig.json '~/Library/Application Support/Rectangle/RectangleConf
 ###############################################################################
 
 cat <<- EOF
+  Complete!
+
+  ###############################################################################
+  ### Manual next steps
+
   Keyboard Backlight:
     System Settings -> Keyboard
     -> Adjust keyboard brightness in low light -> Enable
