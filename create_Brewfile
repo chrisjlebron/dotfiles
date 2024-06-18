@@ -15,7 +15,7 @@ brew "direnv" # env var "version" management
 brew "docker" # install docker desktop and cli tools
 # brew "entr" # Will run a script when a file changes... Do I want???
 brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
-brew "ffmpeg" # image processing
+# brew "ffmpeg" # image processing
 # brew "findutils" # don't think so
 # brew "freetype" # don't know what this is...
 ## FONTS
@@ -74,16 +74,16 @@ brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdso
 brew "zlib" # lossless data compression
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
-cask "1password", args: { appdir: "/Applications" } # XXX: change appdir based on where Chrome is installed
+cask "1password" #, args: { appdir: "/Applications" } # XXX: change appdir based on where Chrome is installed
 cask "1password-cli"
 cask "alfred" # my guy...
 # cask "appcleaner"
-cask "authy" # MFA
+# cask "authy" # MFA (REMOVED)
 # cask "docker" # does this still exist?
 cask "firefox"
 cask "google-chrome"
 cask "google-drive" # local access & sync/backup
-cask "gyazo" # record screen, make gifs
+# cask "gyazo" # record screen, make gifs
 # cask "imagealpha" # if needed
 # cask "imageoptim" # if needed
 # cask "insomnia" # if you like
@@ -98,6 +98,7 @@ cask "rectangle" # window/screen management
 # cask "sequel-pro" # sql explorer
 cask "slack"
 cask "spotify"
-cask "tabby"
+# cask "tabby"
 cask "visual-studio-code"
+cask "warp"
 cask "zoom"
