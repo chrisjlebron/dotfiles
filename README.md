@@ -7,6 +7,8 @@ Supersedes [old dotfiles](https://github.com/chrisjlebron/dotfiles-old).
 
 Perform a backup of your current / old machine
 
+TODO: fill in…
+
 ## Getting started
 
 On your new machine, open a terminal and run these commands:
@@ -14,8 +16,19 @@ On your new machine, open a terminal and run these commands:
 ```shell
 mkdir -p ~/dev && cd ~/dev
 git clone https://github.com/chrisjlebron/dotfiles.git && cd dotfiles
-./install.sh
+# time the whole process, for interest
+time ./install.sh
 ```
+
+If you want to add a GitHub personal access token now:
+
+- Login to GitHub with Safari & 1password
+- Generate new token
+  - See [GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- Paste into setup when prompted
+- chezmoi writes it to a local file that is unique per device and doesn't get synced to the cloud
+
+Otherwise, you can add it later using the command chezmoi displays on initial bootstrap steps.
 
 ## Gotchas
 
@@ -23,6 +36,7 @@ git clone https://github.com/chrisjlebron/dotfiles.git && cd dotfiles
    1. We'll see how far we can get without it
 2. Oh-my-zsh git plugin is currently being loaded via [.chezmoiexternal.toml](/.chezmoiexternal.toml).
    1. If I decide I need a zsh plugin manager I'll switch to use that
+3. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
 
 ## TODO
 
