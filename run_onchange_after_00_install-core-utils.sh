@@ -25,8 +25,13 @@ cat <<- EOF
 ### install homebrew
 EOF
 
-# NOTE: always check https://brew.sh/ first for newer commands
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Check if homebrew is already installed, install if not
+if ! command -v /opt/homebrew/bin/brew >/dev/null; then
+  # NOTE: always check https://brew.sh/ first for newer commands
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "homebrew already installed. Moving on..."
+fi
 
 ### end of homebrew
 ###############################################################################
@@ -46,10 +51,10 @@ EOF
 if ! command -v ~/.local/bin/mise >/dev/null; then
   # install most recent version of mise.
   curl https://mise.run | sh
-
-  # Activate mise
-  eval "$(~/.local/bin/mise activate zsh)"
 fi
+
+# Activate mise
+eval "$(~/.local/bin/mise activate zsh)"
 
 # ensure it was installed correctly
 if ! version="$(mise --version)"; then
@@ -68,7 +73,7 @@ mise use -g python@latest
 mise use -g ruby@latest
 mise use -g go@latest
 
-# just in case... (mise's node is needed for npm, maybe brew?)
+# just in case... (mise's node is needed for npm)
 if [[ $(which node) != *mise* ]]; then
   echo "activating mise..."
   eval "$(~/.local/bin/mise activate zsh)"
@@ -90,9 +95,8 @@ EOF
 # Get env vars before install, specifically HOMEBREW_CASK_OPTS
 source ~/.exports
 
-# You may get the error that one of the fonts can't be installed
-# If yes, you must first install svn:
-# brew install svn
+# Activate brew for this session
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Using homebrew bundle with Brewfile:
 # REF: https://docs.brew.sh/Manpage#bundle-subcommand
