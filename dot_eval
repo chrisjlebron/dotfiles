@@ -3,6 +3,16 @@
 # Should be sourced AFTER .exports (just do it last?)
 ###################################
 
+
+###############################################################################
+### homebrew
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+### end homebrew
+###############################################################################
+
+
 ###############################################################################
 ### LS_COLORS
 
@@ -10,7 +20,6 @@
 # if this is not working, you need the `ls` from `brew install coreutils`
 command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
 eval "$(gdircolors -b ~/.dircolors)"
-
 
 ### end LS_COLORS
 ###############################################################################
