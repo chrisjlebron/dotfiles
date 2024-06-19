@@ -27,7 +27,18 @@
 cat <<- EOF
 ###############################################################################
 ### Configure macOS settings
+
 EOF
+
+read -p "Do you want to continue? (y/N) " answer
+
+if [[ "$answer" == [yY] ]]; then
+  echo "Writing macOS settings..."
+else
+  echo "Moving on..."
+  exit 0
+fi
+
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
@@ -98,14 +109,14 @@ defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -int 1
 # Force click threshold (0 = light, 1 = medium, 2 = firm)
 defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
 
-# Use scroll gesture to zoom...
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# Use scroll gesture to zoom... (XXX: DEPRECATED)
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 
 # ...with the Ctrl (^) modifier key
 defaults write com.apple.AppleMultitouchTrackpad HIDScrollZoomModifierMask -int 262144
 
 # Zoom should use smoothing instead of nearest neighbor.
-defaults write com.apple.universalaccess 'closeViewSmoothImages' -bool true
+sudo defaults write com.apple.universalaccess 'closeViewSmoothImages' -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -210,24 +221,31 @@ cat <<- EOF
   Keyboard Shortcuts:
     Screenshots:
       Disable: Save picture of screen as a file
-      Disable: Copy picture of screen as a file
+      Disable: Copy picture of screen to clipboard
       Enable -> shift+cmd+4: Save picture of selected area as a file
-      Enable -> shift+cmd+2: Copy picture of selected area as a file
+      Enable -> shift+cmd+2: Copy picture of selected area to clipboard
     Spotlight:
       Enable -> opt+Space: Show Spotlight search
       Disable: Show Finder search window
 
-  Eye saving amber colors at night:
-    System Settings -> Displays -> Night Shift...
-    Schedule -> Sunset to Sunrise
-    Color Temp -> mid
+  Display:
+    System Settings -> Displays
+      -> Automatically adjust brightness -> Disable
+      -> Night Shift...
+        -> Schedule -> Sunset to Sunrise
+        -> Color Temp -> mid
 
   Battery:
     Low power mode -> never
     -> Options
       Slightly dim the display on battery -> disabled
 
-  Finder -> View -> Show path bar
+  Accessibility:
+    Use scroll gesture with modifier keys to zoom -> Enable
+
+  Finder Windows:
+    Finder -> View -> Show path bar
+    Finder -> View -> Show status bar
 EOF
 
 ###############################################################################

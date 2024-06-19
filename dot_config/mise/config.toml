@@ -1,7 +1,7 @@
 # may also need to set each with `mise use -g {TOOL}@lastest`
 [tools]
-node = 'latest'
-deno = 'latest'
-python = 'latest'
-ruby = 'latest'
-go = 'latest'
+node = "latest"
+deno = "latest"
+python = "latest"
+ruby = "latest"
+go = "latest"

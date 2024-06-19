@@ -1,6 +1,5 @@
 tap "clintmod/formulas"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/services"
 # brew "bash" # meh? might want to manage version in homebrew
 # brew "bash-completion@2", link: false # meh?
@@ -43,7 +42,7 @@ brew "ncdu" # find where your diskspace went
 # brew "openssl@3" # I imagine this will be downloaded if needed
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
-brew "postgresql", restart_service: true
+brew "postgresql@14", restart_service: true # version specified b/c bare package is deprecated
 # brew "pyenv" # python version manager; (XXX: CJL - can we manage with mise?)
 # brew "rbenv" # ruby version manager; (XXX: CJL - can we manage with mise?)
 brew "redis", restart_service: true
@@ -65,7 +64,7 @@ brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdso
 # brew "zlib" # lossless data compression (macOS already provides)
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
-cask "1password" #, args: { appdir: "/Applications" } # XXX: change appdir based on where Chrome is installed
+cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
 cask "1password-cli"
 cask "alfred" # my guy...
 # cask "appcleaner"
