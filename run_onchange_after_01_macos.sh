@@ -27,7 +27,18 @@
 cat <<- EOF
 ###############################################################################
 ### Configure macOS settings
+
 EOF
+
+read -p "Do you want to continue? (y/N) " answer
+
+if [[ "$answer" == [yY] ]]; then
+  echo "Writing macOS settings..."
+else
+  echo "Moving on..."
+  exit 0
+fi
+
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
