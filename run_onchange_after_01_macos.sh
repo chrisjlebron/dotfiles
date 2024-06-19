@@ -244,8 +244,8 @@ cat <<- EOF
     Use scroll gesture with modifier keys to zoom -> Enable
 
   Finder Windows:
-  Finder -> View -> Show path bar
-  Finder -> View -> Show status bar
+    Finder -> View -> Show path bar
+    Finder -> View -> Show status bar
 EOF
 
 ###############################################################################
