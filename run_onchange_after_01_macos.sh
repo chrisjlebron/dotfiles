@@ -221,17 +221,19 @@ cat <<- EOF
   Keyboard Shortcuts:
     Screenshots:
       Disable: Save picture of screen as a file
-      Disable: Copy picture of screen as a file
+      Disable: Copy picture of screen to clipboard
       Enable -> shift+cmd+4: Save picture of selected area as a file
-      Enable -> shift+cmd+2: Copy picture of selected area as a file
+      Enable -> shift+cmd+2: Copy picture of selected area to clipboard
     Spotlight:
       Enable -> opt+Space: Show Spotlight search
       Disable: Show Finder search window
 
-  Eye saving amber colors at night:
-    System Settings -> Displays -> Night Shift...
-    Schedule -> Sunset to Sunrise
-    Color Temp -> mid
+  Display:
+    System Settings -> Displays
+      -> Automatically adjust brightness -> Disable
+      -> Night Shift...
+        -> Schedule -> Sunset to Sunrise
+        -> Color Temp -> mid
 
   Battery:
     Low power mode -> never
