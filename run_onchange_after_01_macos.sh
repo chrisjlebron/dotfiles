@@ -109,14 +109,14 @@ defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -int 1
 # Force click threshold (0 = light, 1 = medium, 2 = firm)
 defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
 
-# Use scroll gesture to zoom...
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# Use scroll gesture to zoom... (XXX: DEPRECATED)
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 
 # ...with the Ctrl (^) modifier key
 defaults write com.apple.AppleMultitouchTrackpad HIDScrollZoomModifierMask -int 262144
 
 # Zoom should use smoothing instead of nearest neighbor.
-defaults write com.apple.universalaccess 'closeViewSmoothImages' -bool true
+sudo defaults write com.apple.universalaccess 'closeViewSmoothImages' -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -240,7 +240,12 @@ cat <<- EOF
     -> Options
       Slightly dim the display on battery -> disabled
 
+  Accessibility:
+    Use scroll gesture with modifier keys to zoom -> Enable
+
+  Finder Windows:
   Finder -> View -> Show path bar
+  Finder -> View -> Show status bar
 EOF
 
 ###############################################################################
