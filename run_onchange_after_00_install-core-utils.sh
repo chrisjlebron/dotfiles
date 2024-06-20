@@ -1,6 +1,18 @@
 #!/bin/bash
 
 ###############################################################################
+### Kick off installations
+
+read -p "Do you want to run installations? (y/N) " answer
+
+if [[ "$answer" == [yY] ]]; then
+  echo "Beginning core utils installations..."
+else
+  echo "Moving on..."
+  exit 0
+fi
+
+###############################################################################
 ### install macOS CLI tools
 
 # Pre-requisite for homebrew

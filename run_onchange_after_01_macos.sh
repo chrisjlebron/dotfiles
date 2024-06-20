@@ -30,7 +30,7 @@ cat <<- EOF
 
 EOF
 
-read -p "Do you want to continue? (y/N) " answer
+read -p "Do you want to run macOS configurations? (y/N) " answer
 
 if [[ "$answer" == [yY] ]]; then
   echo "Writing macOS settings..."
