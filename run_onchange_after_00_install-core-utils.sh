@@ -112,7 +112,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Using homebrew bundle with Brewfile:
 # REF: https://docs.brew.sh/Manpage#bundle-subcommand
-brew bundle
+brew bundle --verbose
 
 ### end install homebrew packages
 ###############################################################################
