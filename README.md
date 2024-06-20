@@ -28,7 +28,7 @@ If you want to add a GitHub personal access token now:
 - Paste into setup when prompted
 - chezmoi writes it to a local file that is unique per device and doesn't get synced to the cloud
 
-Otherwise, you can add it later using the command chezmoi displays on initial bootstrap steps.
+Otherwise, you can add it later using `chezmoi edit-config` or the command chezmoi displays on initial bootstrap steps.
 
 ## Gotchas
 
@@ -37,6 +37,10 @@ Otherwise, you can add it later using the command chezmoi displays on initial bo
 2. Oh-my-zsh git plugin is currently being loaded via [.chezmoiexternal.toml](/.chezmoiexternal.toml).
    1. If I decide I need a zsh plugin manager I'll switch to use that
 3. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
+
+## Docs
+
+[See docs for more information.](/docs/)
 
 ## TODO
 
