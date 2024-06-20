@@ -1,9 +1,13 @@
-# Manual Steps After Install
+################################################################################
+### Manual Steps After Install
 
+
+################################################################################
 ## homebrew
 
 After `brew bundle` runs, review the output for any profile/PATH/zshrc updates.
 
+################################################################################
 ## System Settings
 
 Keyboard:
@@ -34,12 +38,14 @@ Battery:
 Accessibility:
   Use scroll gesture with modifier keys to zoom -> Enable
 
+################################################################################
 ## Finder
 
 View
   -> Show path bar
   -> Show status bar
 
+################################################################################
 ## Rectangle
   
 Open app
@@ -47,12 +53,14 @@ Open app
   -> Import
     -> Select "RectangleConfig.json" from this directory
 
+################################################################################
 ## Google Drive
 
 Set up Google Drive sync
 
 Select which folders you'd like to sync and/or have offline access to
 
+################################################################################
 ## Alfred
 
 Login to Alfred
