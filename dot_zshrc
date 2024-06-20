@@ -34,6 +34,9 @@ if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   source ~/.zsh/plugins/git/git.plugin.zsh
 fi
 
+# sourcing completions for git-extras
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
 ### end Load zsh package management
 ################################################################################
 
