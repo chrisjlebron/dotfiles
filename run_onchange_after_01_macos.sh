@@ -207,7 +207,7 @@ cat <<- EOF
 ### Manual Settings
 
 EOF
-cat ./docs/manual-steps.md
+cat ./docs/manual-steps.txt
 
 ###############################################################################
 # Kill affected applications                                                  #
