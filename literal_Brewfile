@@ -72,9 +72,9 @@ cask "alfred" # my guy...
 # cask "docker" # does this still exist?
 cask "firefox"
 ## FONTS
-cask "font-fira-code"
+cask "font-fira-code-nerd-font"
 cask "font-ibm-plex"
-cask "font-inconsolata"
+cask "font-inconsolata-nerd-font"
 cask "font-source-code-pro"
 cask "font-symbols-only-nerd-font"
 ## END FONTS
