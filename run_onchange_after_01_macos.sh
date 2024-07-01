@@ -30,7 +30,7 @@ cat <<- EOF
 
 EOF
 
-read -p "Do you want to continue? (y/N) " answer
+read -p "Do you want to run macOS configurations? (y/N) " answer
 
 if [[ "$answer" == [yY] ]]; then
   echo "Writing macOS settings..."
@@ -196,57 +196,24 @@ defaults write com.apple.dock autohide -bool true
 # Disable recent and suggested apps from dock
 defaults write com.apple.dock "show-recents" -bool "false"
 
-###############################################################################
-# Rectangle.app                                                               #
-###############################################################################
+# Remove all apps from the Dock
+defaults write com.apple.dock persistent-apps -array
 
-# Set up my preferred keyboard shortcuts
-cp ./RectangleConfig.json '~/Library/Application Support/Rectangle/RectangleConfig.json'
+# Restart dock
+killall Dock
 
 ###############################################################################
 # Prompt to set manually                                                      #
 ###############################################################################
 
+echo "Complete!"
 cat <<- EOF
-  Complete!
 
-  ###############################################################################
-  ### Manual next steps
+###############################################################################
+### Manual Settings
 
-  Keyboard Backlight:
-    System Settings -> Keyboard
-    -> Adjust keyboard brightness in low light -> Enable
-    -> Turn off keyboard backlight off after inactivity -> 5 seconds
-
-  Keyboard Shortcuts:
-    Screenshots:
-      Disable: Save picture of screen as a file
-      Disable: Copy picture of screen to clipboard
-      Enable -> shift+cmd+4: Save picture of selected area as a file
-      Enable -> shift+cmd+2: Copy picture of selected area to clipboard
-    Spotlight:
-      Enable -> opt+Space: Show Spotlight search
-      Disable: Show Finder search window
-
-  Display:
-    System Settings -> Displays
-      -> Automatically adjust brightness -> Disable
-      -> Night Shift...
-        -> Schedule -> Sunset to Sunrise
-        -> Color Temp -> mid
-
-  Battery:
-    Low power mode -> never
-    -> Options
-      Slightly dim the display on battery -> disabled
-
-  Accessibility:
-    Use scroll gesture with modifier keys to zoom -> Enable
-
-  Finder Windows:
-    Finder -> View -> Show path bar
-    Finder -> View -> Show status bar
 EOF
+cat ./docs/manual-steps.txt
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -255,4 +222,11 @@ EOF
 # for app in "Dock" "Finder" "Rectangle" "SystemUIServer" "Terminal"; do
 # 	killall "${app}" > /dev/null 2>&1
 # done
-echo "Done. Restart your laptop for all changes to take effect."
+
+cat <<- EOF
+###############################################################################
+### DONE!
+
+Restart your laptop for all changes to take effect.
+
+EOF

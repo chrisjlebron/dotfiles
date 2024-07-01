@@ -2,3 +2,8 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh"
     refreshPeriod = "168h"
+[".zsh/plugins/ls_colors/lscolors.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/lscolors.sh"
+    refreshPeriod = "168h"
+

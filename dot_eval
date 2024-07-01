@@ -18,8 +18,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # github.com/trapd00r/LS_COLORS
 # if this is not working, you need the `ls` from `brew install coreutils`
-command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
-eval "$(gdircolors -b ~/.dircolors)"
+# command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
+# eval "$(gdircolors -b ~/.dircolors)"
+
+source ~/.zsh/plugins/ls_colors/lscolors.sh
 
 ### end LS_COLORS
 ###############################################################################

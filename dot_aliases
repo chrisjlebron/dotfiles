@@ -30,8 +30,8 @@ fi
 alias sls='CLICOLOR_FORCE=1 gls -aFh ${colorflag} --group-directories-first'
 
 # alias ls to eza default
-alias ls='eza -aF --sort=type'
-alias la="eza -F -la --sort=type --time-style=long-iso --no-user --octal-permissions --git"
+alias ls='eza -aF --sort=type --color=always --icons=always'
+alias la="eza -F -la --sort=type --time-style=long-iso --no-user --octal-permissions --git --color=always"
 
 # List only directories
 alias lsd='eza -lDa'

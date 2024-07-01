@@ -1,6 +1,18 @@
 #!/bin/bash
 
 ###############################################################################
+### Kick off installations
+
+read -p "Do you want to run installations? (y/N) " answer
+
+if [[ "$answer" == [yY] ]]; then
+  echo "Beginning core utils installations..."
+else
+  echo "Moving on..."
+  exit 0
+fi
+
+###############################################################################
 ### install macOS CLI tools
 
 # Pre-requisite for homebrew
@@ -100,7 +112,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Using homebrew bundle with Brewfile:
 # REF: https://docs.brew.sh/Manpage#bundle-subcommand
-brew bundle
+brew bundle --verbose
 
 ### end install homebrew packages
 ###############################################################################
