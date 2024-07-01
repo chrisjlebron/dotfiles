@@ -14,6 +14,27 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 ###############################################################################
+### compinit
+
+# link autocompletions for tools installed with brew
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+
+  # https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=4624611#gistcomment-4624611
+  if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
+    compinit
+  else
+    compinit -C
+  fi
+fi
+
+### end compinit
+###############################################################################
+
+
+###############################################################################
 ### LS_COLORS
 
 # github.com/trapd00r/LS_COLORS
@@ -65,6 +86,22 @@ eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 
 ### end zoxide
+###############################################################################
+
+
+###############################################################################
+### git
+
+# TODO: revisit - testing out chezmoi externals, but maybe use zsh package manager
+# placing at end (after compinit) since it relies on compdef to load
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  source ~/.zsh/plugins/git/git.plugin.zsh
+fi
+
+# sourcing completions for git-extras
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+### end git
 ###############################################################################
 
 # typo/command correction

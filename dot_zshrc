@@ -29,14 +29,6 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   source ~/.zsh_package_management
 fi
 
-# TODO: revisit - testing out chezmoi externals, but maybe use zsh package manager
-if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
-  source ~/.zsh/plugins/git/git.plugin.zsh
-fi
-
-# sourcing completions for git-extras
-source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
 ### end Load zsh package management
 ################################################################################
 
@@ -81,20 +73,6 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # echo "PATH after zshrc: \n${PATH}"
 
 # autoload -U +X bashcompinit && bashcompinit
-
-# link autocompletions for tools installed with brew
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-
-  # https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=4624611#gistcomment-4624611
-  if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
-    compinit
-  else
-    compinit -C
-  fi
-fi
 
 # autocompletion for vault
 # complete -o nospace -C $(brew --prefix)/bin/vault vault
