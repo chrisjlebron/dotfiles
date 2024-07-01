@@ -196,6 +196,12 @@ defaults write com.apple.dock autohide -bool true
 # Disable recent and suggested apps from dock
 defaults write com.apple.dock "show-recents" -bool "false"
 
+# Remove all apps from the Dock
+defaults write com.apple.dock persistent-apps -array
+
+# Restart dock
+killall Dock
+
 ###############################################################################
 # Prompt to set manually                                                      #
 ###############################################################################
