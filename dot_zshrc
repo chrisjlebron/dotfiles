@@ -58,14 +58,6 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   bindkey "$terminfo[cud1]" history-substring-search-down
 fi
 
-# Automatically list directory contents on `cd`.
-auto-ls () {
-  emulate -L zsh;
-  # explicit call to eza as aliases arent honored in here.
-  eza -aF --sort=type
-}
-chpwd_functions=( auto-ls $chpwd_functions )
-
 # zstyle ':completion:*' menu select
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
@@ -76,6 +68,14 @@ source ~/.shared
 
 ###
 ################################################################################
+
+# Automatically list directory contents on `cd`.
+auto-ls () {
+  emulate -L zsh;
+  # this should be the aliased call to eza; if not, source order may need to be tweaked
+  ls
+}
+chpwd_functions=( auto-ls $chpwd_functions )
 
 # For debugging PATH
 # echo "PATH after zshrc: \n${PATH}"
