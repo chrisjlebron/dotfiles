@@ -64,4 +64,24 @@ Select which folders you'd like to sync and/or have offline access to
 ## Alfred
 
 Login to Alfred
-  point it to Google Drive prefs
+  Get Powerpack license from email
+  Give system permissions
+  Restart
+
+Point syncing preferences to prefs in Google Drive
+  Open Advanced tab in Alfred preferences
+  Under "Syncing", select preferences folder:
+    `/Google\ Drive/My\ Drive/Alfred\ Settings`
+  You may need to Restart
+
+You may need to manually set:
+  Keyboard shortcuts
+    Open Alfred - cmd+space
+    Open Snippets - cmd+opt+ctrl+space
+  Clipboard history
+    Features
+    Enable retention lengths for each file type
+  Snippets
+    Enable Auto Expansion
+  Appearance
+    CJL - macOS Ventura is most recent
