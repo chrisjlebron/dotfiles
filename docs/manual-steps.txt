@@ -113,3 +113,8 @@ You can set the folder icon from those folders ("Cloud Desktop" and "Cloud Downl
 You may also want to drag these folders to:
   The dock
   The "Favorites" section in the Finder sidebar
+
+If you need new icons, check:
+  https://macosicons.com
+  https://www.iconfinder.com
+  https://thenounproject.com
