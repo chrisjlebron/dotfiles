@@ -16,7 +16,7 @@ cjl_universal_zplugins () {
   zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
   # oh-my-zsh's git plugin, for all them good aliases
-  zplug "plugins/git", from:oh-my-zsh
+  # zplug "plugins/git", from:oh-my-zsh
 
   # oh-my-zsh's git-flow plugin, for all them good aliases
   # zplug "plugins/git-flow", from:oh-my-zsh

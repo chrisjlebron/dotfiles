@@ -92,11 +92,8 @@ eval "$(zoxide init zsh)"
 ###############################################################################
 ### git
 
-# TODO: revisit - testing out chezmoi externals, but maybe use zsh package manager
 # placing at end (after compinit) since it relies on compdef to load
-if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
-  source ~/.zsh/plugins/git/git.plugin.zsh
-fi
+source ~/.zsh/plugins/git/git.plugin.zsh
 
 # sourcing completions for git-extras
 source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
