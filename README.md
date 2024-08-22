@@ -30,6 +30,22 @@ If you want to add a GitHub personal access token now:
 
 Otherwise, you can add it later using `chezmoi edit-config` or the command chezmoi displays on initial bootstrap steps.
 
+## Setup Explained
+
+- Dotfile management is via [chezmoi](https://chezmoi.io/)
+- Package management is via [brew](https://brew.sh/)
+- Tool version management is via [mise](https://mise.jdx.dev/)
+- Shell prompt is managed via [starship](https://starship.rs/)
+- Application settings are kinda managed via [mackup](https://github.com/lra/mackup)
+- Current preferred terminal emulator is [Warp](https://www.warp.dev/)
+- Current preferred Nerd Font is [FiraCode](https://formulae.brew.sh/cask/font-fira-code-nerd-font) (installed via [Brewfile](/literal_Brewfile) "FONTS" section)
+- Clipboard history, snippets, and miscellaneous macOS actions managed via [Alfred](https://www.alfredapp.com/)
+- Transient, directory-level environment variables managed via [direnv](https://direnv.net/)
+- Directory navigation provided by [zoxide](https://github.com/ajeetdsouza/zoxide), in concert with [fzf](https://github.com/junegunn/fzf)
+- `cat` made nicer via [bat](https://github.com/sharkdp/bat)
+- Git meta (diff, pager, blame, grep) via [delta](https://github.com/dandavison/delta) (see [dot_gitconfig.tmpl](/dot_gitconfig.tmpl) for config)
+- Non-Warp zsh plugin management is currently via [zplug](https://github.com/zplug/zplug)
+
 ## Gotchas
 
 1. This has currently commented out the zsh package management for Warp
