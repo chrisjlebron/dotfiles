@@ -40,7 +40,7 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
    3. Includes lots of git aliases you rely on
 3. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
 4. `ls` styling is configured via:
-   1. colors are via `LS_COLORS`, which is installed as a chezmoi external and sourced in [dot_eval](/dot_eval)
+   1. colors are via `LS_COLORS`, which is installed as a [chezmoi external](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
    2. colors and icons are enabled via `eza` flags (see [dot_aliases](/dot_aliases))
    3. icons are made possible via nerd fonts, which must be selected in your terminal preferences
       - Nerd-fonts are installed via Brewfile
@@ -52,7 +52,6 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 
 ## TODO
 
-- do i need [LS_COLORS](https://github.com/trapd00r/LS_COLORS)?
 - do i want inputrc??
 - remove zsh package management? replace with another?
 
