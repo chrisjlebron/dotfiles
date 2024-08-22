@@ -1,17 +1,22 @@
 # this is all based on default of Nerd Fonts
 
-# global
+# global / Prompt options
 command_timeout = 1000
-right_format = "$time"
 
-# [line_break]
-# disabled = true
+# this simulates right prompt, whitespace removed for desired formatting
+format = "$all $fill $time$line_break$character"
+
+[fill]
+symbol = " "
 
 [character]
-disabled = true
+success_symbol = "[\ueb70](dimmed blue)"
+error_symbol = "[\ueb70](dimmed blue)"
+# some symbol options: \ueb70 ▶ » ❯ > ⏻ \ue0bc \ueb6e
+# some color options: (bold black) and (dimmed green)
 
-[nodejs]
-symbol = "[⬢](bold green) "
+# [nodejs]
+# symbol = "[⬢](bold green) "
 
 [time]
 disabled = false

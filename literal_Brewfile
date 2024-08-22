@@ -15,6 +15,7 @@ brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
 # brew "ffmpeg" # image processing
 # brew "findutils" # don't think so
 # brew "freetype" # don't know what this is...
+brew "folderify" # make macOS folder icons from solid black PNG masks
 brew "fzf" # fuzzy finder
 # brew "gdbm" # doubt it...
 brew "gh" # GitHub CLI
@@ -98,4 +99,5 @@ cask "spotify"
 # cask "tabby"
 cask "visual-studio-code"
 cask "warp"
+cask "zed"
 cask "zoom"

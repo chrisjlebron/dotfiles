@@ -47,7 +47,7 @@ View
 
 ################################################################################
 ## Rectangle
-  
+
 Open app
   -> Settings (gear icon)
   -> Import
@@ -85,3 +85,36 @@ You may need to manually set:
     Enable Auto Expansion
   Appearance
     CJL - macOS Ventura is most recent
+
+################################################################################
+## Google Chrome
+
+Update Downloads folder to use Cloud Downloads in Drive:
+  Open Google Chrome
+  Go to chrome://settings
+    or select "Settings" from the "Chrome" menu
+    or cmd+,
+  Search for "downloads"
+    Under "Location", there should be a listing of the current downloads location and a button to "Change"
+    Tap "Change" and select the Cloud Downloads directory from Google Drive:
+      "~/Library/CloudStorage/GoogleDrive-chris.j.lebron@gmail.com/My Drive/Cloud Downloads"
+
+################################################################################
+## Desktop & Downloads
+
+You should now have new default "Desktop" and "Downloads" folders
+You can set the folder icon from those folders ("Cloud Desktop" and "Cloud Downloads" in Google Drive):
+  In each folder there is a respective `cloud {FOLDER}.icns` file
+  Copy that file (cmd+c, or right-click and copy)
+  Select "Get Info" on the respective folder (or cmd+i when highlighted)
+  Select the folder icon at the top
+  Paste in the icon (cmd+v, or right-click and paste)
+
+You may also want to drag these folders to:
+  The dock
+  The "Favorites" section in the Finder sidebar
+
+If you need new icons, check:
+  https://macosicons.com
+  https://www.iconfinder.com
+  https://thenounproject.com
