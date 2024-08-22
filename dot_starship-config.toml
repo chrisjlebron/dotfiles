@@ -2,12 +2,9 @@
 
 command_timeout = 1000
 
-# [line_break]
-# disabled = true
-
 [character]
-success_symbol = "[❯](bold green) "
-error_symbol = "[✗](bold red) "
+success_symbol = "[❯](bold green)"
+error_symbol = "[✗](bold red)"
 
-[nodejs]
-symbol = "[⬢](bold green) "
+# [nodejs]
+# symbol = "[⬢](bold green) "
