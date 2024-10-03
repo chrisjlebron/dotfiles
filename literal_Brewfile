@@ -9,7 +9,7 @@ brew "bat" # full-featured, colorized `cat`
 brew "coreutils" # for better `ls`, etc.
 brew "diff-so-fancy" # colorized diffs
 brew "direnv" # env var "version" management
-brew "docker" # install docker desktop and cli tools
+brew "dnsmasq" # for DNS forwarding & host resolution (never touch /etc/hosts again)
 # brew "entr" # Will run a script when a file changes... Do I want???
 brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
 # brew "ffmpeg" # image processing
@@ -32,6 +32,7 @@ brew "jq" # CLI json viewer / processor
 brew "kubernetes-cli" # CLI tools for running k8s (think kubectl)
 # brew "libidn" # it may resurface, but for now leave out
 # brew "mitmproxy" # Intercept, modify, replay, save HTTP/S traffic. Sure. [DEPRECATED]
+brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
 # brew "mtr" # ping & traceroute. meh? play around with it
 brew "ncdu" # find where your diskspace went
 # brew "nghttp2" # not sure i need it?
@@ -70,7 +71,6 @@ cask "1password-cli"
 cask "alfred" # my guy...
 # cask "appcleaner"
 # cask "authy" # MFA (REMOVED)
-# cask "docker" # does this still exist?
 cask "firefox"
 ## FONTS
 cask "font-fira-code-nerd-font"
