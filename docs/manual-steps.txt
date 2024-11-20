@@ -118,3 +118,9 @@ If you need new icons, check:
   https://macosicons.com
   https://www.iconfinder.com
   https://thenounproject.com
+
+################################################################################
+## Docker Desktop & CLI Tools
+
+Manually install docker desktop and cli tools:
+https://docs.docker.com/desktop/install/mac-install/
