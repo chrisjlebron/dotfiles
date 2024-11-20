@@ -20,12 +20,3 @@ error_symbol = "[\ueb70](dimmed blue)"
 
 [time]
 disabled = false
-
-[shlvl]
-disabled = false
-format = '[$symbol$shlvl]($style) '
-# format = '[$symbol]($style) '
-# repeat = true
-symbol = "\uf103" # 🐚, ❯, 🪹, 🪺, \uf103
-# repeat_offset = 0
-threshold = 3
