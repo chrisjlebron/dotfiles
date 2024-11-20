@@ -1,6 +1,7 @@
 tap "clintmod/formulas"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "localstack/tap"
 # brew "bash" # meh? might want to manage version in homebrew
 # brew "bash-completion@2", link: false # meh?
 brew "bat" # full-featured, colorized `cat`
@@ -23,8 +24,8 @@ brew "git" # homebrew managed git
 brew "git-delta" # better git pager (https://github.com/dandavison/delta)
 brew "git-extras" # https://github.com/tj/git-extras/blob/master/Commands.md
 # brew "grc" # colorizes output (tailing logs, etc.). Reevaluate
-brew "htop" # a better `top`
 brew "hstr" # Formerly `hh`. View, navigate and search your command history with shell history suggest box
+brew "htop" # a better `top`
 # brew "hub" # maybe not
 # brew "imagemagick" # only install as needed
 # brew "jenv" # java version manager; (XXX: CJL - can we manage with mise?)
@@ -66,6 +67,7 @@ brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdso
 # brew "zlib" # lossless data compression (macOS already provides)
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
+brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
 cask "1password-cli"
 cask "alfred" # my guy...
