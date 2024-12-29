@@ -2,6 +2,7 @@ tap "clintmod/formulas"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "localstack/tap"
+tap "pulumi/tap" # IaC
 # brew "bash" # meh? might want to manage version in homebrew
 # brew "bash-completion@2", link: false # meh?
 brew "bat" # full-featured, colorized `cat`
@@ -29,6 +30,7 @@ brew "htop" # a better `top`
 # brew "hub" # maybe not
 # brew "imagemagick" # only install as needed
 # brew "jenv" # java version manager; (XXX: CJL - can we manage with mise?)
+brew "just" # command runner (think `make`, but easier to use)
 brew "jq" # CLI json viewer / processor
 brew "kubernetes-cli" # CLI tools for running k8s (think kubectl)
 # brew "libidn" # it may resurface, but for now leave out
@@ -68,11 +70,14 @@ brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdso
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
+brew "pulumi/tap/pulumi" # IaC
 cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
 cask "1password-cli"
 cask "alfred" # my guy...
 # cask "appcleaner"
+cask "arc" # browser
 # cask "authy" # MFA (REMOVED)
+cask "bruno" # REST client
 cask "firefox"
 ## FONTS
 cask "font-fira-code-nerd-font"
@@ -91,7 +96,6 @@ cask "google-drive" # local access & sync/backup
 # cask "nosqlclient" # does this still exist?
 # cask "p4v" # diffs, git gui, etc.
 cask "pgadmin4" # postgres UI
-cask "postman" # REST client
 # cask "recordit" # also look at gyazo
 cask "rectangle" # window/screen management
 # cask "rescuetime" # if you like...
@@ -100,6 +104,6 @@ cask "slack"
 cask "spotify"
 # cask "tabby"
 cask "visual-studio-code"
-cask "warp"
-cask "zed"
-cask "zoom"
+cask "warp" # terminal emulator
+cask "zed" # IDE
+cask "zoom" # video conferencing
