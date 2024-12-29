@@ -51,7 +51,7 @@ source ~/.zsh/plugins/ls_colors/lscolors.sh
 ###############################################################################
 ### mise
 
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh --shims)"
 
 ### end mise
 ###############################################################################

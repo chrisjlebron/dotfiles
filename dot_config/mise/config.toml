@@ -2,6 +2,6 @@
 [tools]
 node = "latest"
 deno = "latest"
-python = "latest"
-ruby = "latest"
+# python = "latest"
+# ruby = "latest"
 go = "latest"
