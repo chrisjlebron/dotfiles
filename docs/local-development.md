@@ -1,8 +1,22 @@
 # Local Development
 
+## TLS / HTTPS
+
 - mkcert for local TLS certs
   - <https://medium.com/@TomVance/local-domains-with-https-469036775818>
   - <https://github.com/FiloSottile/mkcert>
+
+```shell
+# Install package (if not already installed):
+brew install mkcert
+
+# Generate certs:
+mkcert -install
+mkcert local.test "*.local.test" 127.0.0.1
+```
+
+## Custom DNS resolution
+
 - dnsmasq for DNS forwarding & host resolution
   - `brew install dnsmasq`
   - `ls $(brew --prefix)/etc`
@@ -58,3 +72,15 @@
 - Don't use `*.dev` for local domains
   - <https://www.reddit.com/r/webdev/comments/gyehla/regular_reminder_dont_try_to_use_dev_domains_for/>
   - Use `*.test` instead, or `dev.*` if you have a domain
+
+## Githooks Recommendation
+
+- Include a version controlled `/hooks` directory in your project
+- Keep any hooks scripts in there (e.g. `commit-msg`)
+- On initialization / clone, set your local git hooks path to the version controlled directory:
+
+  ```shell
+  git config core.hooksPath ./hooks
+  ```
+
+- This can also be automated via init / bootstrap scripts, but is a better solution than something like `husky` which is language & library specific
