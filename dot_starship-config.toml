@@ -6,5 +6,8 @@ command_timeout = 1000
 success_symbol = "[❯](bold green)"
 error_symbol = "[✗](bold red)"
 
+[time]
+disabled = false
+
 # [nodejs]
 # symbol = "[⬢](bold green) "

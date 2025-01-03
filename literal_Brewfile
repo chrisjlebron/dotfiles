@@ -86,6 +86,7 @@ cask "font-inconsolata-nerd-font"
 cask "font-source-code-pro"
 cask "font-symbols-only-nerd-font"
 ## END FONTS
+cask "ghostty" # terminal emulator
 cask "google-chrome"
 cask "google-drive" # local access & sync/backup
 # cask "gyazo" # record screen, make gifs
