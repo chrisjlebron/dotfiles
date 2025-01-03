@@ -11,3 +11,12 @@ disabled = false
 
 # [nodejs]
 # symbol = "[⬢](bold green) "
+
+[shlvl]
+disabled = false
+format = '[$symbol$shlvl]($style) '
+# format = '[$symbol]($style) '
+# repeat = false # default
+symbol = "\uf103" # 🐚, ❯, 🪹, 🪺, \uf103
+# repeat_offset = 0 # default
+# threshold = 2 # default
