@@ -84,3 +84,17 @@ mkcert local.test "*.local.test" 127.0.0.1
   ```
 
 - This can also be automated via init / bootstrap scripts, but is a better solution than something like `husky` which is language & library specific
+
+## AWS CLI
+
+```shell
+# If you have sudo access to install for all users
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+
+# check install
+which aws
+# --> /usr/local/bin/aws
+aws --version
+# --> aws-cli/2.19.1 Python/3.11.6 Darwin/23.3.0 botocore/2.4.5
+```
