@@ -122,5 +122,7 @@ If you need new icons, check:
 ################################################################################
 ## Docker Desktop & CLI Tools
 
+**NOTE:** You can also use Orbstack as a Docker Desktop alternative
+
 Manually install docker desktop and cli tools:
 https://docs.docker.com/desktop/install/mac-install/

@@ -95,6 +95,7 @@ cask "google-drive" # local access & sync/backup
 # cask "insomnia" # if you like
 # cask "iterm2" # i think we're done here...
 # cask "nosqlclient" # does this still exist?
+cask "orbstack" # docker desktop alternative
 # cask "p4v" # diffs, git gui, etc.
 cask "pgadmin4" # postgres UI
 # cask "recordit" # also look at gyazo
