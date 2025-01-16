@@ -6,6 +6,9 @@ Python Version Management
 
 mise
 
+After python version installation, mise will install packages specified in [`~/.default-python-packages`](/create_dot_default-python-packages).
+For more info, see [mise docs](https://mise.jdx.dev/lang/python.html#default-python-packages).
+
 Env/Dependency Management
 -------------------------
 

@@ -81,6 +81,7 @@ echo "$version"
 # set global defaults to latest
 mise use -g node@latest
 mise use -g deno@latest
+mise use -g java@latest
 mise use -g python@latest
 mise use -g ruby@latest
 mise use -g go@latest
