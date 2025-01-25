@@ -98,6 +98,7 @@ cask "google-drive" # local access & sync/backup
 cask "orbstack" # docker desktop alternative
 # cask "p4v" # diffs, git gui, etc.
 cask "pgadmin4" # postgres UI
+cask "raycast" # alternative to alfred
 # cask "recordit" # also look at gyazo
 cask "rectangle" # window/screen management
 # cask "rescuetime" # if you like...
