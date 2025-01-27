@@ -40,11 +40,6 @@ brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
 brew "ncdu" # find where your diskspace went
 # brew "nghttp2" # not sure i need it?
 # brew "nginx" # only if needed
-# brew "node" # homebrew managed node; will likely favor nvm/mise/asdf/volta anyway, but...
-# brew "openjdk" # latest java; (XXX: CJL - can we manage with mise?)
-# brew "openjdk@11" # java11; (XXX: CJL - can we manage with mise?)
-# brew "openjdk@8" # java8; (XXX: CJL - can we manage with mise?)
-# brew "openssl@3" # I imagine this will be downloaded if needed
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
 brew "postgresql@14", restart_service: true # version specified b/c bare package is deprecated
@@ -71,6 +66,18 @@ brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 brew "pulumi/tap/pulumi" # IaC
+# ----------------
+# NEEDED FOR RUBY VIA MISE (REF: https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
+# I imagine these will already be downloaded via another package:
+brew "openssl@3"
+brew "readline"
+brew "libyaml"
+brew "gmp"
+# these won't:
+brew "autoconf"
+brew "ruby-build"
+brew "rust"
+# ----------------
 cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
 cask "1password-cli"
 cask "alfred" # my guy...
