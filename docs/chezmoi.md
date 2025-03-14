@@ -2,6 +2,11 @@
 
 <https://www.chezmoi.io/>
 
+## chezmoiignore
+
+List any files or directories that you don't want chezmoi to run or copy to $HOME
+See [.chezmoiignore](/.chezmoiignore)
+
 ## Useful commands
 
 See all chezmoi commands: <https://www.chezmoi.io/reference/commands/verify/>
