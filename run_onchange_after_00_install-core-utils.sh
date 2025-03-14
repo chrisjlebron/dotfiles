@@ -3,6 +3,11 @@
 ###############################################################################
 ### Kick off installations
 
+cat <<- EOF
+###############################################################################
+### install core utils
+EOF
+
 read -p "Do you want to run installations? (y/N) " answer
 
 if [[ "$answer" == [yY] ]]; then
