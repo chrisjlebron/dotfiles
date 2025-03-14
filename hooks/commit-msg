@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Regex to validate the type pattern
+REGEX="^((Merge[ a-z-]* branch.*)|(Revert*)|((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*\))?!?: .*))"
+FILE=$(cat "$1") # File containing the commit message
+COMMIT_MSG=$(head -n 1 "$1")
+
+# Print HEREDOC
+print_message() {
+  # NOTE: leaving space around these lines to be more legible with the lack of indent
+
+  cat <<-MESSAGE
+
+Commit Message:
+"$1"
+
+Allowed Prefix Types:
+
+"feat:"     - A new feature
+"fix:"      - A bug fix
+"refactor:" - A code change that neither fixes a bug nor adds a feature
+"test:"     - Adding missing tests or correcting existing tests
+"docs:"     - Documentation only changes
+"style:"    - Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+"perf:"     - A code change that improves performance
+"ci:"       - Changes to CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+"build:"    - Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+"chore:"    - Changes which doesn't change source code or tests e.g. changes to the build process, auxiliary tools, libraries
+"revert:"   - Revert something
+
+"BREAKING CHANGE:" or any of the above + "!" (e.g. "feat!:") for MAJOR change
+Include (scope) after for optional info (e.g. "fix(parser):")
+
+See https://www.conventionalcommits.org for more info
+
+MESSAGE
+# End of HEREDOC
+}
+
+if ! [[ $FILE =~ $REGEX ]]; then
+  echo >&2 "ERROR: Commit type prefix missing."
+  print_message "$COMMIT_MSG"
+  exit 1
+fi

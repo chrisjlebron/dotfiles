@@ -1,6 +1,8 @@
 tap "clintmod/formulas"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "localstack/tap"
+tap "pulumi/tap" # IaC
 # brew "bash" # meh? might want to manage version in homebrew
 # brew "bash-completion@2", link: false # meh?
 brew "bat" # full-featured, colorized `cat`
@@ -23,11 +25,12 @@ brew "git" # homebrew managed git
 brew "git-delta" # better git pager (https://github.com/dandavison/delta)
 brew "git-extras" # https://github.com/tj/git-extras/blob/master/Commands.md
 # brew "grc" # colorizes output (tailing logs, etc.). Reevaluate
-brew "htop" # a better `top`
 brew "hstr" # Formerly `hh`. View, navigate and search your command history with shell history suggest box
+brew "htop" # a better `top`
 # brew "hub" # maybe not
 # brew "imagemagick" # only install as needed
 # brew "jenv" # java version manager; (XXX: CJL - can we manage with mise?)
+brew "just" # command runner (think `make`, but easier to use)
 brew "jq" # CLI json viewer / processor
 brew "kubernetes-cli" # CLI tools for running k8s (think kubectl)
 # brew "libidn" # it may resurface, but for now leave out
@@ -37,11 +40,6 @@ brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
 brew "ncdu" # find where your diskspace went
 # brew "nghttp2" # not sure i need it?
 # brew "nginx" # only if needed
-# brew "node" # homebrew managed node; will likely favor nvm/mise/asdf/volta anyway, but...
-# brew "openjdk" # latest java; (XXX: CJL - can we manage with mise?)
-# brew "openjdk@11" # java11; (XXX: CJL - can we manage with mise?)
-# brew "openjdk@8" # java8; (XXX: CJL - can we manage with mise?)
-# brew "openssl@3" # I imagine this will be downloaded if needed
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
 brew "postgresql@14", restart_service: true # version specified b/c bare package is deprecated
@@ -66,11 +64,27 @@ brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdso
 # brew "zlib" # lossless data compression (macOS already provides)
 brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
+brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
+brew "pulumi/tap/pulumi" # IaC
+# ----------------
+# NEEDED FOR RUBY VIA MISE (REF: https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
+# I imagine these will already be downloaded via another package:
+brew "openssl@3"
+brew "readline"
+brew "libyaml"
+brew "gmp"
+# these won't:
+brew "autoconf"
+brew "ruby-build"
+brew "rust"
+# ----------------
 cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
 cask "1password-cli"
 cask "alfred" # my guy...
 # cask "appcleaner"
+cask "arc" # browser
 # cask "authy" # MFA (REMOVED)
+cask "bruno" # REST client
 cask "firefox"
 ## FONTS
 cask "font-fira-code-nerd-font"
@@ -79,6 +93,7 @@ cask "font-inconsolata-nerd-font"
 cask "font-source-code-pro"
 cask "font-symbols-only-nerd-font"
 ## END FONTS
+cask "ghostty" # terminal emulator
 cask "google-chrome"
 cask "google-drive" # local access & sync/backup
 # cask "gyazo" # record screen, make gifs
@@ -87,9 +102,10 @@ cask "google-drive" # local access & sync/backup
 # cask "insomnia" # if you like
 # cask "iterm2" # i think we're done here...
 # cask "nosqlclient" # does this still exist?
+cask "orbstack" # docker desktop alternative
 # cask "p4v" # diffs, git gui, etc.
 cask "pgadmin4" # postgres UI
-cask "postman" # REST client
+cask "raycast" # alternative to alfred
 # cask "recordit" # also look at gyazo
 cask "rectangle" # window/screen management
 # cask "rescuetime" # if you like...
@@ -98,6 +114,6 @@ cask "slack"
 cask "spotify"
 # cask "tabby"
 cask "visual-studio-code"
-cask "warp"
-cask "zed"
-cask "zoom"
+cask "warp" # terminal emulator
+cask "zed" # IDE
+cask "zoom" # video conferencing
