@@ -104,5 +104,36 @@ gbda () {
 # NOTE: this overrides native `diff` command
 alias diff_native='command diff'
 diff () {
-  command diff -burN $* | diff-so-fancy
+  command diff -burN "$*" | diff-so-fancy
+}
+
+#################################################
+# Safe delete
+#################################################
+
+alias rm_native='command rm'
+rm_ish () {
+  echo "Using aliased rm -> macOS trash || trash-cli..."
+
+  # Check if trash tool is already installed, install if not
+  if ! command -v trash >/dev/null; then
+    echo "trash-cli not installed. Installing..."
+    npm install --global trash-cli
+  fi
+
+  # Filter out all flags except for -v
+  args=()
+  for arg in "$@"; do
+    if [[ "$arg" == -* ]]; then
+      if [[ "$arg" == *v* ]]; then
+        args+=("-v")
+      else
+        echo "Ignoring unsupported flag(s) in: $arg"
+      fi
+    else
+      args+=("$arg")
+    fi
+  done
+
+  trash "${args[@]}"
 }
