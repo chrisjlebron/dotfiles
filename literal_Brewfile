@@ -42,6 +42,7 @@ brew "ncdu" # find where your diskspace went
 # brew "nginx" # only if needed
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
+brew "pnpm" # Node.js package manager
 brew "postgresql@14", restart_service: true # version specified b/c bare package is deprecated
 # brew "pyenv" # python version manager; (XXX: CJL - can we manage with mise?)
 # brew "rbenv" # ruby version manager; (XXX: CJL - can we manage with mise?)
