@@ -103,7 +103,7 @@ alias c='bat'
 
 # Alias for "clear"
 alias cl='clear'
-alias rm="rm -i" # ask first (@TODO: switch to use trash-cli??)
+# alias rm="rm -i" # ask first (@NOTE: currently replaced by rm() in .functions)
 alias where=which
 
 # File size
