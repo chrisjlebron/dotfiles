@@ -66,11 +66,6 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 
 [See docs for more information.](/docs/)
 
-## TODO
-
-- do i want inputrc??
-- remove zsh package management? replace with another?
-
 ## License
 
 MIT
