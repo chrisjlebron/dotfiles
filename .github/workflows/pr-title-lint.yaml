@@ -2,11 +2,16 @@ name: PR Title Lint
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
   pull_request_target:
     types:
       - opened
       - edited
+  workflow_dispatch:
 
 jobs:
   pr-title-lint:
