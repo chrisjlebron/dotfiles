@@ -77,6 +77,12 @@ mkcert local.test "*.local.test" 127.0.0.1
 
 - Include a version controlled `/hooks` directory in your project
 - Keep any hooks scripts in there (e.g. `commit-msg`)
+- Make sure the scripts are executable:
+
+  ```shell
+  chmod +x ./hooks/*
+  ```
+
 - On initialization / clone, set your local git hooks path to the version controlled directory:
 
   ```shell
