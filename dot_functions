@@ -112,7 +112,7 @@ diff () {
 #################################################
 
 alias rm_native='command rm'
-rm_ish () {
+rm () {
   echo "Using aliased rm -> macOS trash || trash-cli..."
 
   # Check if trash tool is already installed, install if not
