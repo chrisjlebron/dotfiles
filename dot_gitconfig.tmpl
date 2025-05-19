@@ -60,10 +60,16 @@
 [credential]
   helper = osxkeychain  # Uses the OSX keychain for storing credentials
 
+[fetch]
+  prune = true  # Delete local branches which have been merged on remote
+
 [push]
   autoSetupRemote = true  # Automatically sets up the remote tracking branch
   default = simple  # Uses simple push mode (pushes current branch to corresponding upstream branch)
   followTags = true  # Pushes annotated tags when pushing branches
+
+[rebase]
+  autosquash = true  # Let git handle --fixup & --squash commits automatically during a rebase
 
 [rerere]
   enabled = true  # Enables Reuse Recorded Resolution for conflict resolution
