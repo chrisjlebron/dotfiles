@@ -11,6 +11,8 @@ See [.chezmoiignore](/.chezmoiignore)
 
 See all chezmoi commands: <https://www.chezmoi.io/reference/commands/verify/>
 
+⚠️ Note: I have the alias `cm` set up to simplify (see [/dot_aliases](/dot_aliases))
+
 ```shell
 # alias for `chezmoi`
 cm

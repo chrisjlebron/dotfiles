@@ -26,7 +26,9 @@ Check whether these are available in homebrew cask before downloading manually
 - docker
 - git butler
 - dbeaver
-- monosnap
+- monosnap?
+- <https://cleanshot.com/>?
+- shottr?
 - pgadmin
 - slack
 - Arc

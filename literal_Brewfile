@@ -80,7 +80,7 @@ brew "ruby-build"
 brew "rust"
 # ----------------
 cask "1password", args: { appdir: "/Applications" } # 1password requires that it's installed on the root
-cask "1password-cli"
+cask "1password-cli" # "op" cli utility; used for fetching secrets from 1password (e.g. with chezmoi in ./dot_exports.tmpl)
 cask "alfred" # my guy...
 # cask "appcleaner"
 cask "arc" # browser
