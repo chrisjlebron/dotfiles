@@ -10,7 +10,7 @@
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
 # NOTE: this is the load order, so add needed commands etc. earlier
-for file in ~/.{extra,exports,eval,aliases,functions}; do
+for file in ~/.{extra,exports,exports-dynamic,eval,aliases,functions}; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && source "$file"
 done

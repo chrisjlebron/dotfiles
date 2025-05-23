@@ -54,6 +54,23 @@ Open app
     -> Select "RectangleConfig.json" from this directory
 
 ################################################################################
+## 1password
+
+Any values fetched from 1password with `op` or the chezmoi integration
+won't be available until after you've authenticated to 1password and
+configured the application as described below.
+
+Open app
+  -> Login / Authenticate
+  # Initialize & Authenticate CLI tool:
+  -> Settings
+    -> Security
+      -> Enable: Touch ID
+    -> Developer
+      -> Command-Line Interface
+        -> Enable: Integrate with 1password CLI
+
+################################################################################
 ## Google Drive
 
 Set up Google Drive sync
