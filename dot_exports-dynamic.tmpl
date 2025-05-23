@@ -1,0 +1,21 @@
+###############################################################################
+#
+# These are all dynamically derived by chezmoi, and as such need to be sourced
+# after the dependencies have been installed (e.g. 1password-cli).
+# The PATH checks are included so this can be sourced idempotently without
+# throwing errors and causing chezmoi to exit.
+# I've chosen to not set variables if required dependencies don't exist
+#
+###############################################################################
+
+
+###############################################################################
+### 1password
+
+# add all 1password fetch exports here:
+{{ if lookPath "op" }}
+export GEMINI_API_KEY={{- (onepasswordRead "op://Personal/Google Gemini API/credential") }}
+{{ end }}
+
+### end 1password
+###############################################################################
