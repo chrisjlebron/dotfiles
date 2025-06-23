@@ -23,10 +23,32 @@ time ./install.sh
 If you want to add a GitHub personal access token now:
 
 - Login to GitHub with Safari & 1password
-- Generate new token
+- Generate new token:
   - See [GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+  - PAT should have at least the following permissions
+    - `repo`
+    - `workflow`
+    - `read:org`
 - Paste into setup when prompted
 - chezmoi writes it to a local file that is unique per device and doesn't get synced to the cloud
+- To use `gh` as a credential helper (this helps with VS Code Devcontainers), run:
+
+  ```shell
+  gh auth login
+  ```
+
+  - Set it to use:
+    - GitHub.com
+    - HTTPS as preferred protocol
+    - Authenticate wit GitHub credentials
+    - Paste in authentication token
+  - And then paste in the PAT generated in an earlier step here
+  - It should inform you that you're logged in as `username` (your GitHub username / handle)
+  - You can also manually confirm with:
+
+  ```shell
+  gh auth status
+  ```
 
 Otherwise, you can add it later using `chezmoi edit-config` or the command chezmoi displays on initial bootstrap steps.
 
