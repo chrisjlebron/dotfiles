@@ -31,7 +31,7 @@ If you want to add a GitHub personal access token now:
     - `read:org`
 - Paste into setup when prompted
 - chezmoi writes it to a local file that is unique per device and doesn't get synced to the cloud
-- To use `gh` as a credential helper (this helps with VS Code Devcontainers), run:
+- To use `gh` as a credential helper (this helps with VS Code Devcontainers; see <https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git>), run:
 
   ```shell
   gh auth login
