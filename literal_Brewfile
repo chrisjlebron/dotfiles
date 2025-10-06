@@ -47,11 +47,12 @@ brew "postgresql@14", restart_service: true # version specified b/c bare package
 # brew "pyenv" # python version manager; (XXX: CJL - can we manage with mise?)
 # brew "rbenv" # ruby version manager; (XXX: CJL - can we manage with mise?)
 brew "redis", restart_service: true
+brew "ripgrep" # alternative to grep/ack/ag
 # brew "ruby" # homebrew managed ruby
 brew "shellcheck" # bash linting
 brew "starship" # nice prompt manager/editor (https://github.com/starship/starship)
 # brew "subversion" # needed to install font-source-code-pro; (XXX: CJL - still needed?)
-brew "the_silver_searcher" # `ag`, alternative to grep/ack; (XXX: CJL - consider switching to rg)
+# brew "the_silver_searcher" # `ag`, alternative to grep/ack; (XXX: CJL - consider switching to rg)
 # brew "thefuck" # `jk`, retry/suggest commands; (XXX: CJL - haven't used in a while, warp handles this well; also it slows loading times)
 brew "tree" # view dirs as trees
 brew "vim" # get brew managed vim
