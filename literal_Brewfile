@@ -1,6 +1,4 @@
 tap "clintmod/formulas"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "localstack/tap"
 tap "pulumi/tap" # IaC
 # brew "bash" # meh? might want to manage version in homebrew
