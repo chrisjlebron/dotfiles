@@ -18,6 +18,7 @@ brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
 brew "folderify" # make macOS folder icons from solid black PNG masks
 brew "fzf" # fuzzy finder
 # brew "gdbm" # doubt it...
+brew "gemini-cli"
 brew "gh" # GitHub CLI
 brew "git" # homebrew managed git
 brew "git-delta" # better git pager (https://github.com/dandavison/delta)
@@ -38,6 +39,7 @@ brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
 brew "ncdu" # find where your diskspace went
 # brew "nghttp2" # not sure i need it?
 # brew "nginx" # only if needed
+brew "ollama"
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
 brew "pnpm" # Node.js package manager
@@ -65,6 +67,7 @@ brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 brew "pulumi/tap/pulumi" # IaC
+brew "sst/tap/opencode" # Opencode AI terminal agent
 # ----------------
 # NEEDED FOR RUBY VIA MISE (REF: https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
 # I imagine these will already be downloaded via another package:
