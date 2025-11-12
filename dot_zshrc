@@ -26,21 +26,17 @@ setopt HIST_IGNORE_ALL_DUPS
 
 ##### Skip package manager for Warp
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  source ~/.zsh_package_management
+  # shellcheck source=/dev/null
+  source "$HOME/.zsh_package_management"
 fi
 
 ### end Load zsh package management
 ################################################################################
 
 
-# Enable autosuggestions automatically.
-# zle-line-init() {
-#     zle autosuggest-start
-# }
-# zle -N zle-line-init
+###############################################################################
+### don't load features that come standard in Warp
 
-
-##### don't load features that come standard with Warp
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   # bind UP and DOWN arrow keys for history search
   zmodload zsh/terminfo
@@ -48,41 +44,52 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   bindkey "$terminfo[kcud1]" history-substring-search-down
   bindkey "$terminfo[cuu1]" history-substring-search-up
   bindkey "$terminfo[cud1]" history-substring-search-down
+
+  # Enable interactive menu selection for completions
+  zstyle ':completion:*' menu select
+
+  # Configure case-insensitive matching and partial word completion with multiple matchers:
+  # ''                      -> exact matching (default)
+  # 'm:{a-zA-Z}={A-Za-z}'   -> case-insensitive matching (lowercase matches uppercase and vice versa)
+  # 'r:|[._-]=* r:|=*'      -> partial matching from right side at word boundaries (., _, -)
+  # 'l:|=* r:|=*'           -> partial matching from left side and anywhere within words
+  zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 fi
 
-# zstyle ':completion:*' menu select
-# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+### end don't load features that come standard in Warp
+###############################################################################
+
 
 ################################################################################
 ### Run zsh/bash shared setup
 
-source ~/.shared
+# shellcheck source=/dev/null
+source "$HOME/.shared"
 
 ###
 ################################################################################
 
-# Automatically list directory contents on `cd`.
-auto-ls () {
-  emulate -L zsh;
-  # this should be the aliased call to eza; if not, source order may need to be tweaked
-  ls
-}
-chpwd_functions=( auto-ls $chpwd_functions )
 
-# For debugging PATH
-# echo "PATH after zshrc: \n${PATH}"
+###############################################################################
+### completions
 
+# shellcheck source=/dev/null
+source "$HOME/.completions"
+
+# # bash completion compatibility in zsh
 # autoload -U +X bashcompinit && bashcompinit
 
-# autocompletion for vault
+# # autocompletion for vault
 # complete -o nospace -C $(brew --prefix)/bin/vault vault
 
-# autocompletion for aws
+# # autocompletion for aws
 # AWS_COMPLETER_DIR=$(which aws_completer)
 # complete -C "$AWS_COMPLETER_DIR" aws
 
-# Init rbenv
-# command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - zsh)"
+### end completions
+###############################################################################
+
 
 # # uncomment to finish profiling
 # zprof
