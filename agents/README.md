@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Agents workspace (authoritative)
 
 This directory is a lightweight workspace for specs, implementation plans, decisions, todos, and short‑lived experiments produced by humans and agents.
