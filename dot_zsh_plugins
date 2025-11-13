@@ -1,0 +1,51 @@
+# Antidote-based plugin loader (lightweight, fast)
+# This file is sourced by ~/.zshrc
+
+# Install Antidote if missing
+if [[ ! -d "${HOME}/.antidote" ]]; then
+  git clone --depth=1 https://github.com/mattmc3/antidote "${HOME}/.antidote" >/dev/null 2>&1
+fi
+
+# Load Antidote
+if [[ -r "${HOME}/.antidote/antidote.zsh" ]]; then
+  source "${HOME}/.antidote/antidote.zsh"
+else
+  # Fallback: no plugin manager available; exit early to keep shell usable
+  return 0
+fi
+
+# Determine terminal
+_term_prog="${TERM_PROGRAM:-}"
+
+# Feature toggles
+# LIGHT_SHELL=1 -> skip heavier visual plugins (syntax highlighting)
+# WARP_USE_ZSH_AUTOSUGGEST=0 in Warp -> disable autosuggestions inside Warp
+
+# Build plugin list
+plugins=(
+  zsh-users/zsh-completions
+)
+
+# Autosuggestions (unless explicitly disabled in Warp)
+if ! { [[ "${_term_prog}" == "WarpTerminal" ]] && [[ "${WARP_USE_ZSH_AUTOSUGGEST:-1}" == "0" ]]; }; then
+  plugins+=( zsh-users/zsh-autosuggestions )
+fi
+
+# Syntax highlighting unless LIGHT_SHELL=1
+if [[ "${LIGHT_SHELL:-0}" != "1" ]]; then
+  plugins+=( zdharma-continuum/fast-syntax-highlighting )
+fi
+
+# History substring search (small, safe everywhere) (defer=3, if available)
+plugins+=( zsh-users/zsh-history-substring-search )
+
+# Load plugins
+antidote load "${plugins[@]}"
+
+# Autosuggestion tuning (no-op if plugin disabled)
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+: "${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:=fg=245}" # default subtly gray
+
+# Cleanup
+unset -v _term_prog plugins
