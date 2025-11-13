@@ -35,29 +35,16 @@ fi
 
 
 ###############################################################################
-### don't load features that come standard in Warp
+### Keybindings (universal)
 
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  # bind UP and DOWN arrow keys for history search
-  zmodload zsh/terminfo
-  bindkey "${terminfo[kcuu1]}" history-substring-search-up # Application mode
-  bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
-  bindkey "${terminfo[cuu1]}" history-substring-search-up # Standard mode
-  bindkey "${terminfo[cud1]}" history-substring-search-down # Standard mode
+# Bind UP and DOWN arrow keys for history substring search (both modes)
+zmodload zsh/terminfo
+bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
+bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
+bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
+bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
 
-  # Enable interactive menu selection for completions
-  zstyle ':completion:*' menu select
-
-  # Configure case-insensitive matching and partial word completion with multiple matchers:
-  # ''                      -> exact matching (default)
-  # 'm:{a-zA-Z}={A-Za-z}'   -> case-insensitive matching (lowercase matches uppercase and vice versa)
-  # 'r:|[._-]=* r:|=*'      -> partial matching from right side at word boundaries (., _, -)
-  # 'l:|=* r:|=*'           -> partial matching from left side and anywhere within words
-  zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-fi
-
-
-### end don't load features that come standard in Warp
+### end Keybindings (universal)
 ###############################################################################
 
 

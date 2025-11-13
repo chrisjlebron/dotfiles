@@ -29,7 +29,7 @@ chpwd_functions=( auto-ls "$chpwd_functions" )
 
 
 ###############################################################################
-### compinit
+### compinit & styling
 
 # link autocompletions for tools installed with brew
 if type brew &>/dev/null; then
@@ -43,9 +43,18 @@ if type brew &>/dev/null; then
   else
     compinit -C
   fi
+
+  # Completion styling & behavior (applies to all terminals)
+  zstyle ':completion:*' menu select
+  zstyle ':completion:*' rehash true
+  zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+  zstyle ':completion:*' completer _complete _match _approximate
+  zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
+  zstyle ':completion:*:messages' format '%F{blue}%d%f'
+  zstyle ':completion:*:warnings' format '%F{red}%d%f'
 fi
 
-### end compinit
+### end compinit & styling
 ###############################################################################
 
 
