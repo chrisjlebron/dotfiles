@@ -66,32 +66,38 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 - Directory navigation provided by [zoxide](https://github.com/ajeetdsouza/zoxide), in concert with [fzf](https://github.com/junegunn/fzf)
 - `cat` made nicer via [bat](https://github.com/sharkdp/bat)
 - Git meta (diff, pager, blame, grep) via [delta](https://github.com/dandavison/delta) (see [dot_gitconfig.tmpl](/dot_gitconfig.tmpl) for config)
-- Non-Warp zsh plugin management is currently via [zplug](https://github.com/zplug/zplug)
+- zsh plugin management is currently via [antidote](https://antidote.sh/)
 
 ## Gotchas
 
-1. This has currently commented out the zsh package management for Warp
-   1. We'll see how far we can get without it
+1. This uses a reduced set of zsh plugins for Warp
 2. Oh-my-zsh git plugin is currently being loaded via a [.chezmoiexternal.toml](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
-   1. Previously these were loaded via zplug
-   2. If I decide I need a zsh plugin manager I'll switch back to using that
-   3. Includes lots of git aliases you rely on
+   - Includes lots of git aliases you rely on, so don't scrap it!
 3. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
 4. `ls` styling is configured via:
    1. colors are via `LS_COLORS`, which is installed as a [chezmoi external](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
    2. colors and icons are enabled via `eza` flags (see [dot_aliases](/dot_aliases))
    3. icons are made possible via nerd fonts, which must be selected in your terminal preferences
-      - Nerd-fonts are installed via Brewfile
-      - Currently favoring fira-code
+     - Nerd-fonts are installed via Brewfile
+     - Currently favoring fira-code
+5. Chezmoi staging vs live dotfiles
+   1. This repository is the "source state". Changes here are not active until applied to `$HOME` via `chezmoi apply` (or during `./install.sh`).
+   2. This affects how you would benchmark shell startup performance:
+      - Collect Baseline: run `time zsh -i -c exit` ≥3 times before applying new changes (reflects currently applied dotfiles in `$HOME`).
+      - Apply changes: `chezmoi apply` (or `chezmoi apply --include dotfiles,scripts` for a narrower scope).
+      - Post-change: re-run `time zsh -i -c exit` ≥3 times; compare medians to baseline.
+     - Profiling: set `ZSH_STARTUP_PROFILE=1` in the applied environment (export is added in `dot_exports.tmpl`); then start a shell to view `zprof` output.
 
 ## Docs
 
 [See docs for more information.](/docs/)
 
-## TODO
+### Environment Variables and toggles
 
-- do i want inputrc??
-- remove zsh package management? replace with another?
+- Profiling toggle: set `ZSH_STARTUP_PROFILE=1` before launching a shell to enable `zprof` output.
+- Opt-out envs (Set these in your environment or via a local override rather than editing applied files for quick experiments):
+  - `LIGHT_SHELL=1` to skip syntax highlighting.
+  - `WARP_USE_ZSH_AUTOSUGGEST=0` to disable autosuggestions in Warp.
 
 ## License
 
