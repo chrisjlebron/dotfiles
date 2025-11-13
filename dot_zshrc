@@ -22,15 +22,15 @@ setopt HIST_IGNORE_ALL_DUPS
 
 
 ################################################################################
-### Load zsh package management
+### Load zsh plugins (Antidote)
 
-##### Skip package manager for Warp
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+# Load lightweight plugin manager
+if [[ -r "$HOME/.zsh_plugins" ]]; then
   # shellcheck source=/dev/null
-  source "$HOME/.zsh_package_management"
+  source "$HOME/.zsh_plugins"
 fi
 
-### end Load zsh package management
+### end Load zsh plugins (Antidote)
 ################################################################################
 
 

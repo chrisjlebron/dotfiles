@@ -18,7 +18,7 @@ Relates: agents/features/zsh-enhancements/impl-plan.md
 | ID | Task | Status | Priority | Owner | Notes |
 | --- | ---- | ------ | -------- | ----- | ----- |
 | ZSH-001 | Create `dot_zsh_plugins` with Antidote bootstrap | [x] | H | chrisjlebron | New loader file |
-| ZSH-002 | Source loader unconditionally in `dot_zshrc` | [ ] | H | chrisjlebron | Remove Warp skip |
+| ZSH-002 | Source loader unconditionally in `dot_zshrc` | [x] | H | chrisjlebron | Remove Warp skip |
 | ZSH-003 | Move completion zstyle config to `dot_eval` | [ ] | H | chrisjlebron | After compinit |
 | ZSH-004 | Add autosuggestion tunables | [ ] | M | chrisjlebron | strategy, buffer, style |
 | ZSH-005 | Add history substring search keybindings | [ ] | M | chrisjlebron | arrow + fallbacks |
