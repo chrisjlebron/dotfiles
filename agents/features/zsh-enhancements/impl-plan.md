@@ -1,7 +1,7 @@
 ---
 Status: Draft
 Owner: chrisjlebron
-Updated: 2025-11-12
+Updated: 2025-11-13
 Relates: agents/features/zsh-enhancements/spec.md
 ---
 
@@ -27,6 +27,16 @@ Deliver a unified, performant shell experience across terminals by standardizing
 5. Add history substring search keybindings using `$terminfo` codes and fallbacks.
 6. Introduce env toggles (`LIGHT_SHELL`, `WARP_USE_ZSH_AUTOSUGGEST`).
 7. Add profiling hooks (`zmodload zsh/zprof` early; `zprof` output late when enabled).
+   - Add a conditional default export so the variable exists by default without overriding explicit runs.
+     - In `dot_exports.tmpl` (conditional):
+
+       ```zsh
+       # Only set a default if not already defined in the environment
+       if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then
+         export ZSH_STARTUP_PROFILE=0
+       fi
+       ```
+
 8. Benchmark pre/post (≥3 runs) and record medians.
 9. Remove zplug sourcing + optionally clean `~/.zplug` after verification.
 10. Update docs (`README`, troubleshooting) with new layout and toggles.
@@ -111,6 +121,31 @@ Do not disable features based on `$TERM_PROGRAM`; rely on opt‑out env vars.
 - Apply tunables
 - Add keybindings
 - Add profiling hooks
+- Add default export in `dot_exports.tmpl` for `ZSH_STARTUP_PROFILE` (conditional)
 - Benchmark
 - Remove zplug
 - Update docs
+
+## Profiling toggle details
+
+- Early in `dot_zshrc`:
+
+  ```zsh
+  if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+    zmodload zsh/zprof
+  fi
+  ```
+
+- End of `dot_zshrc`:
+
+  ```zsh
+  if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+    zprof
+  fi
+  ```
+
+- Debugging workflow:
+  1. One-off profile: `ZSH_STARTUP_PROFILE=1 zsh -i -c exit`
+  2. Inspect `zprof` output for heavy initializers
+  3. Iterate small changes and re-run
+  4. Disable when done: `unset ZSH_STARTUP_PROFILE`

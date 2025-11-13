@@ -1,7 +1,7 @@
 ---
 Status: Draft
 Owner: chrisjlebron
-Updated: 2025-11-12
+Updated: 2025-11-13
 Relates: agents/features/zsh-enhancements/impl-plan.md
 ---
 
@@ -29,3 +29,5 @@ Relates: agents/features/zsh-enhancements/impl-plan.md
 | ZSH-010 | Remove zplug references & clean directory | [ ] | M | chrisjlebron | post-validation |
 | ZSH-011 | Update documentation (README, troubleshooting) | [ ] | M | chrisjlebron | reflect new layout |
 | ZSH-012 | Verify no duplicate compinit calls | [ ] | H | chrisjlebron | instrumentation or echo guard |
+| ZSH-013 | Add default `ZSH_STARTUP_PROFILE` export in `dot_exports.tmpl` (conditional) | [ ] | M | chrisjlebron | `if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then export ZSH_STARTUP_PROFILE=0; fi` |
+| ZSH-014 | Document Warp autosuggestion opt-out toggle | [ ] | M | chrisjlebron | `WARP_USE_ZSH_AUTOSUGGEST=0` in docs |
