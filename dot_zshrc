@@ -40,10 +40,10 @@ fi
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   # bind UP and DOWN arrow keys for history search
   zmodload zsh/terminfo
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-  bindkey "$terminfo[cuu1]" history-substring-search-up
-  bindkey "$terminfo[cud1]" history-substring-search-down
+  bindkey "${terminfo[kcuu1]}" history-substring-search-up # Application mode
+  bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
+  bindkey "${terminfo[cuu1]}" history-substring-search-up # Standard mode
+  bindkey "${terminfo[cud1]}" history-substring-search-down # Standard mode
 
   # Enable interactive menu selection for completions
   zstyle ':completion:*' menu select
