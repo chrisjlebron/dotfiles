@@ -49,6 +49,15 @@ Observed characteristics:
 - zplug adds cold‑start latency and network footprint; plugin list is reasonable but the autosuggestions source is not the canonical repo.
 - `compinit` is already centralized in `dot_eval` (good), but styling lives in `dot_zshrc` under a non‑Warp conditional (inconsistent application).
 
+### Other related files considered (non-blocking)
+
+- `dot_exports.tmpl`
+  - Exports locale, editor, pager, starship config selection, misc PATH entries. No direct changes to zsh completion engine or plugin loader. Included here for awareness only.
+- `dot_exports-dynamic.tmpl`
+  - Chezmoi-rendered dynamic exports (e.g., secrets via 1Password). Not involved in completion initialization or plugin management.
+- `dot_functions`
+  - User functions/aliases (e.g., `rm()` wrapper, `diff()` wrapper). No `compdef` registrations present; does not affect `compinit` or plugin load order.
+
 ## Problems to fix
 
 1. Inconsistent UX between Warp and other terminals (plugins & styles disabled in Warp).
@@ -62,6 +71,17 @@ Observed characteristics:
 - Completion UI: menu‑select enabled, smart matchers, auto‑rehash after installs, readable formatting.
 - Plugin manager that is simple and fast (or static sourcing) with clear, minimal plugin list.
 - Tuned autosuggestions: subtle hint color, use history‑first, cap buffer length.
+
+### Warp specifics and interplay
+
+- Warp uses your shell’s native completion system. Improving zsh completion configuration (FPATH, `compinit`, and `zstyle` matchers/menus) benefits Warp directly.
+- Warp provides AI-powered assistance (natural language to commands, context-aware prompts) and can inject commands into your shell, but it doesn’t replace inline zsh autosuggestions. Keeping a lightweight `zsh-autosuggestions` improves the typing experience inside Warp.
+- Key bindings inside Warp work like a standard terminal; be mindful if binding Tab to `autosuggest-accept` as it may conflict with your existing completion flow.
+
+References:
+
+- Known issues and key bindings: [docs.warp.dev/help/known-issues](https://docs.warp.dev/help/known-issues) (for example, `bindkey 'tab' autosuggest-accept`)
+- AI usage across REPLs (illustrates NL→command flow that augments, not replaces, shell completion): [docs.warp.dev/.../postgres-repl](https://docs.warp.dev/university/developer-workflows/backend/how-to-write-sql-commands-inside-a-postgres-repl)
 
 ## Options for plugin management
 
@@ -125,6 +145,7 @@ Non‑Warp extras (optional):
 Notes:
 
 - Replace `tarruda/zsh-autosuggestions` with `zsh-users/zsh-autosuggestions`.
+- Replace `z-shell/H-S-MW` with `zdharma-continuum/history-search-multi-word` (to maintain alignment with zdharma-continuum managed repos)
 - Keep LS_COLORS and git plugin sourcing as‑is via `dot_eval`.
 
 ## Completion engine and styles (centralized in `dot_eval`)
@@ -197,3 +218,20 @@ Notes:
 - Switch to Znap if we want further startup wins; its lazy loading can shave more ms at the cost of complexity.
 - Vendoring via chezmoi externals to remove runtime git clones entirely.
 - Add a tiny `zprof` profiling toggle: set `ZSH_STARTUP_PROFILE=1` to enable and log hot spots.
+  - Planned implementation details:
+    - Early in `dot_zshrc`: `if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then zmodload zsh/zprof; fi`
+    - End of `dot_zshrc`: `if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then zprof; fi`
+    - Default availability via exports: add a conditional default in `dot_exports.tmpl` so the variable exists but can be overridden at call time:
+
+      ```zsh
+      # Only set a default if not already defined in the environment
+      if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then
+        export ZSH_STARTUP_PROFILE=0
+      fi
+      ```
+
+    - Debugging workflow:
+      1. Run a one-off profiled interactive shell: `ZSH_STARTUP_PROFILE=1 zsh -i -c exit`.
+      2. Inspect `zprof` output to find heavy initializers (plugins, compinit, sources).
+      3. Make a small change and re-run step 1 to compare.
+      4. Unset when done to avoid overhead: `unset ZSH_STARTUP_PROFILE`.
