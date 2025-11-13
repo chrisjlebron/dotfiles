@@ -23,11 +23,11 @@ Relates: agents/features/zsh-enhancements/impl-plan.md
 | ZSH-004 | Add autosuggestion tunables | [ ] | M | chrisjlebron | strategy, buffer, style |
 | ZSH-005 | Add history substring search keybindings | [ ] | M | chrisjlebron | arrow + fallbacks |
 | ZSH-006 | Add env toggles (LIGHT_SHELL, WARP_USE_ZSH_AUTOSUGGEST) | [ ] | M | chrisjlebron | opt-outs |
-| ZSH-007 | Add profiling hooks (`ZSH_STARTUP_PROFILE`) | [ ] | L | chrisjlebron | optional performance |
+| ZSH-007 | Add profiling hooks (`ZSH_STARTUP_PROFILE`) | [x] | L | chrisjlebron | optional performance |
 | ZSH-008 | Benchmark before changes | [ ] | H | chrisjlebron | capture baseline |
 | ZSH-009 | Benchmark after changes | [ ] | H | chrisjlebron | compare median |
 | ZSH-010 | Remove zplug references & clean directory | [ ] | M | chrisjlebron | post-validation |
 | ZSH-011 | Update documentation (README, troubleshooting) | [ ] | M | chrisjlebron | reflect new layout |
 | ZSH-012 | Verify no duplicate compinit calls | [ ] | H | chrisjlebron | instrumentation or echo guard |
-| ZSH-013 | Add default `ZSH_STARTUP_PROFILE` export in `dot_exports.tmpl` (conditional) | [ ] | M | chrisjlebron | `if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then export ZSH_STARTUP_PROFILE=0; fi` |
+| ZSH-013 | Add default `ZSH_STARTUP_PROFILE` export in `dot_exports.tmpl` (conditional) | [x] | M | chrisjlebron | `if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then export ZSH_STARTUP_PROFILE=0; fi` |
 | ZSH-014 | Document Warp autosuggestion opt-out toggle | [ ] | M | chrisjlebron | `WARP_USE_ZSH_AUTOSUGGEST=0` in docs |

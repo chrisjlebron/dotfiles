@@ -1,5 +1,7 @@
-# uncomment to profile prompt startup with zprof
-# zmodload zsh/zprof
+# Optional: enable startup profiling with zprof when toggled
+if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+  zmodload zsh/zprof
+fi
 
 
 
@@ -78,5 +80,6 @@ source "$HOME/.completions"
 ###############################################################################
 
 
-# # uncomment to finish profiling
-# zprof
+if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+  zprof
+fi
