@@ -1,0 +1,31 @@
+---
+Status: Draft
+Owner: chrisjlebron
+Updated: 2025-11-12
+Relates: agents/features/zsh-enhancements/impl-plan.md
+---
+
+# TODOs – zsh enhancements
+
+## Legend
+
+- [ ] open
+- [x] done
+- [~] in-progress
+
+## Tasks
+
+| ID | Task | Status | Priority | Owner | Notes |
+| --- | ---- | ------ | -------- | ----- | ----- |
+| ZSH-001 | Create `dot_zsh_plugins` with Antidote bootstrap | [ ] | H | chrisjlebron | New loader file |
+| ZSH-002 | Source loader unconditionally in `dot_zshrc` | [ ] | H | chrisjlebron | Remove Warp skip |
+| ZSH-003 | Move completion zstyle config to `dot_eval` | [ ] | H | chrisjlebron | After compinit |
+| ZSH-004 | Add autosuggestion tunables | [ ] | M | chrisjlebron | strategy, buffer, style |
+| ZSH-005 | Add history substring search keybindings | [ ] | M | chrisjlebron | arrow + fallbacks |
+| ZSH-006 | Add env toggles (LIGHT_SHELL, WARP_USE_ZSH_AUTOSUGGEST) | [ ] | M | chrisjlebron | opt-outs |
+| ZSH-007 | Add profiling hooks (`ZSH_STARTUP_PROFILE`) | [ ] | L | chrisjlebron | optional performance |
+| ZSH-008 | Benchmark before changes | [ ] | H | chrisjlebron | capture baseline |
+| ZSH-009 | Benchmark after changes | [ ] | H | chrisjlebron | compare median |
+| ZSH-010 | Remove zplug references & clean directory | [ ] | M | chrisjlebron | post-validation |
+| ZSH-011 | Update documentation (README, troubleshooting) | [ ] | M | chrisjlebron | reflect new layout |
+| ZSH-012 | Verify no duplicate compinit calls | [ ] | H | chrisjlebron | instrumentation or echo guard |
