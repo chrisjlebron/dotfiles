@@ -19,26 +19,27 @@ _term_prog="${TERM_PROGRAM:-}"
 
 # Feature toggles
 # LIGHT_SHELL=1 -> skip heavier visual plugins (syntax highlighting)
-# WARP_USE_ZSH_AUTOSUGGEST=0 in Warp -> disable autosuggestions inside Warp
 
 ## Plugins file management (on-change write)
 # Build plugin list dynamically per shell, then update ~/.zsh_plugins.txt only if contents changed.
-_dotfiles_repo_path=$(chezmoi source-path)
-_base_zsh_plugins="${_dotfiles_repo_path}/.zsh_plugins.txt.base"
+_base_zsh_plugins="${HOME}/.zsh_plugins.txt.base"
 _zsh_plugins_file="${HOME}/.zsh_plugins.txt"
 _zsh_plugins_tmp="${_zsh_plugins_file}.new"
 
 # initialize as empty array so later `plugins+=(...)` appends work
 plugins=()
 
-# Autosuggestions (unless explicitly disabled in Warp)
-if [[ "${_term_prog}" != "WarpTerminal" || "${WARP_USE_ZSH_AUTOSUGGEST}" == "1" ]]; then
-  plugins+=( zsh-users/zsh-autosuggestions )
-fi
-
 # Syntax highlighting unless LIGHT_SHELL=1
 if [[ "${LIGHT_SHELL:-0}" != "1" ]]; then
   plugins+=( zdharma-continuum/fast-syntax-highlighting )
+fi
+
+# for non-Warp terminals
+if [[ "${_term_prog}" != "WarpTerminal" ]]; then
+  # Autosuggestions (unless explicitly disabled in Warp)
+  plugins+=( zsh-users/zsh-autosuggestions )
+  # command history search by keyboard
+  plugins+=( zsh-users/zsh-history-substring-search )
 fi
 
 # Write to temp file
@@ -65,10 +66,37 @@ unset -v _dotfiles_repo_path _base_zsh_plugins _zsh_plugins_file _zsh_plugins_tm
 # Load plugins (reads ~/.zsh_plugins.txt)
 antidote load
 
-# Autosuggestion tuning (no-op if plugin disabled)
+
+
+###############################################################################
+### Autosuggestion tuning
+### (no-op if plugin disabled)
+
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 : "${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:=fg=245}" # default subtly gray
+
+### end Autosuggestion tuning
+###############################################################################
+
+
+
+###############################################################################
+### Keybindings (history-substring-search)
+
+# Bind UP and DOWN arrow keys for history substring search (both modes)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# zmodload zsh/terminfo
+# bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
+# bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
+# bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
+# bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
+
+### end Keybindings (history-substring-search)
+###############################################################################
+
+
 
 # Cleanup
 unset -v _term_prog plugins

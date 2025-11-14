@@ -27,27 +27,14 @@ setopt HIST_IGNORE_ALL_DUPS
 ### Load zsh plugins (Antidote)
 
 # Load lightweight plugin manager
-if [[ -r "$HOME/.zsh_plugins" ]]; then
+if [[ -r "$HOME/.zsh_plugins_management" ]]; then
   # shellcheck source=/dev/null
-  source "$HOME/.zsh_plugins"
+  source "$HOME/.zsh_plugins_management"
 fi
 
 ### end Load zsh plugins (Antidote)
 ################################################################################
 
-
-###############################################################################
-### Keybindings (universal)
-
-# Bind UP and DOWN arrow keys for history substring search (both modes)
-zmodload zsh/terminfo
-bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
-bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
-bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
-bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
-
-### end Keybindings (universal)
-###############################################################################
 
 
 ################################################################################
@@ -58,6 +45,7 @@ source "$HOME/.shared"
 
 ###
 ################################################################################
+
 
 
 ###############################################################################
@@ -78,6 +66,7 @@ source "$HOME/.completions"
 
 ### end completions
 ###############################################################################
+
 
 
 if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
