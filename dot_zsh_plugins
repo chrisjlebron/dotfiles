@@ -21,13 +21,18 @@ _term_prog="${TERM_PROGRAM:-}"
 # LIGHT_SHELL=1 -> skip heavier visual plugins (syntax highlighting)
 # WARP_USE_ZSH_AUTOSUGGEST=0 in Warp -> disable autosuggestions inside Warp
 
-# Build plugin list
-plugins=(
-  zsh-users/zsh-completions
-)
+## Plugins file management (on-change write)
+# Build plugin list dynamically per shell, then update ~/.zsh_plugins.txt only if contents changed.
+_dotfiles_repo_path=$(chezmoi source-path)
+_base_zsh_plugins="${_dotfiles_repo_path}/.zsh_plugins.txt.base"
+_zsh_plugins_file="${HOME}/.zsh_plugins.txt"
+_zsh_plugins_tmp="${_zsh_plugins_file}.new"
+
+# initialize as empty array so later `plugins+=(...)` appends work
+plugins=()
 
 # Autosuggestions (unless explicitly disabled in Warp)
-if ! { [[ "${_term_prog}" == "WarpTerminal" ]] && [[ "${WARP_USE_ZSH_AUTOSUGGEST:-1}" == "0" ]]; }; then
+if [[ "${_term_prog}" != "WarpTerminal" || "${WARP_USE_ZSH_AUTOSUGGEST}" == "1" ]]; then
   plugins+=( zsh-users/zsh-autosuggestions )
 fi
 
@@ -36,22 +41,28 @@ if [[ "${LIGHT_SHELL:-0}" != "1" ]]; then
   plugins+=( zdharma-continuum/fast-syntax-highlighting )
 fi
 
-# History substring search (small, safe everywhere) (defer=3, if available)
-plugins+=( zsh-users/zsh-history-substring-search )
-
-# Persist plugins list (one per line) to $HOME/.zsh_plugins.txt (atomic write)
-_zsh_plugins_file="${HOME}/.zsh_plugins.txt"
-_zsh_plugins_tmp="${_zsh_plugins_file}.new"
-
-# Write header + plugins array to temp file, then atomically replace the target.
+# Write to temp file
 {
-  printf '%s\n' '# GENERATED FILE, DO NOT EDIT. SEE chrisjlebron/dotfiles for info'
+  if [[ -r "${_base_zsh_plugins}" ]]; then
+    cat "${_base_zsh_plugins}" 2>/dev/null || :
+  fi
   printf '%s\n' "${plugins[@]}"
-} >"${_zsh_plugins_tmp}" 2>/dev/null && mv -f "${_zsh_plugins_tmp}" "${_zsh_plugins_file}" || rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+} >"${_zsh_plugins_tmp}" 2>/dev/null || :
 
-unset -v _zsh_plugins_file _zsh_plugins_tmp
+# Replace target only if different (avoids unnecessary writes)
+if [[ -s "${_zsh_plugins_tmp}" ]]; then
+  if ! cmp -s "${_zsh_plugins_tmp}" "${_zsh_plugins_file}" 2>/dev/null; then
+    mv -f "${_zsh_plugins_tmp}" "${_zsh_plugins_file}" 2>/dev/null || rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+  else
+    rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+  fi
+else
+  rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+fi
 
-# Load plugins
+unset -v _dotfiles_repo_path _base_zsh_plugins _zsh_plugins_file _zsh_plugins_tmp
+
+# Load plugins (reads ~/.zsh_plugins.txt)
 antidote load
 
 # Autosuggestion tuning (no-op if plugin disabled)

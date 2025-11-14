@@ -1,0 +1,18 @@
+###############################################################################
+### base / shared plugins
+
+# Completions for common apps
+zsh-users/zsh-completions
+
+# History substring search (small, safe everywhere)
+zsh-users/zsh-history-substring-search
+
+### end base / shared plugins
+###############################################################################
+
+
+#=========================================================#
+# EVERYTHING BELOW THIS LINE IS GENERATED - DO NOT EDIT
+# (See chrisjlebron/dotfiles for source and instructions)
+#=========================================================#
+
