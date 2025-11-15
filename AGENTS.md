@@ -30,6 +30,7 @@ This file tells human and AI agents how to contribute reliably: where to put thi
 
 - Work is scoped to small separate branches.
 - **One task at a time**: Wait for user confirmation before proceeding to next task
+- **Validate each task**: Before committing your updates, test out the changes to make sure they serve the intended purpose. If you're unable to test out the changes, ask the user to confirm their functionality, providing steps or commands for validation.
 - **Generate a commit after each task**: When control is returned to the user, or a user request is deemed "successfully completed", generate an atomic commit with only the relevant touched files
 - **Commit message format**: Use conventional commits with descriptive messages and include the `(agent)` scope indicating the commit was generated via an AI agent (e.g. `chore(agent): update dev dependencies`)
 - When applicable, lint and test locally.
