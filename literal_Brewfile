@@ -64,7 +64,6 @@ brew "watchman" # Watch files and take action when they change
 brew "zenith" # best `top`?
 brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdsouza/zoxide
 # brew "zlib" # lossless data compression (macOS already provides)
-brew "zplug" # zsh plugin manager
 brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 brew "pulumi/tap/pulumi" # IaC
