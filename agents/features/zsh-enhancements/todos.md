@@ -28,4 +28,4 @@ Relates: agents/features/zsh-enhancements/impl-plan.md
 | ZSH-009 | Benchmark after changes | [x] | H | chrisjlebron | compare median (see artifacts/benchmarks.md) |
 | ZSH-010 | Remove zplug references & clean directory | [x] | M | chrisjlebron | removed zplug loader file; further cleanup optional (e.g., Brewfile) |
 | ZSH-011 | Update documentation (README, troubleshooting) | [x] | M | chrisjlebron | README + docs/troubleshooting.md refreshed |
-| ZSH-013 | Add default `ZSH_STARTUP_PROFILE` export in `dot_exports.tmpl` (conditional) | [x] | M | chrisjlebron | `if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then export ZSH_STARTUP_PROFILE=0; fi` |
+| ZSH-012 | Add default `ZSH_STARTUP_PROFILE` export in `dot_exports.tmpl` (conditional) | [x] | M | chrisjlebron | `if [[ -z "${ZSH_STARTUP_PROFILE+x}" ]]; then export ZSH_STARTUP_PROFILE=0; fi` |

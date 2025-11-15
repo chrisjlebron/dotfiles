@@ -71,7 +71,7 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 ## Gotchas
 
 1. The plugin loader dynamically writes to `~/.zsh_plugins.txt`
-   1. [`dot_zsh_plugins.txt.base`](dot_zsh_plugins.txt.base) contains plugins that are are applicable to all terminal emulators (e.g. Warp, Ghostty, etc.). Review plugins in your terminal before including here.
+   1. [`dot_zsh_plugins.txt.base`](dot_zsh_plugins.txt.base) contains plugins that are applicable to all terminal emulators (e.g. Warp, Ghostty, etc.). Review plugins in your terminal before including here.
    2. Update [`dot_zsh_plugins_management.tmpl`](dot_zsh_plugins_management.tmpl) to conditionally add plugins for more standard terminal emulators (e.g. Ghostty, Terminal, Kitty, etc.)
 2. Oh-my-zsh git plugin is currently being loaded via a [.chezmoiexternal.toml](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
    - Includes lots of git aliases you rely on, so don't scrap it!

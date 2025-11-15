@@ -49,7 +49,7 @@ chezmoi apply
 Key patterns adopted in this repo:
 
 - File naming & mapping
-  - See <https://www.chezmoi.io/reference/source-state-attributes/> for naming conventions (e.g.`dot_<name>` becomes `.<name>` in `$HOME`, (e.g. `dot_zshrc` → `~/.zshrc`); template dotfiles end with `.tmpl` suffix, which is removed after rendering (e.g. `dot_gitconfig.tmpl` → `~/.gitconfig`)).
+  - See <https://www.chezmoi.io/reference/source-state-attributes/> for naming conventions (e.g. `dot_<name>` becomes `.<name>` in `$HOME`, (e.g. `dot_zshrc` → `~/.zshrc`); template dotfiles end with `.tmpl` suffix, which is removed after rendering (e.g. `dot_gitconfig.tmpl` → `~/.gitconfig`)).
   - Dynamic template example: `dot_exports-dynamic.tmpl` produces exports that depend on template data; keep logic minimal and portable.
 - Script entry points & ordering
   - Use chezmoi run script naming conventions

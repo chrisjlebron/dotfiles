@@ -16,7 +16,7 @@
 
 - Use `time zsh -i -c exit` to capture cold-start timing. Run it a few times and compare medians before and after changes.
 - For load-order inspection, `zsh -l --sourcetrace` prints each sourced file—handy when diagnosing unexpected overrides.
-- You may also want to use [`zsh-bench`](https://github.com/romkatv/zsh-bench)
+- You may also want to use [`zsh-bench`](https://github.com/romkatv/zsh-bench).
 
 ## Zsh load order refresher
 

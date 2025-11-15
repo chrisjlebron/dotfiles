@@ -3,7 +3,10 @@
 
 # Install Antidote if missing
 if [[ ! -d "${HOME}/.antidote" ]]; then
-  git clone --depth=1 https://github.com/mattmc3/antidote "${HOME}/.antidote" >/dev/null 2>&1
+  printf "Antidote not found. Attempting to clone...\n"
+  if ! git clone --depth=1 https://github.com/mattmc3/antidote "${HOME}/.antidote" >/dev/null; then
+    printf "❌ Error: Failed to clone Antidote. Plugins will not be loaded.\n" >&2
+  fi
 fi
 
 # Load Antidote
@@ -11,6 +14,7 @@ if [[ -r "${HOME}/.antidote/antidote.zsh" ]]; then
   source "${HOME}/.antidote/antidote.zsh"
 else
   # Fallback: no plugin manager available; exit early to keep shell usable
+  printf "⚠️ Plugin manager Antidote not available. Plugins will not be loaded.\n"
   return 0
 fi
 
@@ -61,7 +65,7 @@ else
   rm -f "${_zsh_plugins_tmp}" 2>/dev/null
 fi
 
-unset -v _dotfiles_repo_path _base_zsh_plugins _zsh_plugins_file _zsh_plugins_tmp
+unset -v _base_zsh_plugins _zsh_plugins_file _zsh_plugins_tmp
 
 # Load plugins (reads ~/.zsh_plugins.txt)
 antidote load
