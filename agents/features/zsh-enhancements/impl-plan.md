@@ -13,15 +13,15 @@ Deliver a unified, performant shell experience across terminals by standardizing
 
 ## Architecture and flow
 
-- `dot_zshrc` sources env (`dot_eval`), then plugin loader (`dot_zsh_plugins`), then aliases/functions.
+- `dot_zshrc` sources env (`dot_eval`), then plugin loader (`dot_zsh_plugins_management`), then aliases/functions.
 - `dot_eval` performs single `compinit` + completion `zstyle` setup (cache: daily rebuild logic).
-- `dot_zsh_plugins` installs/loads Antidote (if absent) and sources a plugin bundle list.
+- `dot_zsh_plugins_management` installs/loads Antidote (if absent) and sources a plugin bundle list.
 - Optional profiling (`ZSH_STARTUP_PROFILE=1`) activates `zprof` around initialization.
 
 ## Steps
 
-1. Add `dot_zsh_plugins` file with Antidote bootstrap and plugin list.
-2. Source `dot_zsh_plugins` unconditionally in `dot_zshrc` (remove Warp skip logic).
+1. Add `dot_zsh_plugins_management` file with Antidote bootstrap and plugin list.
+2. Source `dot_zsh_plugins_management` unconditionally in `dot_zshrc` (remove Warp skip logic).
 3. Move all completion `zstyle` lines from `dot_zshrc` to `dot_eval` below `compinit`.
 4. Apply autosuggestion variables (strategy, buffer size, highlight) in plugin loader.
 5. Add history substring search keybindings using `$terminfo` codes and fallbacks.
