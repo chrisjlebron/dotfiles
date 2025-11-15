@@ -1,0 +1,109 @@
+# Antidote-based plugin loader (lightweight, fast)
+# This file is sourced by ~/.zshrc
+
+# Install Antidote if missing
+if [[ ! -d "${HOME}/.antidote" ]]; then
+  printf "Antidote not found. Attempting to clone...\n"
+  if ! git clone --depth=1 https://github.com/mattmc3/antidote "${HOME}/.antidote" >/dev/null; then
+    printf "❌ Error: Failed to clone Antidote. Plugins will not be loaded.\n" >&2
+  fi
+fi
+
+# Load Antidote
+if [[ -r "${HOME}/.antidote/antidote.zsh" ]]; then
+  source "${HOME}/.antidote/antidote.zsh"
+else
+  # Fallback: no plugin manager available; exit early to keep shell usable
+  printf "⚠️ Plugin manager Antidote not available. Plugins will not be loaded.\n"
+  return 0
+fi
+
+# Determine terminal
+_term_prog="${TERM_PROGRAM:-}"
+
+# Feature toggles
+# LIGHT_SHELL=1 -> skip heavier visual plugins (syntax highlighting)
+
+## Plugins file management (on-change write)
+# Build plugin list dynamically per shell, then update ~/.zsh_plugins.txt only if contents changed.
+_base_zsh_plugins="${HOME}/.zsh_plugins.txt.base"
+_zsh_plugins_file="${HOME}/.zsh_plugins.txt"
+_zsh_plugins_tmp="${_zsh_plugins_file}.new"
+
+# initialize as empty array so later `plugins+=(...)` appends work
+plugins=()
+
+# Syntax highlighting unless LIGHT_SHELL=1
+if [[ "${LIGHT_SHELL:-0}" != "1" ]]; then
+  plugins+=( zdharma-continuum/fast-syntax-highlighting )
+fi
+
+# for non-Warp terminals
+if [[ "${_term_prog}" != "WarpTerminal" ]]; then
+  # Autosuggestions (unless explicitly disabled in Warp)
+  plugins+=( zsh-users/zsh-autosuggestions )
+  # command history search by keyboard
+  plugins+=( zsh-users/zsh-history-substring-search )
+fi
+
+# Write to temp file
+{
+  if [[ -r "${_base_zsh_plugins}" ]]; then
+    cat "${_base_zsh_plugins}" 2>/dev/null || :
+  fi
+  printf '%s\n' "${plugins[@]}"
+} >"${_zsh_plugins_tmp}" 2>/dev/null || :
+
+# Replace target only if different (avoids unnecessary writes)
+if [[ -s "${_zsh_plugins_tmp}" ]]; then
+  if ! cmp -s "${_zsh_plugins_tmp}" "${_zsh_plugins_file}" 2>/dev/null; then
+    mv -f "${_zsh_plugins_tmp}" "${_zsh_plugins_file}" 2>/dev/null || rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+  else
+    rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+  fi
+else
+  rm -f "${_zsh_plugins_tmp}" 2>/dev/null
+fi
+
+unset -v _base_zsh_plugins _zsh_plugins_file _zsh_plugins_tmp
+
+# Load plugins (reads ~/.zsh_plugins.txt)
+antidote load
+
+
+
+###############################################################################
+### Autosuggestion tuning
+### (no-op if plugin disabled)
+
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:-'fg=245'} # default subtly gray
+
+### end Autosuggestion tuning
+###############################################################################
+
+
+
+###############################################################################
+### Keybindings (history-substring-search)
+
+if [[ $(command -v history-substring-search-up) && $(command -v history-substring-search-down) ]]; then
+  # Bind UP and DOWN arrow keys for history substring search (both modes)
+  zmodload zsh/terminfo
+  # shellcheck disable=SC2154 # populated by zmodload zsh/terminfo
+  bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
+  bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
+  bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
+  bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
+  bindkey '^[[A' history-substring-search-up # literal "up" key
+  bindkey '^[[B' history-substring-search-down # literal "down" key
+fi
+
+### end Keybindings (history-substring-search)
+###############################################################################
+
+
+
+# Cleanup
+unset -v _term_prog plugins

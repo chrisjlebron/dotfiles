@@ -1,33 +1,31 @@
 # Troubleshooting
 
-## Profiling ZSH
+## Shell startup profiling
 
-In the `./.zshrc` file, there are calls to `zprof` which can be used to output performance related data on load.
-Uncomment the two lines (at the beginning and end) and open a shell session to get performance profile data.
-Comment them out again when you no longer need the data.
+- Set `ZSH_STARTUP_PROFILE=1` before starting a new shell (`ZSH_STARTUP_PROFILE=1 zsh -i -c exit`) to enable `zprof` instrumentation.
+- When the toggle is on, `dot_zshrc` loads `zsh/zprof` early and prints the profile report on exit. Disable by unsetting the variable or exporting `ZSH_STARTUP_PROFILE=0`.
+- `zprof` output is noisy; redirect to a file if you need to analyze repeatedly, for example `ZSH_STARTUP_PROFILE=1 zsh -i -c exit &> ~/Desktop/zprof.log`.
 
-Additionally, you can run the following command to get the same profile data with a stack list of all loaded files in load order.
+## Completion cache and plugin loader
 
-```shell
-zsh -l --sourcetrace
-```
+- `dot_eval` owns `compinit` with a one-day cache policy. Force a rebuild with `rm ~/.zcompdump*` followed by launching a new shell.
+- Antidote plugin bundles are generated from `dot_zsh_plugins.txt.base` plus runtime toggles in [`dot_zsh_plugins_management.tmpl`](../dot_zsh_plugins_management.tmpl). Re-run `chezmoi apply` after editing the base list to rewrite `~/.zsh_plugins.txt`.
+- `LIGHT_SHELL=1` trims the plugin set (skips syntax highlighting) without editing dotfiles.
 
-Finally, if you want to quickly test changes without opening and closing new shell sessions / terminal windows, you can run this command:
+## Benchmarking changes quickly
 
-```shell
-time zsh -i -c exit
-```
+- Use `time zsh -i -c exit` to capture cold-start timing. Run it a few times and compare medians before and after changes.
+- For load-order inspection, `zsh -l --sourcetrace` prints each sourced file—handy when diagnosing unexpected overrides.
+- You may also want to use [`zsh-bench`](https://github.com/romkatv/zsh-bench).
 
-This command will initialize a zsh shell session within the current session and exit on load.
-Whether or not you have zprof enabled this command will provide time / performance overview numbers.
-
-### "Native" Zsh Config Load Order
+## Zsh load order refresher
 
 1. `.zshenv`
-2. `.zprofile` (if login)
-3. `.zshrc` (if interactive)
-4. `.zlogin` (if login)
+2. `.zprofile` (login shells)
+3. `.zshrc` (interactive shells)
+4. `.zlogin` (login shells)
 5. `.zlogout`
 
-Be careful when setting things on `.zshenv` since it can be overridden by subsequent scripts.
-:warning: Only `.zshrc` should be used for things like prompt colors and user scripts.
+`.zshrc` is the intended spot for interactive niceties; avoid putting prompt logic in `.zshenv` to keep non-interactive shells lean.
+
+

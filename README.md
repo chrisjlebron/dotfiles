@@ -66,32 +66,40 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 - Directory navigation provided by [zoxide](https://github.com/ajeetdsouza/zoxide), in concert with [fzf](https://github.com/junegunn/fzf)
 - `cat` made nicer via [bat](https://github.com/sharkdp/bat)
 - Git meta (diff, pager, blame, grep) via [delta](https://github.com/dandavison/delta) (see [dot_gitconfig.tmpl](/dot_gitconfig.tmpl) for config)
-- Non-Warp zsh plugin management is currently via [zplug](https://github.com/zplug/zplug)
+- zsh plugin management uses [Antidote](https://antidote.sh/) via [`dot_zsh_plugins_management.tmpl`](dot_zsh_plugins_management.tmpl), which renders `~/.zsh_plugins.txt` based on the base list plus runtime toggles
 
 ## Gotchas
 
-1. This has currently commented out the zsh package management for Warp
-   1. We'll see how far we can get without it
+1. The plugin loader dynamically writes to `~/.zsh_plugins.txt`
+   1. [`dot_zsh_plugins.txt.base`](dot_zsh_plugins.txt.base) contains plugins that are applicable to all terminal emulators (e.g. Warp, Ghostty, etc.). Review plugins in your terminal before including here.
+   2. Update [`dot_zsh_plugins_management.tmpl`](dot_zsh_plugins_management.tmpl) to conditionally add plugins for more standard terminal emulators (e.g. Ghostty, Terminal, Kitty, etc.)
 2. Oh-my-zsh git plugin is currently being loaded via a [.chezmoiexternal.toml](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
-   1. Previously these were loaded via zplug
-   2. If I decide I need a zsh plugin manager I'll switch back to using that
-   3. Includes lots of git aliases you rely on
-3. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
-4. `ls` styling is configured via:
+   - Includes lots of git aliases you rely on, so don't scrap it!
+3. Completion cache rebuild respects a 1-day TTL; force it with `rm ~/.zcompdump*` followed by launching a new shell if you need to refresh immediately
+4. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
+5. `ls` styling is configured via:
    1. colors are via `LS_COLORS`, which is installed as a [chezmoi external](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
    2. colors and icons are enabled via `eza` flags (see [dot_aliases](/dot_aliases))
    3. icons are made possible via nerd fonts, which must be selected in your terminal preferences
-      - Nerd-fonts are installed via Brewfile
-      - Currently favoring fira-code
+     - Nerd-fonts are installed via Brewfile
+     - Currently favoring fira-code
+6. Chezmoi staging vs live dotfiles
+   1. This repository is the "source state". Changes here are not active until applied to `$HOME` via `chezmoi apply` (or during `./install.sh`).
+   2. This affects how you would benchmark shell startup performance:
+     - Collect Baseline: run `time zsh -i -c exit` ≥3 times before applying new changes (reflects currently applied dotfiles in `$HOME`).
+     - Apply changes: `chezmoi apply` (or `chezmoi apply --include dotfiles,scripts` for a narrower scope).
+     - Post-change: re-run `time zsh -i -c exit` ≥3 times; compare medians to baseline.
+     - Profiling: set `ZSH_STARTUP_PROFILE=1` in the applied environment (export is added in `dot_exports.tmpl`); then start a shell to view `zprof` output.
 
 ## Docs
 
 [See docs for more information.](/docs/)
 
-## TODO
+### Environment Variables and toggles
 
-- do i want inputrc??
-- remove zsh package management? replace with another?
+- Profiling toggle: set `ZSH_STARTUP_PROFILE=1` before launching a shell to enable `zprof` output for that session.
+- Opt-out envs (set in your environment or via a local override rather than editing applied files):
+  - `LIGHT_SHELL=1` skips syntax highlighting and trims the plugin set further for minimal shells.
 
 ## License
 

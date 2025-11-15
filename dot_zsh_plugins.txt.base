@@ -1,0 +1,18 @@
+# This file supports the building of zsh_plugins.txt
+# It should only be interacted with in the dotfiles configuration repo
+
+###############################################################################
+### base / shared plugins
+
+# Completions for common apps
+zsh-users/zsh-completions
+
+### end base / shared plugins
+###############################################################################
+
+
+#=========================================================#
+# EVERYTHING BELOW THIS LINE IS GENERATED - DO NOT EDIT
+# (See chrisjlebron/dotfiles for source and instructions)
+#=========================================================#
+

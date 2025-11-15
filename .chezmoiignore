@@ -2,5 +2,7 @@
 install.sh
 LICENSE
 README.md
+AGENTS.md
+agents/
 docs/
 hooks/

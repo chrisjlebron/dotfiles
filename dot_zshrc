@@ -1,5 +1,7 @@
-# uncomment to profile prompt startup with zprof
-# zmodload zsh/zprof
+# Optional: enable startup profiling with zprof when toggled
+if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+  zmodload zsh/zprof
+fi
 
 
 
@@ -22,43 +24,17 @@ setopt HIST_IGNORE_ALL_DUPS
 
 
 ################################################################################
-### Load zsh package management
+### Load zsh plugins (Antidote)
 
-##### Skip package manager for Warp
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+# Load lightweight plugin manager
+if [[ -r "$HOME/.zsh_plugins_management" ]]; then
   # shellcheck source=/dev/null
-  source "$HOME/.zsh_package_management"
+  source "$HOME/.zsh_plugins_management"
 fi
 
-### end Load zsh package management
+### end Load zsh plugins (Antidote)
 ################################################################################
 
-
-###############################################################################
-### don't load features that come standard in Warp
-
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  # bind UP and DOWN arrow keys for history search
-  zmodload zsh/terminfo
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-  bindkey "$terminfo[cuu1]" history-substring-search-up
-  bindkey "$terminfo[cud1]" history-substring-search-down
-
-  # Enable interactive menu selection for completions
-  zstyle ':completion:*' menu select
-
-  # Configure case-insensitive matching and partial word completion with multiple matchers:
-  # ''                      -> exact matching (default)
-  # 'm:{a-zA-Z}={A-Za-z}'   -> case-insensitive matching (lowercase matches uppercase and vice versa)
-  # 'r:|[._-]=* r:|=*'      -> partial matching from right side at word boundaries (., _, -)
-  # 'l:|=* r:|=*'           -> partial matching from left side and anywhere within words
-  zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-fi
-
-
-### end don't load features that come standard in Warp
-###############################################################################
 
 
 ################################################################################
@@ -69,6 +45,7 @@ source "$HOME/.shared"
 
 ###
 ################################################################################
+
 
 
 ###############################################################################
@@ -91,5 +68,7 @@ source "$HOME/.completions"
 ###############################################################################
 
 
-# # uncomment to finish profiling
-# zprof
+
+if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
+  zprof
+fi
