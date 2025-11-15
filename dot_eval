@@ -13,20 +13,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ###############################################################################
 
 
-###############################################################################
-### auto-list directory contents on `cd`
-
-auto-ls () {
-  emulate -L zsh;
-  # this should be the aliased call to eza; if not, source order may need to be tweaked
-  ls
-}
-chpwd_functions=( auto-ls "$chpwd_functions" )
-
-
-### end auto-list directory contents on `cd`
-###############################################################################
-
 
 ###############################################################################
 ### compinit & styling

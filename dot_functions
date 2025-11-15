@@ -79,6 +79,21 @@ function extract() {
 }
 
 
+###############################################################################
+### auto-list directory contents on `cd`
+
+auto-ls () {
+  emulate -L zsh;
+  # this should be the aliased call to eza; if not, make sure this function is sourced after the aliases
+  ls
+}
+chpwd_functions=( auto-ls "$chpwd_functions" )
+
+
+### end auto-list directory contents on `cd`
+###############################################################################
+
+
 #################################################
 # Cleanup git branches
 #################################################
