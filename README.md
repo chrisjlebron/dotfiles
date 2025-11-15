@@ -86,9 +86,9 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
 6. Chezmoi staging vs live dotfiles
    1. This repository is the "source state". Changes here are not active until applied to `$HOME` via `chezmoi apply` (or during `./install.sh`).
    2. This affects how you would benchmark shell startup performance:
-      - Collect Baseline: run `time zsh -i -c exit` ≥3 times before applying new changes (reflects currently applied dotfiles in `$HOME`).
-      - Apply changes: `chezmoi apply` (or `chezmoi apply --include dotfiles,scripts` for a narrower scope).
-      - Post-change: re-run `time zsh -i -c exit` ≥3 times; compare medians to baseline.
+     - Collect Baseline: run `time zsh -i -c exit` ≥3 times before applying new changes (reflects currently applied dotfiles in `$HOME`).
+     - Apply changes: `chezmoi apply` (or `chezmoi apply --include dotfiles,scripts` for a narrower scope).
+     - Post-change: re-run `time zsh -i -c exit` ≥3 times; compare medians to baseline.
      - Profiling: set `ZSH_STARTUP_PROFILE=1` in the applied environment (export is added in `dot_exports.tmpl`); then start a shell to view `zprof` output.
 
 ## Docs
