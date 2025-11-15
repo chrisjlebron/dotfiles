@@ -37,7 +37,7 @@ Current config treats Warp differently and skips plugin manager entirely, produc
 
 - Load core plugins (autosuggestions, completions, syntax highlighting, history substring search) for all terminals.
 - Apply completion styles and keybindings universally after a single `compinit`.
-- Provide environment toggles (e.g. `LIGHT_SHELL`, `WARP_USE_ZSH_AUTOSUGGEST`) for opt‑outs without terminal hard‑coding.
+- Provide environment toggles (e.g. `LIGHT_SHELL`) for opt‑outs without terminal hard‑coding.
 - Use canonical repositories for plugins.
 
 ### Non‑functional

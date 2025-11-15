@@ -25,7 +25,7 @@ Deliver a unified, performant shell experience across terminals by standardizing
 3. Move all completion `zstyle` lines from `dot_zshrc` to `dot_eval` below `compinit`.
 4. Apply autosuggestion variables (strategy, buffer size, highlight) in plugin loader.
 5. Add history substring search keybindings using `$terminfo` codes and fallbacks.
-6. Introduce env toggles (`LIGHT_SHELL`, `WARP_USE_ZSH_AUTOSUGGEST`).
+6. Introduce env toggles (e.g. `LIGHT_SHELL`).
 7. Add profiling hooks (`zmodload zsh/zprof` early; `zprof` output late when enabled).
    - Add a conditional default export so the variable exists by default without overriding explicit runs.
      - In `dot_exports.tmpl` (conditional):
