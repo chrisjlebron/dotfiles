@@ -28,10 +28,11 @@ This file tells human and AI agents how to contribute reliably: where to put thi
 
 ### Code change workflow
 
-- Create a small, scoped branch.
-- Lint and (when applicable) test locally.
-- Open a PR with a clear intent/scope and link to any related docs in `agents/`.
-- Address review comments; squash-merge or rebase as preferred for this repo.
+- Work is scoped to small separate branches.
+- **One task at a time**: Wait for user confirmation before proceeding to next task
+- **Generate a commit after each task**: When control is returned to the user, or a user request is deemed "successfully completed", generate an atomic commit with only the relevant touched files
+- **Commit message format**: Use conventional commits with descriptive messages and include the `(agent)` scope indicating the commit was generated via an AI agent (e.g. `chore(agent): update dev dependencies`)
+- When applicable, lint and test locally.
 
 ## File types (repo-wide standards)
 
