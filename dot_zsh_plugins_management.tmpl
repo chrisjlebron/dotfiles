@@ -84,14 +84,23 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 ###############################################################################
 ### Keybindings (history-substring-search)
 
+# Provide graceful fallbacks when the history substring search plugin is absent
+if [[ -o interactive ]]; then
+  if ! (( ${+widgets[history-substring-search-up]} )); then
+    zle -N history-substring-search-up up-line-or-history
+  fi
+  if ! (( ${+widgets[history-substring-search-down]} )); then
+    zle -N history-substring-search-down down-line-or-history
+  fi
+fi
+
 # Bind UP and DOWN arrow keys for history substring search (both modes)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-# zmodload zsh/terminfo
-# bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
-# bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
-# bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
-# bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
+zmodload zsh/terminfo
+# shellcheck disable=SC2154 # populated by zmodload zsh/terminfo
+bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Application mode
+bindkey "${terminfo[kcud1]}" history-substring-search-down # Application mode
+bindkey "${terminfo[cuu1]}" history-substring-search-up    # Standard mode
+bindkey "${terminfo[cud1]}" history-substring-search-down  # Standard mode
 
 ### end Keybindings (history-substring-search)
 ###############################################################################
