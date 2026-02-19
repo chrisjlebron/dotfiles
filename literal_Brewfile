@@ -10,6 +10,7 @@ brew "coreutils" # for better `ls`, etc.
 brew "diff-so-fancy" # colorized diffs
 brew "direnv" # env var "version" management
 brew "dnsmasq" # for DNS forwarding & host resolution (never touch /etc/hosts again)
+brew "dua-cli" # find where your diskspace went (diskspace / storage usage management)
 # brew "entr" # Will run a script when a file changes... Do I want???
 brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
 # brew "ffmpeg" # image processing
@@ -36,14 +37,13 @@ brew "kubernetes-cli" # CLI tools for running k8s (think kubectl)
 # brew "mitmproxy" # Intercept, modify, replay, save HTTP/S traffic. Sure. [DEPRECATED]
 brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
 # brew "mtr" # ping & traceroute. meh? play around with it
-brew "ncdu" # find where your diskspace went
 # brew "nghttp2" # not sure i need it?
 # brew "nginx" # only if needed
 brew "ollama"
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
 brew "pnpm" # Node.js package manager
-brew "postgresql@14", restart_service: true # version specified b/c bare package is deprecated
+brew "postgresql@16", restart_service: true # version specified b/c bare package is deprecated
 # brew "pyenv" # python version manager; (XXX: CJL - can we manage with mise?)
 # brew "rbenv" # ruby version manager; (XXX: CJL - can we manage with mise?)
 brew "redis", restart_service: true
@@ -54,6 +54,8 @@ brew "starship" # nice prompt manager/editor (https://github.com/starship/starsh
 # brew "subversion" # needed to install font-source-code-pro; (XXX: CJL - still needed?)
 # brew "the_silver_searcher" # `ag`, alternative to grep/ack; (XXX: CJL - consider switching to rg)
 # brew "thefuck" # `jk`, retry/suggest commands; (XXX: CJL - haven't used in a while, warp handles this well; also it slows loading times)
+brew "tlrc" # Simpler man pages (https://github.com/tldr-pages/tldr) (new name for `tldr`; still invoked with that command)
+brew "tmux" # terminal multiplexer (for long-running remote tasks, or separating current shell for isolation)
 brew "tree" # view dirs as trees
 brew "vim" # get brew managed vim
 brew "watchman" # Watch files and take action when they change
@@ -61,13 +63,14 @@ brew "watchman" # Watch files and take action when they change
 # brew "xvid" # ¯\_(ツ)_/¯
 # brew "xz" # General-purpose data compression with high compression ratio
 # brew "yarn"
+brew "zellij" # terminal multiplexer alternative (for long-running remote tasks, or separating current shell for isolation)
 brew "zenith" # best `top`?
 brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdsouza/zoxide
 # brew "zlib" # lossless data compression (macOS already provides)
 brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 brew "pulumi/tap/pulumi" # IaC
-brew "sst/tap/opencode" # Opencode AI terminal agent
+brew "anomalyco/tap/opencode" # Opencode AI terminal agent
 # ----------------
 # NEEDED FOR RUBY VIA MISE (REF: https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
 # I imagine these will already be downloaded via another package:
