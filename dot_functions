@@ -128,17 +128,17 @@ diff () {
 
 alias rm_native='command rm'
 rm () {
-  echo "Using aliased rm -> macOS trash || trash-cli..."
+  echo "Using aliased rm -> macOS trash"
   echo "Use rm_native for native rm"
 
   # Check if trash tool is already installed, install if not
   if ! command -v trash >/dev/null; then
-    echo "trash-cli not installed. Installing..."
-    npm install --global trash-cli
+    echo "macos-trash not installed. Installing..."
+    brew install macos-trash
   fi
 
   # Filter out all flags except for -v
-  args=()
+  local args=()
   for arg in "$@"; do
     if [[ "$arg" == -* ]]; then
       if [[ "$arg" == *v* ]]; then
