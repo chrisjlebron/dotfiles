@@ -153,3 +153,43 @@ rm () {
 
   trash "${args[@]}"
 }
+
+#################################################
+# trymodule replacement (test out node/ts pkgs)
+#################################################
+
+_try_module () {
+  local _dir
+  local _called_command
+
+  _dir="$(mktemp -d)"
+  _called_command="$funcstack[2]"
+
+  cd "$_dir" || exit 1
+
+  echo "Calling try_module via $_called_command..."
+  echo "with packages: $*"
+
+  pnpm init >/dev/null
+  pnpm add "$@"
+
+  if [[ $_called_command == "trytsx" ]]; then
+    pnpm add tsx
+    pnpm exec tsx
+  elif [[ $_called_command == "trynpx" ]]; then
+    node
+  fi
+
+  echo "\n-------"
+  echo "Exiting $_called_command..."
+  echo "Deleting temp directory: $_dir"
+  rm -rf "$_dir"
+}
+
+trynpx () {
+  _try_module "$@"
+}
+
+trytsx () {
+  _try_module "$@"
+}
