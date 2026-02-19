@@ -3,26 +3,25 @@
 Check whether these are available in homebrew cask before downloading manually
 
 - Amphetamine (app store)
-- Authy
+- Jellyfin (from website)
 - Proxyman
 - Pritunl???
-- Snap Camera
 - Steam
-- Todoist
 - Nosqlclient
 - Cloak
 - Franz
-- Plex
 - Ableton Live
 - Analog Lab V
-- CyberGhost
+- CyberDuck
 - DaisyDisk
 - GPG Keychain
 - Pixelmator Pro
 
 - 1password
 - Warp
+- Ghostty
 - postman
+- bruno
 - docker
 - git butler
 - dbeaver
@@ -31,4 +30,3 @@ Check whether these are available in homebrew cask before downloading manually
 - shottr?
 - pgadmin
 - slack
-- Arc
