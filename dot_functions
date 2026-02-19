@@ -159,9 +159,11 @@ rm () {
 #################################################
 
 _try_module () {
+  local _pwd
   local _dir
   local _called_command
 
+  _pwd="$(pwd)"
   _dir="$(mktemp -d)"
   _called_command="$funcstack[2]"
 
@@ -179,6 +181,9 @@ _try_module () {
   elif [[ $_called_command == "trynpx" ]]; then
     node
   fi
+
+  # return to initial working directory
+  cd "$_pwd" || exit 1
 
   echo "\n-------"
   echo "Exiting $_called_command..."
