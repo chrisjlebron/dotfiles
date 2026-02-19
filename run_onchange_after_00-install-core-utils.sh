@@ -102,6 +102,7 @@ fi
 
 
 
+
 ###############################################################################
 ### install homebrew packages
 
@@ -127,31 +128,6 @@ brew bundle --verbose
 
 
 ###############################################################################
-### npm
-
-cat <<- EOF
-###############################################################################
-### installing global npm packages
-EOF
-
-# Type `git open` to open the GitHub page or website for a repository.
-npm install -g git-open
-# Better Node debugging
-npm install -g ndb
-# Simpler man pages
-npm install -g tldr
-# `trash` as the safe `rm` alternative
-npm install -g trash-cli
-# For testing out npm modules locally in a REPL
-npm install -g trymodule
-
-### end of npm
-###############################################################################
-
-
-
-
-###############################################################################
 ### bash
 
 cat <<- EOF
@@ -166,6 +142,18 @@ BASHPATH=$(brew --prefix)/bin/bash
 sudo bash -c 'echo $BASHPATH >> /etc/shells'
 
 ### end of bash
+###############################################################################
+
+
+
+
+###############################################################################
+### Base Node packages
+
+# mise will install common packages after installing each desired node version
+# It does so via .default-npm-packages
+
+### end of npm
 ###############################################################################
 
 
