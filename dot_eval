@@ -45,6 +45,15 @@ fi
 
 
 ###############################################################################
+### completions
+
+# shellcheck source=/dev/null
+source "$HOME/.completions"
+
+### end completions
+###############################################################################
+
+###############################################################################
 ### LS_COLORS
 
 # github.com/trapd00r/LS_COLORS
@@ -86,20 +95,6 @@ eval "$(direnv hook zsh)"
 
 
 ###############################################################################
-### zoxide
-
-# NOTE: For completions to work, this must be added after compinit is called
-# You may have to rebuild your completions cache by running rm ~/.zcompdump*; compinit.
-
-# You may also want to ensure you have fzf installed, as it is used for interactive selection
-
-eval "$(zoxide init zsh)"
-
-### end zoxide
-###############################################################################
-
-
-###############################################################################
 ### git
 
 # placing at end (after compinit) since it relies on compdef to load
@@ -111,5 +106,16 @@ source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 ### end git
 ###############################################################################
 
+
 # typo/command correction
 # eval "$(thefuck --alias jk)"
+
+
+###############################################################################
+### zoxide
+
+# NOTE: This will be called LAST the main bootstrap config (e.g. `.zshrc`)
+# in order to avoid misconfiguration issues
+
+### end zoxide
+###############################################################################

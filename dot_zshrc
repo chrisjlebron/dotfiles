@@ -51,9 +51,6 @@ source "$HOME/.shared"
 ###############################################################################
 ### completions
 
-# shellcheck source=/dev/null
-source "$HOME/.completions"
-
 # # bash completion compatibility in zsh
 # autoload -U +X bashcompinit && bashcompinit
 
@@ -67,6 +64,20 @@ source "$HOME/.completions"
 ### end completions
 ###############################################################################
 
+
+###############################################################################
+### zoxide
+
+# NOTE: This should be called LAST in order to avoid misconfiguration issues
+# NOTE: For completions to work, this must be added after compinit is called
+# You may have to rebuild your completions cache by running rm ~/.zcompdump*; compinit.
+
+# You may also want to ensure you have fzf installed, as it is used for interactive selection
+
+eval "$(zoxide init zsh)"
+
+### end zoxide
+###############################################################################
 
 
 if [[ "${ZSH_STARTUP_PROFILE}" == "1" ]]; then
