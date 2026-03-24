@@ -119,7 +119,7 @@ gbda () {
 # NOTE: this overrides native `diff` command
 alias diff_native='command diff'
 diff () {
-  command diff -burN "$*" | diff-so-fancy
+  command diff -burN -- "$@" | diff-so-fancy
 }
 
 #################################################
