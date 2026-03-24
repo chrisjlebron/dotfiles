@@ -14,7 +14,8 @@
 
 # add all 1password fetch exports here:
 {{ if lookPath "op" }}
-export GEMINI_API_KEY={{- (onepasswordRead "op://Personal/Google Gemini API/credential") }}
+export GEMINI_API_KEY={{- (onepasswordRead "op://Personal/Google Gemini API Credentials/credential") }}
+export OPENROUTER_API_KEY={{- (onepasswordRead "op://Personal/OpenRouter API Credentials/credential") }}
 {{ end }}
 
 ### end 1password
