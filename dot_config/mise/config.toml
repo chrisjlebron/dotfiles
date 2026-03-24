@@ -6,4 +6,10 @@ java = "latest"
 python = "latest"
 ruby = "latest"
 go = "latest"
+
+# package / project managers
 uv = "latest"
+pnpm = "latest"
+
+# engines
+bun = "latest"
