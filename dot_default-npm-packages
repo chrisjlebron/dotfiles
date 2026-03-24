@@ -1,6 +1,2 @@
 # Corepack lets you use Yarn, npm, and pnpm without having to install them
 corepack
-# OpenAI coding agent
-@openai/codex
-# open source coding agent
-@mariozechner/pi-coding-agent

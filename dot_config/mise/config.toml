@@ -1,6 +1,7 @@
 # may also need to set each with `mise use -g {TOOL}@lastest`
 [tools]
 
+# languages / runtimes
 node = "latest"
 deno = "latest"
 java = "latest"
@@ -14,6 +15,13 @@ pnpm = "latest"
 
 # engines
 bun = "latest"
+
+# system tools installed globally below to avoid project-level runtime-version collisions:
+
+# open source coding agent
+"npm:@mariozechner/pi-coding-agent" = "latest"
+# OpenAI coding agent
+"aqua:openai/codex" = "latest"
 
 [settings]
 
