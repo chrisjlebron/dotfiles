@@ -1,0 +1,37 @@
+" Set basic options for a modern experience
+
+" set line numbers
+set number
+
+" use relative line numbers
+set relativenumber
+
+" use spaces instead of tabs
+set expandtab
+
+" smart auto-indenting
+set smartindent
+
+" set tab size to 2 spaces
+set tabstop=2 shiftwidth=2 softtabstop=2
+
+" disable line wrapping
+" set wrap!
+
+" enable true color support if your terminal supports it
+set termguicolors
+
+" incremental search
+set incsearch
+
+" Ignore case when searching...
+set ignorecase
+
+" ...except when search string contains uppercase
+set smartcase
+
+" highlight search matches
+set hlsearch
+
+" syntax highlighting
+syntax on
