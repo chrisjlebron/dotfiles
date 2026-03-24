@@ -1,5 +1,6 @@
 # may also need to set each with `mise use -g {TOOL}@lastest`
 [tools]
+
 node = "latest"
 deno = "latest"
 java = "latest"
@@ -13,3 +14,10 @@ pnpm = "latest"
 
 # engines
 bun = "latest"
+
+[settings]
+
+# config files with these prefixes will be trusted by default
+trusted_config_paths = [
+    '~/dev',
+]
