@@ -13,6 +13,7 @@ brew "dnsmasq" # for DNS forwarding & host resolution (never touch /etc/hosts ag
 brew "dua-cli" # find where your diskspace went (diskspace / storage usage management)
 # brew "entr" # Will run a script when a file changes... Do I want???
 brew "eza" # Better `ls`. Hell yeah. Fork of exa (now unmaintained)
+brew "fd" # Better `find`. Rust-based, much faster. (https://github.com/sharkdp/fd)
 # brew "ffmpeg" # image processing
 # brew "findutils" # don't think so
 # brew "freetype" # don't know what this is...
@@ -34,12 +35,13 @@ brew "just" # command runner (think `make`, but easier to use)
 brew "jq" # CLI json viewer / processor
 brew "kubernetes-cli" # CLI tools for running k8s (think kubectl)
 # brew "libidn" # it may resurface, but for now leave out
+brew "llama.cpp" # alternative to ollama for OSS local LLM management (https://github.com/ggml-org/llama.cpp)
 # brew "mitmproxy" # Intercept, modify, replay, save HTTP/S traffic. Sure. [DEPRECATED]
 brew "mkcert" # make dev / locally-trusted TLS certs (i.e. https support)
+brew "mole" # macos system analyzer & cleaner. (https://github.com/tw93/Mole)
 # brew "mtr" # ping & traceroute. meh? play around with it
 # brew "nghttp2" # not sure i need it?
 # brew "nginx" # only if needed
-brew "ollama"
 # brew "pidcat" # Colored logcat script which only shows log entries for a specific application package. Pretty interesting, but not necessary atm.
 brew "pipenv" # (XXX: CJL - can we manage with mise?)
 brew "pnpm" # Node.js package manager
@@ -93,7 +95,7 @@ cask "bruno" # REST client
 cask "firefox"
 ## FONTS
 cask "font-fira-code-nerd-font"
-cask "font-ibm-plex"
+cask "font-ibm-plex-mono"
 cask "font-inconsolata-nerd-font"
 cask "font-source-code-pro"
 cask "font-symbols-only-nerd-font"
