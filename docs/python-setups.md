@@ -12,7 +12,8 @@ For more info, see [mise docs](https://mise.jdx.dev/lang/python.html#default-pyt
 Env/Dependency Management
 -------------------------
 
-pipenv
+[uv](https://docs.astral.sh/uv/)
+[common commands](https://docs.astral.sh/uv/getting-started/features/) (e.g. init project, setup venv, install, update, etc.)
 
 Debugging in VS Code
 --------------------
