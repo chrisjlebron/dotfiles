@@ -8,6 +8,7 @@ java = "latest"
 python = "latest"
 ruby = "latest"
 go = "latest"
+rust = "latest"
 
 # package / project managers
 uv = "latest"
@@ -19,9 +20,13 @@ bun = "latest"
 # system tools installed globally below to avoid project-level runtime-version collisions:
 
 # open source coding agent
-"npm:@mariozechner/pi-coding-agent" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 # OpenAI coding agent
 "aqua:openai/codex" = "latest"
+# agent skills manager
+"npm:skills" = "latest"
+# create app wrappers for websites
+"npm:pake-cli" = "latest"
 
 [settings]
 
