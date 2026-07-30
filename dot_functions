@@ -198,3 +198,12 @@ trynpx () {
 trytsx () {
   _try_module "$@"
 }
+
+#################################################
+# search .zsh_history with fzf
+#################################################
+
+zshist() {
+  cat ~/.zsh_history | fzf
+}
+

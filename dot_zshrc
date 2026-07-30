@@ -5,24 +5,6 @@ fi
 
 
 
-###############################################################################
-### zsh history
-
-HISTFILE=~/.zsh_history # zsh doesn't save history to a file automatically
-SAVEHIST=100000 # the number of commands to be stored in the zsh history file
-# HISTSIZE set in .shared - Refers to the number of commands loaded into memory from the history file
-
-# history mgmt
-# http://www.refining-linux.org/archives/49/ZSH-Gem-15-Shared-history/
-setopt inc_append_history
-setopt share_history
-setopt HIST_IGNORE_ALL_DUPS
-
-### end zsh history
-###############################################################################
-
-
-
 ################################################################################
 ### Load zsh plugins (Antidote)
 

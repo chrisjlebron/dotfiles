@@ -23,19 +23,35 @@ unset file
 ###############################################################################
 ### command history
 
-# timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
-export HISTTIMEFORMAT='%F %T '
+export HISTSIZE=100000 # the number of commands loaded into memory from the history file
 
-# keep history up to date, across sessions, in realtime
-#  http://unix.stackexchange.com/a/48113
-export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
-export HISTSIZE=100000                          # big big history (default is 500)
-export HISTFILESIZE=$HISTSIZE                   # big big history
-which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
+# bash specific history settings
+if [ -n "${BASH_VERSION:-}" ]; then
+    # timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
+    export HISTTIMEFORMAT='%F %T '
 
-# Save and reload the history after each command finishes
-# NOTE: the only downside with this is [up] on the readline will go over all history not just the session
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+    # keep history up to date, across sessions, in realtime
+    #  http://unix.stackexchange.com/a/48113
+    export HISTCONTROL=ignoredups:erasedups # no duplicate entries
+    export HISTFILESIZE=$HISTSIZE # big big history (default is 500)
+    shopt -s histappend # append to history, don't overwrite
+
+    # Save and reload the history after each command finishes
+    # NOTE: the only downside with this is [up] on the readline will go over all history not just the session
+    export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-}"
+fi
+
+# zsh specific history settings
+if [ -n "${ZSH_VERSION:-}" ]; then
+    export HISTFILE=~/.zsh_history # zsh doesn't save history to a file automatically
+    export SAVEHIST=$HISTSIZE # the number of commands to be stored in the zsh history file
+
+    # https://postgresqlstan.github.io/cli/zsh-history-options/
+    # setopt EXTENDED_HISTORY # include timestamps
+    setopt INC_APPEND_HISTORY
+    setopt SHARE_HISTORY
+    setopt HIST_IGNORE_ALL_DUPS # remove old command if new one is dupe
+fi
 
 ### end command history
 ###############################################################################
