@@ -73,6 +73,7 @@ brew "zsh" # homebrew managed `zsh`
 brew "localstack/tap/localstack-cli" # local AWS test deployments & resources
 brew "pulumi/tap/pulumi" # IaC
 brew "anomalyco/tap/opencode" # Opencode AI terminal agent
+brew "giammarco-ferranti/deja/deja" # zsh smarter autosuggest
 # ----------------
 # NEEDED FOR RUBY VIA MISE (REF: https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
 # I imagine these will already be downloaded via another package:

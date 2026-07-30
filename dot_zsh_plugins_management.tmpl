@@ -40,13 +40,11 @@ fi
 
 # for non-Warp terminals
 if [[ "${_term_prog}" != "WarpTerminal" ]]; then
-  # Autosuggestions (unless explicitly disabled in Warp)
-  plugins+=( zsh-users/zsh-autosuggestions )
   # command history search by keyboard
   plugins+=( zsh-users/zsh-history-substring-search )
+
   # keyboard select bindings (macOS-native text-select experience)
   plugins+=( jirutka/zsh-shift-select )
-
 fi
 
 # Write to temp file
@@ -79,9 +77,9 @@ antidote load
 ### Autosuggestion tuning
 ### (no-op if plugin disabled)
 
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:-'fg=245'} # default subtly gray
+# export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:-'fg=245'} # default subtly gray
 
 ### end Autosuggestion tuning
 ###############################################################################
