@@ -207,3 +207,24 @@ zshist() {
   cat ~/.zsh_history | fzf
 }
 
+#################################################
+# ZLE widget to copy keyboard-selected terminal input text to system clipboard
+# NOTE: relies on zsh-shift-select plugin
+#################################################
+
+copy-region-to-clipboard() {
+  zle copy-region-as-kill
+
+  if [[ -n $CUTBUFFER ]]; then
+    print -rn -- "$CUTBUFFER" | pbcopy
+  fi
+}
+
+_init-copy-region-to-clipboard() {
+  zle -N copy-region-to-clipboard
+
+  # Put this after loading zsh-shift-select.
+  # maps to Alt-w / Opt-w
+  bindkey -M shift-select '\ew' copy-region-to-clipboard
+}
+_init-copy-region-to-clipboard # immediately invoke to init widget
