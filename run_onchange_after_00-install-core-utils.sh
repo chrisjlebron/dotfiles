@@ -148,6 +148,23 @@ sudo bash -c 'echo $BASHPATH >> /etc/shells'
 
 
 ###############################################################################
+### cheat.sh
+
+cat <<- EOF
+###############################################################################
+### setting cheat.sh CLI tool
+EOF
+
+if ! command -v ~/.local/bin/cht.sh >/dev/null; then
+  curl -s https://cht.sh/:cht.sh | tee ~/.local/bin/cht.sh && chmod +x ~/.local/bin/cht.sh
+fi
+
+### end cheat.sh
+###############################################################################
+
+
+
+###############################################################################
 ### Base Node packages
 
 # mise will install common packages after installing each desired node version
