@@ -42,6 +42,12 @@ bun = "latest"
 # create app wrappers for websites
 "npm:pake-cli" = "latest"
 
+# python / uv backend
+#
+
+# create queryable, LLM-friendly knowledge graph in any project (https://github.com/Graphify-Labs/graphify)
+"pipx:graphifyy" = "latest"
+
 [settings]
 
 # config files with these prefixes will be trusted by default
