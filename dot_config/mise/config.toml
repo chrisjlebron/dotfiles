@@ -1,7 +1,9 @@
 # may also need to set each with `mise use -g {TOOL}@lastest`
 [tools]
 
+###################################
 # languages / runtimes
+
 node = "latest"
 deno = "latest"
 java = "latest"
@@ -10,19 +12,31 @@ ruby = "latest"
 go = "latest"
 rust = "latest"
 
+###################################
 # package / project managers
+
 uv = "latest"
 pnpm = "latest"
 
+###################################
 # engines
+
 bun = "latest"
 
+###################################
 # system tools installed globally below to avoid project-level runtime-version collisions:
+
+# aqua backend
+#
+
+# OpenAI coding agent
+"aqua:openai/codex" = "latest"
+
+# node backend
+#
 
 # open source coding agent
 "npm:@earendil-works/pi-coding-agent" = "latest"
-# OpenAI coding agent
-"aqua:openai/codex" = "latest"
 # agent skills manager
 "npm:skills" = "latest"
 # create app wrappers for websites
