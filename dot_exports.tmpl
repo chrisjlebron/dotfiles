@@ -104,13 +104,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # REF: https://github.com/Giammarco-Ferranti/deja
 
 # keybindings
-export DEJA_CYCLE_KEY='^I'                 # cycle alternatives (default='^I' → Tab)
+export DEJA_CYCLE_KEY='^N'                 # cycle alternatives ('^N' == Ctrl+N) (default='^I' → Tab)
 export DEJA_TOGGLE_KEY='^X'                # suppress for the session (default='^X' → Ctrl+X)
 export DEJA_CYCLE_FUZZY_KEY=               # next fuzzy preset (default='^[[1;2C' → Shift+→)
 export DEJA_CYCLE_FUZZY_BACK_KEY=          # previous fuzzy preset (default='^[[1;2D' → Shift+←)
 export DEJA_TOGGLE_EMPTY_KEY=              # flip empty-prompt suggestions (default='^[[1;2A' → Shift+↑)
 # these are unbound by default (→ and Ctrl+→ already accept via wrapped widgets):
-export DEJA_ACCEPT_KEY=                    # accept full suggestion on a dedicated key (default=<UNSET>)
+export DEJA_ACCEPT_KEY='^[[Z'              # accept full suggestion on a dedicated key ('^[[Z' == Shift+Tab) (default=<UNSET>)
 export DEJA_WORD_ACCEPT_KEY=               # accept the next word on a dedicated key (default=<UNSET>)
 export DEJA_DISMISS_KEY=                   # clear the ghost for this line only (default=<UNSET>)
 
