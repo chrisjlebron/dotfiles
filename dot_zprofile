@@ -1,0 +1,6 @@
+####################################################
+# startup file for non-interactive shells / sessions
+####################################################
+
+# mise-en-place
+eval "$(mise activate zsh --shims)"
