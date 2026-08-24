@@ -1,6 +1,11 @@
 ####################################################
 # startup file for non-interactive shells / sessions
+# NOTE: this loads before .zshrc when interactive
 ####################################################
 
+###########################
 # mise-en-place
+
+# Ensure ~/.local/bin (mise's install location) is in PATH so the bin is available to activate
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh --shims)"
