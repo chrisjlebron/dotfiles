@@ -15,6 +15,9 @@ set smartindent
 " set tab size to 2 spaces
 set tabstop=2 shiftwidth=2 softtabstop=2
 
+" set clipboard to system clipboard
+set clipboard=unnamed
+
 " disable line wrapping
 " set wrap!
 
