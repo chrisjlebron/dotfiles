@@ -72,6 +72,12 @@ source ~/.zsh/plugins/ls_colors/lscolors.sh
 
 eval "$(~/.local/bin/mise activate zsh)"
 
+# consistent exporting of pi path based on mise install location
+# (i.e. this needs mise activated first)
+export PI_INSTALL_PATH="$(dirname "$(dirname "$(command -v pi)")")"
+export PI_EXAMPLES="$PI_INSTALL_PATH"/@earendil-works/pi-coding-agent/examples
+export PI_EXAMPLE_EXTENSIONS=$PI_EXAMPLES/extensions
+
 ### end mise
 ###############################################################################
 
