@@ -228,3 +228,79 @@ _init-copy-region-to-clipboard() {
   bindkey -M shift-select '\ew' copy-region-to-clipboard
 }
 _init-copy-region-to-clipboard # immediately invoke to init widget
+
+#################################################
+# pin skills installed via gh
+#################################################
+
+pin-skill() {
+  # Usage: pin-skill path/to/SKILL.md
+
+  if ! command -v yq >/dev/null; then
+    echo "Error: script requires yq library"
+    echo "To install: brew install yq"
+    exit 1;
+  fi
+
+  # -i flag updates the file in place
+  yq eval --front-matter=process '.pinned = true' -i "$1"
+}
+
+#################################################
+# fzf process kill selection
+#################################################
+
+pskill() {
+  emulate -L zsh
+  local pid
+  if [[ $UID -ne 0 ]]; then
+    pid=$(ps -u "$USER" -o pid=,comm= | fzf -m | awk '{print $1}')
+  else
+    pid=$(ps -ef | awk 'NR>1 {print $2, $8}' | fzf -m | awk '{print $1}')
+  fi
+
+  # shellcheck disable=SC2296
+  [[ -n $pid ]] && kill -"${1:-9}" "${(f)pid}"
+}
+
+#################################################
+# Inspect a port and optionally terminate the process using it
+#################################################
+
+# Load Colors
+autoload -Uz colors && colors
+
+# shellcheck disable=SC2154
+C_RED=${fg[red]}
+C_GREEN=${fg[green]}
+C_YELLOW=${fg[yellow]}
+C_CYAN=${fg[cyan]}
+# shellcheck disable=SC2154
+C_NC=${reset_color}
+
+port() {
+  if [[ "$1" == "help" || "$1" == "-h" || -z "$1" ]]; then
+    echo "${C_CYAN}🔌 port${C_NC}: See what's running on a port and optionally kill it."
+    echo "Usage: ${C_YELLOW}port <number> [kill]${C_NC}"
+    echo "Examples:"
+    echo "  port 8080       (Views processes on port 8080)"
+    echo "  port 3000 kill  (Kills the process running on port 3000)"
+    return 0
+  fi
+
+  local target_port=$1
+  local pid
+  pid=$(lsof -t -i:"$target_port")
+  if [[ "$2" == "kill" ]]; then
+    echo "${C_RED}Attempting to kill process on port $target_port...${C_NC}"
+    if [[ -n "$pid" ]]; then
+      kill -9 "$pid"
+      echo "${C_GREEN}✅ Process $pid killed successfully.${C_NC}"
+    else
+      echo "${C_YELLOW}⚠️  No process found running on port $target_port.${C_NC}"
+    fi
+  else
+    echo "${C_CYAN}Processes listening on port $target_port:${C_NC}"
+    lsof -i :"$target_port" || echo "${C_YELLOW}No active processes on this port.${C_NC}"
+  fi
+}
