@@ -48,9 +48,11 @@ if [ -n "${ZSH_VERSION:-}" ]; then
 
     # https://postgresqlstan.github.io/cli/zsh-history-options/
     # setopt EXTENDED_HISTORY # include timestamps
-    setopt INC_APPEND_HISTORY
     setopt SHARE_HISTORY
     setopt HIST_IGNORE_ALL_DUPS # remove old command if new one is dupe
+    setopt HIST_IGNORE_SPACE
+    setopt HIST_FIND_NO_DUPS
+    setopt HIST_REDUCE_BLANKS
 fi
 
 ### end command history
