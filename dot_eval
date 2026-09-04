@@ -116,7 +116,7 @@ source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 ###############################################################################
 ### fzf
 
-# Add fzf key-bindings (Ctrl-r: history search; Ctrl-t: pwd-relative file/dir search)
+# Canonical interactive history search (Ctrl-r); Ctrl-t searches files and directories.
 # (and fuzzy completion with `**<TAB>, e.g. cd d**<TAB> -> filtered list of files/dirs starting with "d")
 
 source <(fzf --zsh)

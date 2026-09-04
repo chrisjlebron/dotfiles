@@ -4,26 +4,11 @@
 
 
 ###############################################################################
-### source dotfiles
-
-# Load our dotfiles like ~/.bash_prompt, etc…
-#   ~/.extra can be used for settings you don’t want to commit,
-#   Use it to configure your PATH, thus it being first in line.
-# NOTE: this is the load order, so add needed commands etc. earlier
-for file in ~/.{extra,exports,exports-dynamic,eval,aliases,functions}; do
-    # shellcheck disable=SC1090
-    [ -r "$file" ] && source "$file"
-done
-unset file
-
-### end source dotfiles
-###############################################################################
-
-
-###############################################################################
 ### command history
 
-export HISTSIZE=100000 # the number of commands loaded into memory from the history file
+# Establish one history policy before fzf and Deja initialize from .eval.
+# Keep extra in-memory entries so zsh can expire duplicates before saving.
+export HISTSIZE=200000
 
 # bash specific history settings
 if [ -n "${BASH_VERSION:-}" ]; then
@@ -33,27 +18,43 @@ if [ -n "${BASH_VERSION:-}" ]; then
     # keep history up to date, across sessions, in realtime
     #  http://unix.stackexchange.com/a/48113
     export HISTCONTROL=ignoredups:erasedups # no duplicate entries
-    export HISTFILESIZE=$HISTSIZE # big big history (default is 500)
-    shopt -s histappend # append to history, don't overwrite
+    export HISTFILESIZE=100000
+    shopt -s histappend # append history instead of overwriting it
 
-    # Save and reload the history after each command finishes
-    # NOTE: the only downside with this is [up] on the readline will go over all history not just the session
+    # Save and reload history after each command finishes.
+    # NOTE: [up] traverses shared history rather than only this session.
     export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:-}"
 fi
 
 # zsh specific history settings
 if [ -n "${ZSH_VERSION:-}" ]; then
-    export HISTFILE=~/.zsh_history # zsh doesn't save history to a file automatically
-    export SAVEHIST=$HISTSIZE # the number of commands to be stored in the zsh history file
+    export HISTFILE="$HOME/.zsh_history"
+    export SAVEHIST=100000
 
-    # https://postgresqlstan.github.io/cli/zsh-history-options/
-    # setopt EXTENDED_HISTORY # include timestamps
+    # SHARE_HISTORY handles incremental writes and imports from other shells.
+    unsetopt INC_APPEND_HISTORY INC_APPEND_HISTORY_TIME
     setopt SHARE_HISTORY
-    setopt HIST_IGNORE_ALL_DUPS # remove old command if new one is dupe
+    setopt HIST_IGNORE_ALL_DUPS
     setopt HIST_IGNORE_SPACE
     setopt HIST_FIND_NO_DUPS
     setopt HIST_REDUCE_BLANKS
 fi
 
 ### end command history
+###############################################################################
+
+
+###############################################################################
+### source dotfiles
+
+# Load our dotfiles like ~/.bash_prompt, etc…
+#   ~/.extra can be used for settings you don’t want to commit.
+# NOTE: this is the load order, so add needed commands etc. earlier
+for file in ~/.{extra,exports,exports-dynamic,eval,aliases,functions}; do
+    # shellcheck disable=SC1090
+    [ -r "$file" ] && source "$file"
+done
+unset file
+
+### end source dotfiles
 ###############################################################################

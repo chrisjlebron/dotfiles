@@ -22,7 +22,6 @@ brew "git-delta" # better git pager (https://github.com/dandavison/delta)
 brew "git-extras" # https://github.com/tj/git-extras/blob/master/Commands.md
 # brew "grc" # colorizes output (tailing logs, etc.). Reevaluate
 brew "herdr" # LLM agent multiplexer
-brew "hstr" # Formerly `hh`. View, navigate and search your command history with shell history suggest box
 brew "htop" # a better `top`
 # brew "imagemagick" # only install as needed
 brew "just" # command runner (think `make`, but easier to use)

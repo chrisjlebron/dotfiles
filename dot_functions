@@ -200,14 +200,6 @@ trytsx () {
 }
 
 #################################################
-# search .zsh_history with fzf
-#################################################
-
-zshist() {
-  cat ~/.zsh_history | fzf
-}
-
-#################################################
 # ZLE widget to copy keyboard-selected terminal input text to system clipboard
 # NOTE: relies on zsh-shift-select plugin
 #################################################
