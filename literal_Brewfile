@@ -1,3 +1,4 @@
+tap "shiquda/spotask" "https://github.com/shiquda/SpotAsk"
 brew "bat" # full-featured, colorized `cat`
 # brew "ca-certificates" # not sure if i need this...
 brew "coreutils" # for better `ls`, etc.
@@ -40,6 +41,7 @@ brew "redis", restart_service: true
 brew "ripgrep" # alternative to grep/ack/ag
 brew "shellcheck" # bash linting
 brew "starship" # nice prompt manager/editor (https://github.com/starship/starship)
+brew "thaw" # menu bar manager (https://github.com/thaw-app/Thaw)
 brew "tlrc" # Simpler man pages (https://github.com/tldr-pages/tldr) (new name for `tldr`; still invoked with that command)
 brew "tmux" # terminal multiplexer (for long-running remote tasks, or separating current shell for isolation)
 brew "tree" # view dirs as trees
@@ -86,8 +88,10 @@ cask "ghostty" # terminal emulator
 cask "google-chrome"
 cask "google-drive" # local access & sync/backup
 # cask "gyazo" # record screen, make gifs
+cask "hammerspoon"
 # cask "imagealpha" # if needed
 # cask "imageoptim" # if needed
+cask "mac-brow-app/tap/brow"
 cask "music-decoy" # stop Apple Music from responding to media keys & bluetooth headphones
 cask "openusage" # LLM provider usage tracking
 cask "orbstack" # docker desktop alternative
@@ -97,8 +101,12 @@ cask "raycast" # alternative to alfred
 # cask "rectangle" # window/screen management (DEPRECATED: now handled by raycast window manager)
 # cask "rescuetime" # if you like...
 # cask "sequel-pro" # sql explorer
+cask "shiquda/spotask/spotask"
+cask "shobhit99/tap/supercmd"
 cask "slack"
 cask "spotify"
+cask "superwhisper" # smarter dictation (free; can use local models)
+cask "vicinae" # raycast alternative (KEEP???????????????)
 cask "visual-studio-code"
 cask "warp" # terminal emulator
 cask "zen" # sick browser
