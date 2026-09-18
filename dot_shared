@@ -4,6 +4,18 @@
 
 
 ###############################################################################
+### user bootstrap
+
+if [ -r "$HOME/.extra" ]; then
+    # shellcheck disable=SC1091
+    source "$HOME/.extra"
+fi
+
+### end user bootstrap
+###############################################################################
+
+
+###############################################################################
 ### command history
 
 # Establish one history policy before fzf and Deja initialize from .eval.
@@ -48,9 +60,8 @@ fi
 ### source dotfiles
 
 # Load our dotfiles like ~/.bash_prompt, etc…
-#   ~/.extra can be used for settings you don’t want to commit.
 # NOTE: this is the load order, so add needed commands etc. earlier
-for file in ~/.{extra,exports,exports-dynamic,eval,aliases,functions}; do
+for file in ~/.{exports,exports-dynamic,eval,aliases,functions}; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && source "$file"
 done
