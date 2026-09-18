@@ -33,9 +33,13 @@ _zsh_plugins_tmp="${_zsh_plugins_file}.new"
 # initialize as empty array so later `plugins+=(...)` appends work
 plugins=()
 
+# Clone completion UI and widget wrappers here, then source them in .eval after
+# compinit and fzf's own shell integration have initialized.
+plugins+=( "Aloxaf/fzf-tab kind:clone" )
+
 # Syntax highlighting unless LIGHT_SHELL=1
 if [[ "${LIGHT_SHELL:-0}" != "1" ]]; then
-  plugins+=( zdharma-continuum/fast-syntax-highlighting )
+  plugins+=( "zdharma-continuum/fast-syntax-highlighting kind:clone" )
 fi
 
 # for non-Warp terminals
