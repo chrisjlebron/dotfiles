@@ -19,7 +19,7 @@ fi
 ### command history
 
 # Establish one history policy before fzf and Deja initialize from .eval.
-# Keep extra in-memory entries so zsh can expire duplicates before saving.
+# Keep deeper history in long-running shells while limiting persisted history.
 export HISTSIZE=200000
 
 # bash specific history settings
