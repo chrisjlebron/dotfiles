@@ -6,6 +6,7 @@
 ###############################################################################
 ### user bootstrap
 
+# ~/.extra holds uncommitted local settings and bootstraps PATH for later files.
 if [ -r "$HOME/.extra" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.extra"
