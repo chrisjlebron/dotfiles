@@ -168,6 +168,9 @@ alias revivebackswipe="defaults write com.google.Chrome AppleEnableSwipeNavigate
 # Add a spacer to the dock
 alias addspacer="defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' && killall Dock"
 
+alias runningapps="ps -u $(whoami) -o comm | grep -E '\.app/Contents/MacOS/' | grep -Ev '^/System/|^/usr/libexec/' | sed -n 's|.*/\([^/]*\)\.app/Contents/.*|\1|p' | sort -u"
+
+
 ### end macOS
 ###############################################################################
 
