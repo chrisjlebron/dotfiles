@@ -96,6 +96,7 @@ alias g="git"
 alias vi=$(brew --prefix)/bin/vim
 alias vim=$(brew --prefix)/bin/vim
 alias v="vim"
+alias n="nvim"
 alias cl='clear'
 # full-featured, colorized `cat`
 # https://github.com/sharkdp/bat
