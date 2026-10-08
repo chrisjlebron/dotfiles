@@ -39,6 +39,8 @@ bun = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 # agent skills manager
 "npm:skills" = "latest"
+# firecrawl tools
+"npm:firecrawl-cli" = "latest"
 # create app wrappers for websites
 "npm:pake-cli" = "latest"
 
