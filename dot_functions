@@ -296,3 +296,11 @@ port() {
     lsof -i :"$target_port" || echo "${C_YELLOW}No active processes on this port.${C_NC}"
   fi
 }
+
+#################################################
+# Omit OpenRouter models from pi model selection
+#################################################
+
+pi() {
+  env -u OPENROUTER_API_KEY command pi "$@"
+}
