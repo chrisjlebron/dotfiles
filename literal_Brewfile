@@ -50,7 +50,6 @@ brew "watchman" # Watch files and take action when they change
 # brew "wget" # meh... if you need it
 # brew "xz" # General-purpose data compression with high compression ratio
 brew "yq" # YAML processor
-brew "zellij" # terminal multiplexer alternative (for long-running remote tasks, or separating current shell for isolation)
 brew "zenith" # best `top`?
 brew "zoxide" # better cd (replacement for rupa/z) - https://github.com/ajeetdsouza/zoxide
 brew "zsh" # homebrew managed `zsh`
