@@ -54,7 +54,8 @@ source "$HOME/.shared"
 # NOTE: For completions to work, this must be added after compinit is called
 # You may have to rebuild your completions cache by running rm ~/.zcompdump*; compinit.
 
-# You may also want to ensure you have fzf installed, as it is used for interactive selection
+# If you have fzf installed, it is used for interactive selection via `zi`
+# e.g. zi dot <TAB> --> open fzf selector
 
 eval "$(zoxide init zsh)"
 

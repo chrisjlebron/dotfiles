@@ -199,27 +199,6 @@ trytsx () {
   _try_module "$@"
 }
 
-#################################################
-# ZLE widget to copy keyboard-selected terminal input text to system clipboard
-# NOTE: relies on zsh-shift-select plugin
-#################################################
-
-copy-region-to-clipboard() {
-  zle copy-region-as-kill
-
-  if [[ -n $CUTBUFFER ]]; then
-    print -rn -- "$CUTBUFFER" | pbcopy
-  fi
-}
-
-_init-copy-region-to-clipboard() {
-  zle -N copy-region-to-clipboard
-
-  # Put this after loading zsh-shift-select.
-  # maps to Alt-w / Opt-w
-  bindkey -M shift-select '\ew' copy-region-to-clipboard
-}
-_init-copy-region-to-clipboard # immediately invoke to init widget
 
 #################################################
 # pin skills installed via gh
@@ -239,7 +218,28 @@ pin-skill() {
 }
 
 #################################################
-# fzf process kill selection
+# enhanced file list and preview with fzf
+#################################################
+
+fzfp() {
+  # shellcheck disable=SC2016
+  fzf --style full \
+    --preview 'bat --color=always --style=numbers --line-range=:500 {}' \
+    --input-label ' Query ' \
+    --header-label ' File Type ' \
+    --bind 'result:transform-list-label:
+            if [[ -z $FZF_QUERY ]]; then
+              echo " $FZF_MATCH_COUNT items "
+            else
+              echo " $FZF_MATCH_COUNT matches for [$FZF_QUERY] "
+            fi' \
+    --bind 'focus:transform-preview-label:[[ -n {} ]] && printf " Previewing [%s] " {}' \
+    --bind 'focus:+transform-header:file --brief {} || echo "No file selected"' \
+    "$@"
+}
+
+#################################################
+# process kill selection with fzf
 #################################################
 
 pskill() {

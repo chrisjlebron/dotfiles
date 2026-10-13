@@ -38,6 +38,9 @@ if type brew &>/dev/null; then
   zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
   zstyle ':completion:*:messages' format '%F{blue}%d%f'
   zstyle ':completion:*:warnings' format '%F{red}%d%f'
+  zstyle ':completion:*:*:ls:*:*' file-patterns \
+    '*(-/):directories' \
+    '*:all-files'
 fi
 
 ### end compinit & styling
@@ -116,8 +119,16 @@ source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 ###############################################################################
 ### fzf
 
-# Canonical interactive history search (Ctrl-r); Ctrl-t searches files and directories.
+# fuzzy finder interactive selection
+# Ctrl-t searches files and directories.
+# Ctrl-r launches interactive history search
+# Alt-c lists nested directories for navigation.
 # (and fuzzy completion with `**<TAB>, e.g. cd d**<TAB> -> filtered list of files/dirs starting with "d")
+
+# DISABLE Ctrl-r (atuin owns this)
+export FZF_CTRL_R_COMMAND=
+
+export FZF_DEFAULT_OPTS='--height ~75% --layout reverse --border top'
 
 source <(fzf --zsh)
 
