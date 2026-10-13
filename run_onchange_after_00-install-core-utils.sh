@@ -152,7 +152,7 @@ sudo bash -c 'echo $BASHPATH >> /etc/shells'
 
 cat <<- EOF
 ###############################################################################
-### setting cheat.sh CLI tool
+### install cheat.sh CLI tool
 EOF
 
 if ! command -v ~/.local/bin/cht.sh >/dev/null; then
@@ -161,6 +161,25 @@ fi
 
 ### end cheat.sh
 ###############################################################################
+
+
+
+
+###############################################################################
+### atuin
+
+cat <<- EOF
+###############################################################################
+### install atuin (enhanced shell history & command line AI)
+EOF
+
+if ! command -v atuin >/dev/null; then
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+fi
+
+### end atuin
+###############################################################################
+
 
 
 
