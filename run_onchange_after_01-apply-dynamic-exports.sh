@@ -32,15 +32,16 @@ if command -v op >/dev/null; then
   echo "1password CLI detected and signed in, updating credentials..."
 
   # grab file path
-  exports_dynamic_src_file=$(chezmoi source-path ~/.exports-dynamic)
+  exports_dynamic_src_file=$(chezmoi source-path "$HOME/.exports-dynamic")
 
   # using `execute-template` rather than `apply` because chezmoi locks the state in the outer call
   # (either `init` or `apply`, depending when this is run)
   # this is the recommended method (REF: https://www.chezmoi.io/reference/commands/execute-template/)
-  chezmoi execute-template < "$exports_dynamic_src_file" > ~/.exports-dynamic
+  chezmoi execute-template < "$exports_dynamic_src_file" > "$HOME/.exports-dynamic"
 
   # finally, make the exports available in the current terminal session
-  source ~/.exports-dynamic
+  # shellcheck source=/dev/null
+  source "$HOME/.exports-dynamic"
 else
   echo "1password CLI not found, skipping credential updates"
 fi
