@@ -180,3 +180,14 @@ exit_time_ms=154.538
 - Warp startup remains within the ±20 ms target window (≈0.12–0.14 s → ≈0.13–0.14 s real)
 - Ghostty and Terminal improve significantly (≈0.29–0.30 s → ≈0.14–0.15 s real)
 - With completions, syntax highlighting, and autosuggestions enabled post-change, the performance acceptance criteria are met or exceeded across all measured terminals.
+
+## Completion fpath migration (2026-10-15)
+
+| State | Samples (ms) | Median (ms) |
+| --- | --- | ---: |
+| Before | 455.9, 334.3, 332.2, 333.6, 369.0, 334.9, 332.8, 332.0, 323.9, 331.3 | 333.2 |
+| After scoped live apply | 303.2, 288.0, 298.6, 302.5, 301.6, 305.0, 297.5, 305.4, 301.1, 299.2 | 301.3 |
+
+- Delta: **-31.9 ms**.
+- Method: Python monotonic wall-clock timing around ten `zsh -i -c exit` subprocess runs, with stdout discarded and a successful exit required.
+- Result: the migration improves the median startup time and passes the existing no-more-than-20 ms-regression threshold.

@@ -75,7 +75,7 @@ Otherwise, you can add it later using `chezmoi edit-config` or the command chezm
    2. Update [`dot_zsh_plugins_management.tmpl`](dot_zsh_plugins_management.tmpl) to conditionally add plugins for more standard terminal emulators (e.g. Ghostty, Terminal, Kitty, etc.)
 2. Oh-my-zsh git plugin is currently being loaded via a [.chezmoiexternal.toml](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
    - Includes lots of git aliases you rely on, so don't scrap it!
-3. Completion cache rebuild respects a 1-day TTL; force it with `rm ~/.zcompdump*` followed by launching a new shell if you need to refresh immediately
+3. Completions use native `fpath` discovery from the managed and Homebrew completion directories. The cache uses a one-day rebuild policy; see [completion troubleshooting](docs/troubleshooting.md#completion-definitions-cache-and-plugin-loader) for refresh and recovery commands.
 4. Review output of the `brew install` / `brew bundle` portion for any caveats or actions to take
 5. `ls` styling is configured via:
    1. colors are via `LS_COLORS`, which is installed as a [chezmoi external](/.chezmoiexternal.toml) entry and sourced in [dot_eval](/dot_eval)
