@@ -19,10 +19,14 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Load managed completions before vendor-provided completions.
 typeset -U fpath
-fpath=("$HOME/.zsh/completions" $fpath)
-
-if type brew &>/dev/null; then
-  fpath+=("$(brew --prefix)/share/zsh/site-functions")
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+  fpath=(
+    "$HOME/.zsh/completions"
+    "$HOMEBREW_PREFIX/share/zsh/site-functions"
+    $fpath
+  )
+else
+  fpath=("$HOME/.zsh/completions" $fpath)
 fi
 
 autoload -Uz compinit
