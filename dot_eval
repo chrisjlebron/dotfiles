@@ -30,6 +30,8 @@ autoload -Uz compinit
 _zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
 _managed_completion_dir="$HOME/.zsh/completions"
 
+# Rebuild missing/stale dumps or after managed completion changes; otherwise
+# `-C` trusts the existing dump to avoid a full completion rescan on startup.
 if [[ ! -s "$_zcompdump" ]] ||
   [[ -n "$(find "$_zcompdump" -prune -mmin +1440 -print 2>/dev/null)" ]] ||
   [[ -d "$_managed_completion_dir" && "$_managed_completion_dir" -nt "$_zcompdump" ]]; then
