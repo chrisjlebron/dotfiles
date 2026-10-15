@@ -27,12 +27,18 @@ fi
 
 autoload -Uz compinit
 
-# https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=4624611#gistcomment-4624611
-if [ "$(find ~/.zcompdump -mtime +1)" ] ; then
-  compinit
+_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+_managed_completion_dir="$HOME/.zsh/completions"
+
+if [[ ! -s "$_zcompdump" ]] ||
+  [[ -n "$(find "$_zcompdump" -prune -mmin +1440 -print 2>/dev/null)" ]] ||
+  [[ -d "$_managed_completion_dir" && "$_managed_completion_dir" -nt "$_zcompdump" ]]; then
+  compinit -d "$_zcompdump"
 else
-  compinit -C
+  compinit -C -d "$_zcompdump"
 fi
+
+unset _zcompdump _managed_completion_dir
 
 # Completion styling & behavior (applies to all terminals)
 zstyle ':completion:*' menu select
