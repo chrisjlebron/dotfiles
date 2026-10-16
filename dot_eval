@@ -172,6 +172,9 @@ if [[ -n "${ZSH_VERSION:-}" ]]; then
       elif [[ -f \"\$realpath\" ]]; then
         bat $BAT_PREVIEW_OPTS -- \"\$realpath\"
       fi"
+      # Account for the top border inherited from FZF_DEFAULT_OPTS so fzf-tab's
+      # calculated height leaves room to display every completion candidate.
+      zstyle ':fzf-tab:*' fzf-pad 3
       # custom fzf flags
       # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
       zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
