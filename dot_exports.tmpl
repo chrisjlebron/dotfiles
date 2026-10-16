@@ -54,6 +54,24 @@ export BAT_THEME="Coldark-Dark"
 
 
 ###############################################################################
+### shared CLI presentation options (eza/bat)
+
+# Purpose-specific eza/bat option strings, centralized here (this file loads
+# before dot_eval, dot_aliases, and dot_functions) so all consumers share
+# identical values. Exported, not plain vars, so fzf/fzf-tab preview child
+# shells inherit them.
+
+export EZA_LS_OPTS='-aF --sort=type --color=always --icons=always'
+export EZA_LA_OPTS='-F -la --sort=type --time-style=long-iso --no-user --octal-permissions --git --color=always'
+export EZA_LSD_OPTS='-lDa'
+export EZA_PREVIEW_OPTS='-1 --color=always'
+export BAT_PREVIEW_OPTS='--color=always --style=numbers --line-range=:500'
+
+### end shared CLI presentation options (eza/bat)
+###############################################################################
+
+
+###############################################################################
 ### starship prompt config
 
 # set up prompt with starship
