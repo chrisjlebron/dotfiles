@@ -162,17 +162,16 @@ if [[ -n "${ZSH_VERSION:-}" ]]; then
       zstyle ':completion:*:git-checkout:*' sort false
 
       # preview directory's content with eza when completing cd and z
-      # NOTE: preview strings are evaluated by zsh (fzf runs with SHELL=zsh);
-      # $realpath is only set for file/directory candidates.
-      zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'eza ${=EZA_PREVIEW_OPTS} -- "$realpath"'
+      # NOTE: option strings expand now; $realpath remains deferred until preview.
+      zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview "[[ -n \"\$realpath\" ]] && eza $EZA_PREVIEW_OPTS -- \"\$realpath\""
       # contextual previews: directories via eza, regular files via bat; empty
       # or non-path candidates produce no output and exit successfully, and
       # missing eza/bat naturally surface command-not-found errors.
-      zstyle ':fzf-tab:complete:(ls|eza|cp|mv|rm|nvim|n):*' fzf-preview 'if [[ -d "$realpath" ]]; then
-        eza ${=EZA_PREVIEW_OPTS} -- "$realpath"
-      elif [[ -f "$realpath" ]]; then
-        bat ${=BAT_PREVIEW_OPTS} -- "$realpath"
-      fi'
+      zstyle ':fzf-tab:complete:(ls|eza|cp|mv|rm|nvim|n):*' fzf-preview "if [[ -d \"\$realpath\" ]]; then
+        eza $EZA_PREVIEW_OPTS -- \"\$realpath\"
+      elif [[ -f \"\$realpath\" ]]; then
+        bat $BAT_PREVIEW_OPTS -- \"\$realpath\"
+      fi"
       # custom fzf flags
       # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
       zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept

@@ -30,13 +30,12 @@ fi
 alias sls='CLICOLOR_FORCE=1 gls -aFh ${colorflag} --group-directories-first'
 
 # alias ls to eza default
-# NOTE: option strings are defined in .exports (EZA_*_OPTS) and split into
-# words at runtime via zsh's `${=VAR}` expansion
-alias ls='eza ${=EZA_LS_OPTS}'
-alias la='eza ${=EZA_LA_OPTS}'
+# NOTE: option strings are defined in .exports and interpolated when aliases load
+alias ls="eza $EZA_LS_OPTS"
+alias la="eza $EZA_LA_OPTS"
 
 # List only directories
-alias lsd='eza ${=EZA_LSD_OPTS}'
+alias lsd="eza $EZA_LSD_OPTS"
 
 ### end ls related
 ###############################################################################

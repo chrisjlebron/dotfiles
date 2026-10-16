@@ -222,9 +222,8 @@ pin-skill() {
 #################################################
 
 fzfp() {
-  # shellcheck disable=SC2016
   fzf --style full \
-    --preview 'bat ${=BAT_PREVIEW_OPTS} {}' \
+    --preview "bat $BAT_PREVIEW_OPTS {}" \
     --input-label ' Query ' \
     --header-label ' File Type ' \
     --bind 'result:transform-list-label:

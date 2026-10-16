@@ -58,8 +58,8 @@ export BAT_THEME="Coldark-Dark"
 
 # Purpose-specific eza/bat option strings, centralized here (this file loads
 # before dot_eval, dot_aliases, and dot_functions) so all consumers share
-# identical values. Exported, not plain vars, so fzf/fzf-tab preview child
-# shells inherit them.
+# identical values. Consumers interpolate these strings into commands while
+# loading, keeping the resulting aliases and preview commands shell-portable.
 
 export EZA_LS_OPTS='-aF --sort=type --color=always --icons=always'
 export EZA_LA_OPTS='-F -la --sort=type --time-style=long-iso --no-user --octal-permissions --git --color=always'
