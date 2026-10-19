@@ -44,6 +44,17 @@ else
   compinit -C -d "$_zcompdump"
 fi
 
+# Reuse existing completion providers for alternate executable names.
+if (( ${+functions[_yarn]} )); then
+  compdef _yarn yarnpkg
+fi
+if (( ${+functions[_bundle]} )); then
+  compdef _bundle bundler
+fi
+if (( ${+functions[_bd]} )); then
+  compdef _bd beads
+fi
+
 unset _zcompdump _managed_completion_dir
 
 # Completion styling & behavior (applies to all terminals)

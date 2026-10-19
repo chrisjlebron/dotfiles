@@ -9,10 +9,12 @@
 ## Completion definitions, cache, and plugin loader
 
 - Tracked completion definitions live in [`dot_zsh/completions`](../dot_zsh/completions/) and chezmoi installs them to `~/.zsh/completions`.
+- [`run_after_02-generate-zsh-completions.sh`](../run_after_02-generate-zsh-completions.sh) also caches native definitions there for supported installed tools. It runs on each `chezmoi apply`, skips unavailable tools, and replaces only files whose generated contents changed.
 - `dot_eval` prepends the managed completion directory and then Homebrew's `share/zsh/site-functions` directory to `fpath` before its single `compinit` call. Existing `fpath` entries follow those paths.
 - `compinit` performs a full rebuild when `${ZDOTDIR:-$HOME}/.zcompdump` is missing or empty, is older than 24 hours, or `~/.zsh/completions` is newer than the dump. Otherwise it uses the warm `compinit -C` path.
+- To refresh native definitions after a tool upgrade, run `chezmoi apply`; launch a subsequent shell to load changed definitions.
 - To recover from stale or invalid cached completion data immediately, run `rm ~/.zcompdump*` and launch a new shell.
-- Refresh generated definitions from the repository root with:
+- Refresh the tracked generated definitions from the repository root with:
 
   ```shell
   atuin gen-completions --shell zsh > dot_zsh/completions/_atuin
