@@ -1,3 +1,12 @@
+[tool_alias]
+codex = "aqua:openai/codex"
+firecrawl = "npm:firecrawl-cli"
+graphify = "pipx:graphifyy"
+ipython = "pipx:ipython"
+pake = "npm:pake-cli"
+pi = "aqua:earendil-works/pi"
+ruff = "aqua:astral-sh/ruff"
+
 # may also need to set each with `mise use -g {TOOL}@lastest`
 [tools]
 
@@ -30,32 +39,32 @@ bun = "latest"
 #
 
 # OpenAI coding agent
-"aqua:openai/codex" = "latest"
+"codex" = "latest"
 
 # node backend
 #
 
 # open source coding agent
-"npm:@earendil-works/pi-coding-agent" = "latest"
+"pi" = "latest"
 # agent skills manager
 "npm:skills" = "latest"
 # firecrawl tools
-"npm:firecrawl-cli" = "latest"
+"firecrawl" = "latest"
 # create app wrappers for websites
-"npm:pake-cli" = "latest"
+"pake" = "latest"
 
 # python / uv backend
 #
 
 # python linter (e.g. Flake8), formatter (e.g. Black), import sorter (e.g. isort), and code modernizer (e.g. pyupgrade)
-"pipx:ruff" = "latest"
+"ruff" = "latest"
 # enhanced interactive python REPL
-"pipx:ipython" = "latest"
+"ipython" = "latest"
 # interactive python debugger; NOTE: favor project-local installs or on-demand invocations (`uvx ipdb my-script.py`)
 # "pipx:ipdb" = "latest"
 
 # create queryable, LLM-friendly knowledge graph in any project (https://github.com/Graphify-Labs/graphify)
-"pipx:graphifyy" = "latest"
+"graphify" = "latest"
 
 [settings]
 
