@@ -48,6 +48,7 @@ brew "tree" # view dirs as trees
 brew "vim" # get brew managed vim
 brew "watchman" # Watch files and take action when they change
 # brew "wget" # meh... if you need it
+brew "worktrunk" # manage & navigate git worktrees more easily
 # brew "xz" # General-purpose data compression with high compression ratio
 brew "yq" # YAML processor
 brew "zenith" # best `top`?
