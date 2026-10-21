@@ -40,7 +40,7 @@ generate_completion() {
   target_file="${completion_dir}/${output_name}"
 
   # Bun and opencode inspect SHELL when choosing their completion dialect.
-  if ! SHELL=zsh "$binary_path" "$@" >"$generated_file"; then
+  if ! SHELL=zsh "$binary_path" "$@" </dev/null >"$generated_file"; then
     printf 'Skipping %s completion: generator failed; keeping any cached file.\n' \
       "$output_name" >&2
     failed_count=$((failed_count + 1))
@@ -93,7 +93,7 @@ generate_completion _bun bun completions
 generate_completion _codex codex completion zsh
 generate_completion _ruff ruff generate-shell-completion zsh
 generate_completion _docker docker completion zsh
-generate_completion _opencode opencode completion zsh
+generate_completion _opencode opencode --completions zsh
 
 printf 'Zsh completion cache: %d updated, %d unchanged, %d missing, %d failed.\n' \
   "$updated_count" "$unchanged_count" "$missing_count" "$failed_count"
