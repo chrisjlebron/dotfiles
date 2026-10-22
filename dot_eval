@@ -17,22 +17,20 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ###############################################################################
 ### compinit & styling
 
+# define some reused vars
+_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+_managed_completion_dir="$HOME/.zsh/completions"
+
 # Load managed completions before vendor-provided completions.
 typeset -U fpath
 if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
-  fpath=(
-    "$HOME/.zsh/completions"
-    "$HOMEBREW_PREFIX/share/zsh/site-functions"
-    $fpath
-  )
-else
-  fpath=("$HOME/.zsh/completions" $fpath)
+  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 fi
 
-autoload -Uz compinit
+# prepend above homebrew
+fpath=("$_managed_completion_dir" $fpath)
 
-_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-_managed_completion_dir="$HOME/.zsh/completions"
+autoload -Uz compinit
 
 # Rebuild missing/stale dumps or after managed completion changes; otherwise
 # `-C` trusts the existing dump to avoid a full completion rescan on startup.
