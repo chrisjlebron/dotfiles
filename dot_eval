@@ -149,7 +149,7 @@ export FZF_DEFAULT_OPTS='--height ~75% --layout reverse --border top'
 source <(fzf --zsh)
 
 # fix disappearing variable prefix in the quoted variable case: e.g. `mv "$my_d<tab>` was resulting in `mv `
-fzf_default_completion=complete-word
+# fzf_default_completion=complete-word
 
 ### end fzf
 ###############################################################################
