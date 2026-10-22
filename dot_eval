@@ -239,6 +239,8 @@ fi
 
 # add binaries to PATH
 . "$HOME/.atuin/bin/env"
+# start pty-proxy for command output capture
+eval "$(atuin pty-proxy init zsh)"
 # activate atuin
 eval "$(atuin init zsh)"
 
