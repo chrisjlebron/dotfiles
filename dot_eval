@@ -32,15 +32,9 @@ fpath=("$_managed_completion_dir" $fpath)
 
 autoload -Uz compinit
 
-# Rebuild missing/stale dumps or after managed completion changes; otherwise
-# `-C` trusts the existing dump to avoid a full completion rescan on startup.
-if [[ ! -s "$_zcompdump" ]] ||
-  [[ -n "$(find "$_zcompdump" -prune -mmin +1440 -print 2>/dev/null)" ]] ||
-  [[ -d "$_managed_completion_dir" && "$_managed_completion_dir" -nt "$_zcompdump" ]]; then
-  compinit -d "$_zcompdump"
-else
-  compinit -C -d "$_zcompdump"
-fi
+# Reuse the dump while checking completion file count and zsh version on startup.
+# Changes to #compdef headers or provider priority require explicit cache invalidation.
+compinit -d "$_zcompdump"
 
 # Reuse existing completion providers for alternate executable names.
 if (( ${+functions[_yarn]} )); then
