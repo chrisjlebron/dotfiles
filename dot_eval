@@ -32,8 +32,22 @@ fpath=("$_managed_completion_dir" $fpath)
 
 autoload -Uz compinit
 
-# Reuse the dump while checking completion file count and zsh version on startup.
-# Changes to #compdef headers or provider priority require explicit cache invalidation.
+# Always let compinit validate the cached completion-file count and zsh
+# version. Force a periodic rebuild to bound staleness from same-count content
+# changes, and rebuild immediately after managed completion entries change.
+() {
+  setopt local_options extended_glob
+
+  if [[ -e "$_zcompdump" ]] &&
+    {
+      [[ -n "$_zcompdump"(#qN.mh+24) ]] ||
+        [[ -d "$_managed_completion_dir" &&
+          "$_managed_completion_dir" -nt "$_zcompdump" ]]
+    }; then
+    rm -f -- "$_zcompdump" "$_zcompdump.zwc"
+  fi
+}
+
 compinit -d "$_zcompdump"
 
 # Reuse existing completion providers for alternate executable names.
